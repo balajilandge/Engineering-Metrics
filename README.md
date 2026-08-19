@@ -55,7 +55,7 @@ workflow with that `month` input to backfill it.
 
 The trend table reads earlier months from the JSON files previous runs
 committed, so building it costs no extra API calls. Its width and length are
-controlled by `TREND_MONTHS` (default 3) and `TREND_TOP_N` (default 15).
+controlled by `TREND_MONTHS` (default 3) and `TREND_TOP_N` (default 10).
 
 ## Metrics we don't track (and why)
 

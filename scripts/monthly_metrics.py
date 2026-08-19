@@ -23,7 +23,7 @@ invoked from a GitHub Actions workflow or run locally:
   GH_TOKEN      token used for GitHub API auth (optional but recommended)
   TOP_N         how many rows to show in the month-detail table (default 25)
   TREND_MONTHS  how many months wide the "Merged PRs by month" table is (default 3)
-  TREND_TOP_N   how many rows to show in that table (default 15)
+  TREND_TOP_N   how many rows to show in that table (default 10)
 
 The trend table reads earlier months back from the JSON files previous runs
 committed, so no extra API calls are made for history.
@@ -308,7 +308,7 @@ def main() -> None:
     token = env("GH_TOKEN") or env("GITHUB_TOKEN")
     top_n = int(env("TOP_N", "25"))
     trend_months = int(env("TREND_MONTHS", "3"))
-    trend_top_n = int(env("TREND_TOP_N", "15"))
+    trend_top_n = int(env("TREND_TOP_N", "10"))
 
     target_month = env("TARGET_MONTH")
     if not target_month:
