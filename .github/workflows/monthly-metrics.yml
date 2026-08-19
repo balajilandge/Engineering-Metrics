@@ -55,7 +55,21 @@ jobs:
           git add data reports
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "Monthly metrics: ${SOURCE_REPO} ${TARGET_MONTH:-(previous month)}"
-            git push
+            exit 0
           fi
+          git commit -m "Monthly metrics: ${SOURCE_REPO} ${TARGET_MONTH:-(previous month)}"
+
+          # Rebase onto the latest remote branch before pushing and retry on
+          # a rejected push, since a concurrent run (e.g. two manual backfills
+          # dispatched close together) can land its commit first.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "push attempt ${attempt} failed, fetching and rebasing before retry..."
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
+            sleep $((attempt * 5))
+          done
+          echo "::error::Failed to push monthly metrics after retries"
+          exit 1
