@@ -21,7 +21,12 @@ invoked from a GitHub Actions workflow or run locally:
   SOURCE_REPO   "owner/name" of the repo to read stats from (default microsoft/vscode)
   TARGET_MONTH  "YYYY-MM" to report on (default: previous calendar month, UTC)
   GH_TOKEN      token used for GitHub API auth (optional but recommended)
-  TOP_N         how many rows to show in the markdown leaderboard (default 25)
+  TOP_N         how many rows to show in the month-detail table (default 25)
+  TREND_MONTHS  how many months wide the "Merged PRs by month" table is (default 3)
+  TREND_TOP_N   how many rows to show in that table (default 15)
+
+The trend table reads earlier months back from the JSON files previous runs
+committed, so no extra API calls are made for history.
 """
 from __future__ import annotations
 
@@ -176,7 +181,95 @@ def build_leaderboard(created_items: list[dict], merged_items: list[dict]) -> li
     return rows
 
 
-def render_markdown(repo: str, year_month: str, leaderboard: list[dict], top_n: int) -> str:
+def month_label(year_month: str) -> str:
+    """'2026-07' -> 'Jul'."""
+    year, month = (int(part) for part in year_month.split("-"))
+    return calendar.month_abbr[month]
+
+
+def trailing_months(year_month: str, count: int) -> list[str]:
+    """['2026-05', '2026-06', '2026-07'] for ('2026-07', 3) — oldest first."""
+    year, month = (int(part) for part in year_month.split("-"))
+    months = []
+    for offset in range(count - 1, -1, -1):
+        total = (year * 12 + (month - 1)) - offset
+        months.append(f"{total // 12:04d}-{total % 12 + 1:02d}")
+    return months
+
+
+def load_month_leaderboard(data_dir: str, year_month: str) -> dict[str, dict] | None:
+    """Reads a previously generated month's JSON, keyed by engineer. None if absent."""
+    path = os.path.join(data_dir, f"{year_month}.json")
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        payload = json.load(f)
+    return {row["engineer"]: row for row in payload.get("leaderboard", [])}
+
+
+def render_trend_markdown(
+    repo: str,
+    target_month: str,
+    months: list[str],
+    by_month: dict[str, dict[str, dict] | None],
+    top_n: int,
+) -> str:
+    """
+    Renders the "Merged PRs by month" view: one row per engineer, one column
+    per month, ranked by merged PRs in the target month.
+
+    A month we have no data file for renders as a blank column; an engineer
+    absent from a month we *do* have renders as an em dash, meaning no merged
+    PRs that month (they may not have joined yet).
+    """
+    target = by_month.get(target_month) or {}
+    ranked = sorted(
+        target.values(),
+        key=lambda r: (-r["prs_merged"], -r["prs_created"], r["engineer"].lower()),
+    )[:top_n]
+
+    labels = [month_label(m) for m in months]
+    header = "| Engineer | " + " | ".join(labels) + f" | {month_label(target_month)} rank |"
+    divider = "|---|" + "|".join(["---:"] * len(labels)) + "|---:|"
+    lines = [
+        f"## Merged PRs by month — {repo}",
+        "",
+        header,
+        divider,
+    ]
+
+    for rank, row in enumerate(ranked, start=1):
+        engineer = row["engineer"]
+        cells = []
+        for month in months:
+            month_data = by_month.get(month)
+            if month_data is None:
+                cells.append("")  # no data file for this month yet
+            elif engineer in month_data:
+                cells.append(str(month_data[engineer]["prs_merged"]))
+            else:
+                cells.append("—")
+        link = f"[{engineer}]({row['profile_url']})" if row.get("profile_url") else engineer
+        lines.append(f"| {link} | " + " | ".join(cells) + f" | {rank} |")
+
+    missing = [m for m in months if by_month.get(m) is None]
+    if missing:
+        lines.append("")
+        lines.append(
+            "_No data yet for: " + ", ".join(missing) +
+            ". Run the workflow with that `month` input to backfill._"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
+def render_markdown(
+    repo: str,
+    year_month: str,
+    leaderboard: list[dict],
+    top_n: int,
+    trend_section: str = "",
+) -> str:
     total_created = sum(r["prs_created"] for r in leaderboard)
     total_merged = sum(r["prs_merged"] for r in leaderboard)
     lines = [
@@ -189,7 +282,11 @@ def render_markdown(repo: str, year_month: str, leaderboard: list[dict], top_n: 
         f"- Total PRs created: {total_created}",
         f"- Total PRs merged: {total_merged}",
         "",
-        "## Leaderboard (ranked by PRs merged)",
+    ]
+    if trend_section:
+        lines.append(trend_section)
+    lines += [
+        f"## {year_month} detail (ranked by PRs merged)",
         "",
         "| Rank | Engineer | PRs Created | PRs Merged |",
         "|---:|---|---:|---:|",
@@ -210,6 +307,8 @@ def main() -> None:
     repo = env("SOURCE_REPO", "microsoft/vscode")
     token = env("GH_TOKEN") or env("GITHUB_TOKEN")
     top_n = int(env("TOP_N", "25"))
+    trend_months = int(env("TREND_MONTHS", "3"))
+    trend_top_n = int(env("TREND_TOP_N", "15"))
 
     target_month = env("TARGET_MONTH")
     if not target_month:
@@ -256,7 +355,19 @@ def main() -> None:
         json.dump(result, f, indent=2)
         f.write("\n")
 
-    markdown = render_markdown(repo, target_month, leaderboard, top_n)
+    # Trend view: this month plus the preceding TREND_MONTHS-1 months, read
+    # back from the JSON files previous runs committed.
+    months = trailing_months(target_month, trend_months)
+    by_month: dict[str, dict[str, dict] | None] = {}
+    for month in months:
+        if month == target_month:
+            by_month[month] = {row["engineer"]: row for row in leaderboard}
+        else:
+            by_month[month] = load_month_leaderboard(data_dir, month)
+
+    trend_markdown = render_trend_markdown(repo, target_month, months, by_month, trend_top_n)
+    markdown = render_markdown(repo, target_month, leaderboard, top_n, trend_markdown)
+
     report_path = os.path.join(reports_dir, f"{target_month}.md")
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(markdown)
