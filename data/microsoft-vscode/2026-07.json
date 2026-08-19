@@ -5,10 +5,10 @@
     "start": "2026-07-01T00:00:00Z",
     "end": "2026-07-31T23:59:59Z"
   },
-  "generated_at": "2026-08-19T11:22:49.519002+00:00",
+  "generated_at": "2026-08-19T14:32:33.835064+00:00",
   "totals": {
     "prs_created": 1858,
-    "prs_merged": 1470,
+    "prs_merged": 1471,
     "engineers": 248
   },
   "leaderboard": [
@@ -16,7 +16,7 @@
       "engineer": "roblourens",
       "profile_url": "https://github.com/roblourens",
       "prs_created": 134,
-      "prs_merged": 123,
+      "prs_merged": 124,
       "rank": 1
     },
     {
