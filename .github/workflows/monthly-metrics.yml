@@ -1,0 +1,61 @@
+name: Monthly Engineering Metrics
+
+# Reads PR activity from the public microsoft/vscode repo and writes a
+# per-engineer leaderboard (PRs created, PRs merged) into this repo.
+
+on:
+  schedule:
+    # 03:00 UTC on the 1st of every month — reports on the previous month.
+    - cron: '0 3 1 * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Target month to report on, format YYYY-MM (default: previous month)'
+        required: false
+        type: string
+      source_repo:
+        description: 'owner/name of the repo to read PR stats from'
+        required: false
+        type: string
+        default: microsoft/vscode
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monthly-metrics
+  cancel-in-progress: false
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate monthly PR metrics
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_MONTH: ${{ inputs.month }}
+          SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+        run: python scripts/monthly_metrics.py
+
+      - name: Commit and push results
+        env:
+          TARGET_MONTH: ${{ inputs.month }}
+          SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data reports
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Monthly metrics: ${SOURCE_REPO} ${TARGET_MONTH:-(previous month)}"
+            git push
+          fi
