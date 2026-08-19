@@ -1,40 +1,40 @@
-# Monthly Engineering Metrics — microsoft/vscode — 2026-05
+# Monthly Engineering Metrics — microsoft/vscode — 2026-07
 
 - Source repo: [microsoft/vscode](https://github.com/microsoft/vscode) (read-only)
-- Period: 2026-05 (UTC calendar month)
-- Generated: 2026-08-19 11:14 UTC
-- Engineers with activity: 257
-- Total PRs created: 1791
-- Total PRs merged: 1367
+- Period: 2026-07 (UTC calendar month)
+- Generated: 2026-08-19 11:22 UTC
+- Engineers with activity: 248
+- Total PRs created: 1858
+- Total PRs merged: 1470
 
 ## Leaderboard (ranked by PRs merged)
 
 | Rank | Engineer | PRs Created | PRs Merged |
 |---:|---|---:|---:|
-| 1 | [roblourens](https://github.com/roblourens) | 143 | 123 |
-| 2 | [sandy081](https://github.com/sandy081) | 81 | 77 |
-| 3 | [pwang347](https://github.com/pwang347) | 83 | 73 |
-| 4 | [benibenj](https://github.com/benibenj) | 74 | 73 |
-| 5 | [connor4312](https://github.com/connor4312) | 69 | 67 |
-| 6 | [DonJayamanne](https://github.com/DonJayamanne) | 88 | 58 |
-| 7 | [dmitrivMS](https://github.com/dmitrivMS) | 65 | 56 |
-| 8 | [mjbvz](https://github.com/mjbvz) | 57 | 56 |
-| 9 | [lszomoru](https://github.com/lszomoru) | 46 | 44 |
-| 10 | [bhavyaus](https://github.com/bhavyaus) | 45 | 40 |
-| 11 | [vijayupadya](https://github.com/vijayupadya) | 36 | 37 |
-| 12 | [dileepyavan](https://github.com/dileepyavan) | 41 | 36 |
-| 13 | [justschen](https://github.com/justschen) | 36 | 36 |
-| 14 | [kycutler](https://github.com/kycutler) | 34 | 33 |
-| 15 | [lramos15](https://github.com/lramos15) | 33 | 33 |
-| 16 | [meganrogge](https://github.com/meganrogge) | 41 | 31 |
-| 17 | [anthonykim1](https://github.com/anthonykim1) | 36 | 30 |
-| 18 | [hediet](https://github.com/hediet) | 35 | 30 |
-| 19 | [vritant24](https://github.com/vritant24) | 35 | 29 |
-| 20 | [mrleemurray](https://github.com/mrleemurray) | 32 | 29 |
-| 21 | [osortega](https://github.com/osortega) | 42 | 28 |
-| 22 | [TylerLeonhardt](https://github.com/TylerLeonhardt) | 29 | 27 |
-| 23 | [aeschli](https://github.com/aeschli) | 27 | 25 |
-| 24 | [alexdima](https://github.com/alexdima) | 21 | 22 |
-| 25 | [bryanchen-d](https://github.com/bryanchen-d) | 26 | 21 |
+| 1 | [roblourens](https://github.com/roblourens) | 134 | 123 |
+| 2 | [sandy081](https://github.com/sandy081) | 114 | 111 |
+| 3 | [benibenj](https://github.com/benibenj) | 108 | 106 |
+| 4 | [meganrogge](https://github.com/meganrogge) | 117 | 92 |
+| 5 | [mrleemurray](https://github.com/mrleemurray) | 79 | 78 |
+| 6 | [connor4312](https://github.com/connor4312) | 82 | 77 |
+| 7 | [ulugbekna](https://github.com/ulugbekna) | 86 | 65 |
+| 8 | [justschen](https://github.com/justschen) | 59 | 52 |
+| 9 | [lszomoru](https://github.com/lszomoru) | 49 | 47 |
+| 10 | [DonJayamanne](https://github.com/DonJayamanne) | 49 | 38 |
+| 11 | [lramos15](https://github.com/lramos15) | 39 | 37 |
+| 12 | [hediet](https://github.com/hediet) | 38 | 34 |
+| 13 | [vritant24](https://github.com/vritant24) | 34 | 33 |
+| 14 | [kycutler](https://github.com/kycutler) | 30 | 32 |
+| 15 | [anthonykim1](https://github.com/anthonykim1) | 34 | 31 |
+| 16 | [hawkticehurst](https://github.com/hawkticehurst) | 33 | 28 |
+| 17 | [alexr00](https://github.com/alexr00) | 31 | 27 |
+| 18 | [Giuspepe](https://github.com/Giuspepe) | 27 | 27 |
+| 19 | [aeschli](https://github.com/aeschli) | 28 | 26 |
+| 20 | [dileepyavan](https://github.com/dileepyavan) | 29 | 24 |
+| 21 | [TylerLeonhardt](https://github.com/TylerLeonhardt) | 29 | 22 |
+| 22 | [osortega](https://github.com/osortega) | 22 | 22 |
+| 23 | [deepak1556](https://github.com/deepak1556) | 25 | 21 |
+| 24 | [benvillalobos](https://github.com/benvillalobos) | 26 | 20 |
+| 25 | [pwang347](https://github.com/pwang347) | 21 | 19 |
 
-_Showing top 25 of 257 engineers. Full data in the matching JSON file under `data/`._
+_Showing top 25 of 248 engineers. Full data in the matching JSON file under `data/`._
