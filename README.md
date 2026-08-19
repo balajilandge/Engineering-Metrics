@@ -37,13 +37,25 @@ the `/` replaced by `-`, e.g. `microsoft-vscode`):
 - `reports/microsoft-vscode/YYYY-MM.md` — the leaderboard as a markdown table
 - `reports/microsoft-vscode/latest.md` — always a copy of the newest report
 
-### Example report table
+### Example report
 
-| Rank | Engineer | PRs Created | PRs Merged |
-|---:|---|---:|---:|
-| 1 | octocat | 23 | 21 |
-| 2 | hubot | 15 | 14 |
-| 3 | ... | ... | ... |
+Each report leads with a **Merged PRs by month** table — a rolling
+multi-month view ranked by the target month — followed by a detail table
+for the target month itself.
+
+| Engineer | May | Jun | Jul | Jul rank |
+|---|---:|---:|---:|---:|
+| octocat | — | — | 23 | 1 |
+| hubot | 16 | 14 | 15 | 2 |
+| monalisa | 14 | 15 | 14 | 3 |
+
+An em dash (—) means no merged PRs that month — e.g. an engineer who hadn't
+joined yet. A blank cell means that month hasn't been generated yet; run the
+workflow with that `month` input to backfill it.
+
+The trend table reads earlier months from the JSON files previous runs
+committed, so building it costs no extra API calls. Its width and length are
+controlled by `TREND_MONTHS` (default 3) and `TREND_TOP_N` (default 15).
 
 ## Metrics we don't track (and why)
 
