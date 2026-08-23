@@ -97,6 +97,11 @@ jobs:
         run: python scripts/monthly_metrics.py --phase "${{ steps.phase.outputs.phase }}"
 
       - name: Commit and push results
+        # Runs even when the pipeline step failed. Layer 3 can be unavailable
+        # (no credits, bad key) after layers 1, 2 and 4 have already written a
+        # complete deterministic report — that work should land, and the run
+        # should still show red.
+        if: ${{ !cancelled() }}
         env:
           SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
           PHASE: ${{ steps.phase.outputs.phase }}

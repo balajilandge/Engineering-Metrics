@@ -6,13 +6,17 @@ has nowhere to put a score, every claim needs evidence, and the payload that
 leaves the building carries no name.
 """
 import json
+import os
+import shutil
+import tempfile
 import unittest
+from unittest import mock
 
-from tests.helpers import *  # noqa: F401,F403 - sets up sys.path
+from tests.helpers import make_collection, make_pr  # noqa: F401 - sets up sys.path
 from metrics.anonymize import build_mapping, verify_anonymized
 from metrics.config import Config
 from metrics.interpret import (MODEL_DEFAULT, OUTPUT_SCHEMA, SYSTEM_PROMPT,
-                               build_payload, interpret)
+                               Layer3Unavailable, build_payload, interpret)
 
 
 class TestOutputSchema(unittest.TestCase):
@@ -111,6 +115,64 @@ class TestLayerThreeIsOptional(unittest.TestCase):
 
     def test_two_runs_by_default_so_the_gate_has_something_to_compare(self):
         self.assertEqual(Config(repo="a/b", month="2026-07", token="").interpret_runs, 2)
+
+
+class TestLayerThreeFailureIsNotFatal(unittest.TestCase):
+    """
+    A model that cannot be reached must not discard the deterministic report.
+    Layers 1, 2 and 4 carry every number; losing them because a billing check
+    failed is strictly worse than shipping them without an interpretation.
+    """
+
+    def test_unavailable_is_distinguishable_from_an_ordinary_error(self):
+        self.assertTrue(issubclass(Layer3Unavailable, RuntimeError))
+
+    def test_pipeline_records_the_error_and_still_writes_the_report(self):
+        import metrics.pipeline as pipeline
+
+        collection = make_collection([
+            make_pr(1, "sham", "fix: retry", ["src/retry.py"],
+                    "2026-07-02T09:00:00Z", "2026-07-04T09:00:00Z"),
+        ])
+        root = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, root, ignore_errors=True)
+        cwd = os.getcwd()
+        os.chdir(root)
+        self.addCleanup(os.chdir, cwd)
+
+        config = Config(repo="acme/app", month="2026-07", token="",
+                        interpret=True, embargo_hours=0)
+
+        with mock.patch.object(pipeline, "collect", return_value=collection), \
+             mock.patch.object(pipeline, "fetch_evidence", return_value=({}, {})), \
+             mock.patch.object(pipeline, "interpret",
+                               side_effect=Layer3Unavailable("credit balance too low")):
+            payload = pipeline.run(config, phase="all")
+
+        # The failure is recorded...
+        self.assertIn("credit balance too low", payload["layer3_error"])
+        # ...and every deterministic artefact still exists.
+        self.assertTrue(os.path.exists("data/acme-app/2026-07.json"))
+        self.assertTrue(os.path.exists(
+            "reports/acme-app/2026-07/engineers/sham.md"))
+        self.assertTrue(os.path.exists("reports/acme-app/2026-07/founder.md"))
+        with open("data/acme-app/2026-07.json", encoding="utf-8") as handle:
+            written = json.load(handle)
+        self.assertIn("layer3_error", written)
+        self.assertEqual(written["individuals"][0]["throughput"]["prs_merged"], 1)
+
+    def test_entry_point_exits_5_so_the_run_still_shows_red(self):
+        import scripts.monthly_metrics as entry
+
+        with mock.patch.object(entry, "run",
+                               return_value={"layer3_error": "credit balance too low"}):
+            self.assertEqual(entry.main(["--repo", "acme/app", "--month", "2026-07"]), 5)
+
+    def test_entry_point_exits_0_when_layer_3_is_fine(self):
+        import scripts.monthly_metrics as entry
+
+        with mock.patch.object(entry, "run", return_value={}):
+            self.assertEqual(entry.main(["--repo", "acme/app", "--month", "2026-07"]), 0)
 
 
 if __name__ == "__main__":

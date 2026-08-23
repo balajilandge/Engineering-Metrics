@@ -23,7 +23,7 @@ from .compute import compute
 from .corrections import load_corrections
 from .distribute import (distribute_engineers, distribute_rest, load_squads)
 from .guardrails import gate_all
-from .interpret import interpret
+from .interpret import Layer3Unavailable, interpret
 from .sources import github as github_source
 
 
@@ -139,9 +139,9 @@ def run(config, phase: str = "all") -> dict:
         "team": computed["team"],
         "individuals": computed["individuals"],
     }
-    _write_json(os.path.join(ddir, f"{config.month}.json"), payload)
 
     if phase == "collect":
+        _write_json(os.path.join(ddir, f"{config.month}.json"), payload)
         print("phase=collect: stopping before interpretation")
         return payload
 
@@ -150,7 +150,19 @@ def run(config, phase: str = "all") -> dict:
     corrections = load_corrections(config.repo, config.month, mapping)
     diffs, comments = fetch_evidence(config, collection, computed["individuals"], mapping)
 
-    interpretations = interpret(anonymized, mapping, diffs, comments, corrections, config)
+    # Layer 3 is the only layer allowed to fail without taking the run with
+    # it. If the model is unreachable the deterministic report is still worth
+    # shipping — it is the part that carries every number.
+    layer3_error = ""
+    try:
+        interpretations = interpret(anonymized, mapping, diffs, comments,
+                                    corrections, config)
+    except Layer3Unavailable as exc:
+        layer3_error = str(exc)
+        interpretations = {}
+        print(f"::error::Layer 3 unavailable — {layer3_error}", file=sys.stderr)
+        print("  continuing with the deterministic layers; pages will show "
+              "the interpretation as not generated.", file=sys.stderr)
 
     # ---- Gate ------------------------------------------------------------
     valid_prs = {
@@ -158,6 +170,10 @@ def run(config, phase: str = "all") -> dict:
         for p in computed["individuals"]
     }
     gated = gate_all(interpretations, valid_prs)
+
+    if layer3_error:
+        payload["layer3_error"] = layer3_error
+    _write_json(os.path.join(ddir, f"{config.month}.json"), payload)
     if gated:
         dropped = sum(len(g.dropped_claims) for g in gated.values())
         contested = sum(1 for g in gated.values() if g.contested)

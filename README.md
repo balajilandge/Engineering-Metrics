@@ -147,6 +147,24 @@ Layer 3 runs `claude-opus-5` with adaptive thinking and a closed JSON schema,
 twice per engineer so the gate has two runs to compare, and it uses server-side
 refusal fallback so a declined request produces a page rather than a gap.
 
+### When Layer 3 is unavailable
+
+A rejected API request — bad key, no credits, unavailable model — does not
+take the run with it. The deterministic report is written and committed, the
+pages show the interpretation as *not generated*, and the run exits **5** so
+CI still goes red:
+
+```
+::error::Layer 3 unavailable — request rejected: 400 ... credit balance is too low
+  continuing with the deterministic layers; pages will show the
+  interpretation as not generated.
+Deterministic report written. Layer 3 did not run: ...
+```
+
+The cause is also recorded as `layer3_error` in that month's JSON. Layers 1, 2
+and 4 carry every number, so losing them because a billing check failed would
+be strictly worse than shipping them without an interpretation.
+
 ### Phases
 
 | Phase | Runs | Writes |
@@ -229,7 +247,7 @@ moment a ranking exists somebody will paste it into a promotion committee.
 python -m unittest discover -s tests -v
 ```
 
-123 tests covering the deterministic layers and the gate — the classifier's
+127 tests covering the deterministic layers and the gate — the classifier's
 priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
 and the audience/embargo policy. Layer 3's contract is tested without a network
 call (schema shape, prompt constraints, payload anonymization).

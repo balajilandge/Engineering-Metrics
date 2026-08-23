@@ -70,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
               "Layer 4 run with no model and no API key.")
 
     try:
-        run(config, phase=args.phase)
+        payload = run(config, phase=args.phase)
     except EmbargoError as exc:
         # Not a crash: the embargo did its job.
         print(f"\nEmbargo holds: {exc}", file=sys.stderr)
@@ -78,6 +78,13 @@ def main(argv: list[str] | None = None) -> int:
     except FileNotFoundError as exc:
         print(f"\n{exc}", file=sys.stderr)
         return 4
+
+    if payload and payload.get("layer3_error"):
+        # The deterministic report is written and worth committing, but the
+        # run asked for interpretation and did not get it — so the run fails.
+        print(f"\nDeterministic report written. Layer 3 did not run: "
+              f"{payload['layer3_error']}", file=sys.stderr)
+        return 5
 
     print("\nDone.")
     return 0

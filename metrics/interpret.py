@@ -29,6 +29,16 @@ from .anonymize import verify_anonymized
 
 MODEL_DEFAULT = "claude-opus-5"
 
+
+class Layer3Unavailable(RuntimeError):
+    """
+    Layer 3 cannot run at all — a rejected request, an exhausted credit
+    balance, a bad model id. Distinct from a single run failing, and
+    deliberately NOT fatal to the pipeline: layers 1, 2 and 4 stand alone, so
+    the caller catches this, drops the interpretation, and still ships the
+    deterministic report. The run is still marked failed at the end.
+    """
+
 SYSTEM_PROMPT = """\
 You are reading one engineer's pull requests for a single month and writing \
 the interpretation an engineering manager will use to prepare a 1:1. You are \
@@ -207,9 +217,15 @@ def interpret_one(client, payload: dict, config) -> list[dict]:
         except anthropic.RateLimitError as exc:
             print(f"  run {attempt + 1}: rate limited: {exc}", file=sys.stderr)
         except anthropic.BadRequestError as exc:
-            # A schema or parameter problem will not fix itself on the next
-            # engineer — fail loudly rather than emitting empty pages.
-            raise RuntimeError(f"Layer 3 request rejected: {exc}") from exc
+            # A rejected request will not fix itself on the next engineer:
+            # a bad schema, an unavailable model or an empty credit balance
+            # applies to every call. Abandon Layer 3 rather than sending the
+            # same doomed request once per engineer.
+            raise Layer3Unavailable(f"request rejected: {exc}") from exc
+        except anthropic.AuthenticationError as exc:
+            raise Layer3Unavailable(f"ANTHROPIC_API_KEY rejected: {exc}") from exc
+        except anthropic.PermissionDeniedError as exc:
+            raise Layer3Unavailable(f"API key lacks access: {exc}") from exc
         except anthropic.APIStatusError as exc:
             print(f"  run {attempt + 1}: API error {exc.status_code}: {exc}",
                   file=sys.stderr)
