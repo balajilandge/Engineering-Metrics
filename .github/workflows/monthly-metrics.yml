@@ -1,23 +1,42 @@
 name: Monthly Engineering Metrics
 
-# Reads PR activity from the public microsoft/vscode repo and writes a
-# per-engineer leaderboard (PRs created, PRs merged) into this repo.
+# Four-layer pipeline (see README). The schedule splits deliberately:
+#
+#   1st, 03:00 UTC  -> phase `engineers`: layers 1-3, the gate, and each
+#                      engineer's own page. Nobody else's page exists yet.
+#   2nd, 03:00 UTC  -> phase `rest`: the EM, squad lead and founder pages,
+#                      which the embargo refuses to write until 24h after the
+#                      engineer pages were released.
+#
+# That gap is the "engineer FIRST" arrow in the architecture, enforced rather
+# than intended: running `rest` early fails with a non-zero exit.
 
 on:
   schedule:
-    # 03:00 UTC on the 1st of every month — reports on the previous month.
-    - cron: '0 3 1 * *'
+    - cron: '0 3 1 * *'   # phase: engineers — reports on the month just ended
+    - cron: '0 3 2 * *'   # phase: rest — after the embargo
   workflow_dispatch:
     inputs:
+      phase:
+        description: 'Pipeline phase'
+        required: false
+        type: choice
+        default: all
+        options: [all, collect, engineers, rest]
       month:
-        description: 'Target month to report on, format YYYY-MM (default: previous month)'
+        description: 'Target month, YYYY-MM (default: previous month)'
         required: false
         type: string
       source_repo:
-        description: 'owner/name of the repo to read PR stats from'
+        description: 'owner/name of the repo to read stats from'
         required: false
         type: string
         default: microsoft/vscode
+      interpret:
+        description: 'Run Layer 3 (costs API tokens; needs ANTHROPIC_API_KEY)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -38,17 +57,50 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generate monthly PR metrics
+      - name: Resolve phase
+        id: phase
+        run: |
+          # The 2nd-of-month cron runs `rest`; everything else runs `engineers`
+          # unless a manual dispatch says otherwise.
+          if [ -n "${{ inputs.phase }}" ]; then
+            PHASE="${{ inputs.phase }}"
+          elif [ "${{ github.event.schedule }}" = "0 3 2 * *" ]; then
+            PHASE="rest"
+          else
+            PHASE="engineers"
+          fi
+          echo "phase=${PHASE}" >> "$GITHUB_OUTPUT"
+          echo "Running phase: ${PHASE}"
+
+      - name: Run unit tests
+        # Layers 1, 2 and the gate are code, so they are tested before they
+        # are trusted to produce anything anyone reads.
+        run: python -m unittest discover -s tests -v
+
+      - name: Install interpretation dependencies
+        if: ${{ inputs.interpret }}
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TARGET_MONTH: ${{ inputs.month }}
           SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
-        run: python scripts/monthly_metrics.py
+          INTERPRET: ${{ inputs.interpret && 'true' || 'false' }}
+          # Optional off-GitHub feeds; absent means "insufficient evidence",
+          # never zero.
+          BOARD_PATH: ${{ vars.BOARD_PATH }}
+          DEPLOYS_PATH: ${{ vars.DEPLOYS_PATH }}
+          INCIDENTS_PATH: ${{ vars.INCIDENTS_PATH }}
+          EMBARGO_HOURS: ${{ vars.EMBARGO_HOURS || '24' }}
+        run: python scripts/monthly_metrics.py --phase "${{ steps.phase.outputs.phase }}"
 
       - name: Commit and push results
         env:
-          TARGET_MONTH: ${{ inputs.month }}
           SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+          PHASE: ${{ steps.phase.outputs.phase }}
+          TARGET_MONTH: ${{ inputs.month }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -57,11 +109,10 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Monthly metrics: ${SOURCE_REPO} ${TARGET_MONTH:-(previous month)}"
+          git commit -m "Metrics (${PHASE}): ${SOURCE_REPO} ${TARGET_MONTH:-(previous month)}"
 
-          # Rebase onto the latest remote branch before pushing and retry on
-          # a rejected push, since a concurrent run (e.g. two manual backfills
-          # dispatched close together) can land its commit first.
+          # Rebase onto the latest remote branch before pushing and retry on a
+          # rejected push, since a concurrent run can land its commit first.
           for attempt in 1 2 3 4 5; do
             if git push; then
               exit 0
@@ -71,5 +122,5 @@ jobs:
             git rebase "origin/${GITHUB_REF_NAME}"
             sleep $((attempt * 5))
           done
-          echo "::error::Failed to push monthly metrics after retries"
+          echo "::error::Failed to push metrics after retries"
           exit 1

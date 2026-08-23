@@ -11,1602 +11,2288 @@
     "prs_merged": 1392,
     "engineers": 228
   },
-  "leaderboard": [
-    {
-      "engineer": "benibenj",
-      "profile_url": "https://github.com/benibenj",
-      "prs_created": 128,
-      "prs_merged": 120,
-      "rank": 1
-    },
-    {
-      "engineer": "sandy081",
-      "profile_url": "https://github.com/sandy081",
-      "prs_created": 121,
-      "prs_merged": 116,
-      "rank": 2
-    },
-    {
-      "engineer": "mrleemurray",
-      "profile_url": "https://github.com/mrleemurray",
-      "prs_created": 86,
-      "prs_merged": 85,
-      "rank": 3
-    },
-    {
-      "engineer": "DonJayamanne",
-      "profile_url": "https://github.com/DonJayamanne",
-      "prs_created": 87,
-      "prs_merged": 81,
-      "rank": 4
-    },
-    {
-      "engineer": "roblourens",
-      "profile_url": "https://github.com/roblourens",
-      "prs_created": 77,
-      "prs_merged": 75,
-      "rank": 5
-    },
-    {
-      "engineer": "lszomoru",
-      "profile_url": "https://github.com/lszomoru",
-      "prs_created": 64,
-      "prs_merged": 61,
-      "rank": 6
-    },
-    {
-      "engineer": "alexdima",
-      "profile_url": "https://github.com/alexdima",
-      "prs_created": 63,
-      "prs_merged": 53,
-      "rank": 7
-    },
-    {
-      "engineer": "connor4312",
-      "profile_url": "https://github.com/connor4312",
-      "prs_created": 53,
-      "prs_merged": 52,
-      "rank": 8
-    },
-    {
-      "engineer": "meganrogge",
-      "profile_url": "https://github.com/meganrogge",
-      "prs_created": 59,
-      "prs_merged": 49,
-      "rank": 9
-    },
-    {
-      "engineer": "justschen",
-      "profile_url": "https://github.com/justschen",
-      "prs_created": 54,
-      "prs_merged": 49,
-      "rank": 10
-    },
-    {
-      "engineer": "kycutler",
-      "profile_url": "https://github.com/kycutler",
-      "prs_created": 47,
-      "prs_merged": 46,
-      "rank": 11
-    },
-    {
-      "engineer": "dileepyavan",
-      "profile_url": "https://github.com/dileepyavan",
-      "prs_created": 48,
-      "prs_merged": 43,
-      "rank": 12
-    },
-    {
-      "engineer": "dmitrivMS",
-      "profile_url": "https://github.com/dmitrivMS",
-      "prs_created": 45,
-      "prs_merged": 43,
-      "rank": 13
-    },
-    {
-      "engineer": "aeschli",
-      "profile_url": "https://github.com/aeschli",
-      "prs_created": 43,
-      "prs_merged": 41,
-      "rank": 14
-    },
-    {
-      "engineer": "pwang347",
-      "profile_url": "https://github.com/pwang347",
-      "prs_created": 50,
-      "prs_merged": 39,
-      "rank": 15
-    },
-    {
-      "engineer": "ulugbekna",
-      "profile_url": "https://github.com/ulugbekna",
-      "prs_created": 41,
-      "prs_merged": 34,
-      "rank": 16
-    },
-    {
-      "engineer": "TylerLeonhardt",
-      "profile_url": "https://github.com/TylerLeonhardt",
-      "prs_created": 34,
-      "prs_merged": 32,
-      "rank": 17
-    },
-    {
-      "engineer": "lramos15",
-      "profile_url": "https://github.com/lramos15",
-      "prs_created": 28,
-      "prs_merged": 29,
-      "rank": 18
-    },
-    {
-      "engineer": "bhavyaus",
-      "profile_url": "https://github.com/bhavyaus",
-      "prs_created": 31,
-      "prs_merged": 27,
-      "rank": 19
-    },
-    {
-      "engineer": "chrmarti",
-      "profile_url": "https://github.com/chrmarti",
-      "prs_created": 24,
-      "prs_merged": 22,
-      "rank": 20
-    },
-    {
-      "engineer": "alexr00",
-      "profile_url": "https://github.com/alexr00",
-      "prs_created": 24,
-      "prs_merged": 19,
-      "rank": 21
-    },
-    {
-      "engineer": "mjbvz",
-      "profile_url": "https://github.com/mjbvz",
-      "prs_created": 18,
-      "prs_merged": 18,
-      "rank": 22
-    },
-    {
-      "engineer": "Giuspepe",
-      "profile_url": "https://github.com/Giuspepe",
-      "prs_created": 19,
-      "prs_merged": 16,
-      "rank": 23
-    },
-    {
-      "engineer": "hediet",
-      "profile_url": "https://github.com/hediet",
-      "prs_created": 20,
-      "prs_merged": 15,
-      "rank": 24
-    },
-    {
-      "engineer": "vijayupadya",
-      "profile_url": "https://github.com/vijayupadya",
-      "prs_created": 16,
-      "prs_merged": 15,
-      "rank": 25
-    },
-    {
-      "engineer": "joshspicer",
-      "profile_url": "https://github.com/joshspicer",
-      "prs_created": 20,
-      "prs_merged": 14,
-      "rank": 26
-    },
-    {
-      "engineer": "vritant24",
-      "profile_url": "https://github.com/vritant24",
-      "prs_created": 17,
-      "prs_merged": 14,
-      "rank": 27
-    },
-    {
-      "engineer": "anthonykim1",
-      "profile_url": "https://github.com/anthonykim1",
-      "prs_created": 23,
-      "prs_merged": 13,
-      "rank": 28
-    },
-    {
-      "engineer": "deepak1556",
-      "profile_url": "https://github.com/deepak1556",
-      "prs_created": 16,
-      "prs_merged": 13,
-      "rank": 29
-    },
-    {
-      "engineer": "hawkticehurst",
-      "profile_url": "https://github.com/hawkticehurst",
-      "prs_created": 13,
-      "prs_merged": 11,
-      "rank": 30
-    },
-    {
-      "engineer": "benvillalobos",
-      "profile_url": "https://github.com/benvillalobos",
-      "prs_created": 16,
-      "prs_merged": 10,
-      "rank": 31
-    },
-    {
-      "engineer": "aiday-mar",
-      "profile_url": "https://github.com/aiday-mar",
-      "prs_created": 13,
-      "prs_merged": 10,
-      "rank": 32
-    },
-    {
-      "engineer": "digitarald",
-      "profile_url": "https://github.com/digitarald",
-      "prs_created": 10,
-      "prs_merged": 10,
-      "rank": 33
-    },
-    {
-      "engineer": "jruales",
-      "profile_url": "https://github.com/jruales",
-      "prs_created": 8,
-      "prs_merged": 10,
-      "rank": 34
-    },
-    {
-      "engineer": "osortega",
-      "profile_url": "https://github.com/osortega",
-      "prs_created": 15,
-      "prs_merged": 7,
-      "rank": 35
-    },
-    {
-      "engineer": "rzhao271",
-      "profile_url": "https://github.com/rzhao271",
-      "prs_created": 10,
-      "prs_merged": 5,
-      "rank": 36
-    },
-    {
-      "engineer": "amunger",
-      "profile_url": "https://github.com/amunger",
-      "prs_created": 7,
-      "prs_merged": 5,
-      "rank": 37
-    },
-    {
-      "engineer": "dbaeumer",
-      "profile_url": "https://github.com/dbaeumer",
-      "prs_created": 6,
-      "prs_merged": 5,
-      "rank": 38
-    },
-    {
-      "engineer": "rwoll",
-      "profile_url": "https://github.com/rwoll",
-      "prs_created": 6,
-      "prs_merged": 5,
-      "rank": 39
-    },
-    {
-      "engineer": "zhichli",
-      "profile_url": "https://github.com/zhichli",
-      "prs_created": 6,
-      "prs_merged": 4,
-      "rank": 40
-    },
-    {
-      "engineer": "bryanchen-d",
-      "profile_url": "https://github.com/bryanchen-d",
-      "prs_created": 5,
-      "prs_merged": 4,
-      "rank": 41
-    },
-    {
-      "engineer": "cwebster-99",
-      "profile_url": "https://github.com/cwebster-99",
-      "prs_created": 5,
-      "prs_merged": 4,
-      "rank": 42
-    },
-    {
-      "engineer": "gjsjohnmurray",
-      "profile_url": "https://github.com/gjsjohnmurray",
-      "prs_created": 2,
-      "prs_merged": 4,
-      "rank": 43
-    },
-    {
-      "engineer": "SimonSiefke",
-      "profile_url": "https://github.com/SimonSiefke",
-      "prs_created": 1,
-      "prs_merged": 4,
-      "rank": 44
-    },
-    {
-      "engineer": "rfeltis",
-      "profile_url": "https://github.com/rfeltis",
-      "prs_created": 5,
-      "prs_merged": 3,
-      "rank": 45
-    },
-    {
-      "engineer": "arun-357",
-      "profile_url": "https://github.com/arun-357",
-      "prs_created": 4,
-      "prs_merged": 3,
-      "rank": 46
-    },
-    {
-      "engineer": "joaomoreno",
-      "profile_url": "https://github.com/joaomoreno",
-      "prs_created": 4,
-      "prs_merged": 3,
-      "rank": 47
-    },
-    {
-      "engineer": "federicobrancasi",
-      "profile_url": "https://github.com/federicobrancasi",
-      "prs_created": 3,
-      "prs_merged": 3,
-      "rank": 48
-    },
-    {
-      "engineer": "guomaggie",
-      "profile_url": "https://github.com/guomaggie",
-      "prs_created": 3,
-      "prs_merged": 3,
-      "rank": 49
-    },
-    {
-      "engineer": "ntrogh",
-      "profile_url": "https://github.com/ntrogh",
-      "prs_created": 3,
-      "prs_merged": 3,
-      "rank": 50
-    },
-    {
-      "engineer": "eleanorjboyd",
-      "profile_url": "https://github.com/eleanorjboyd",
-      "prs_created": 3,
-      "prs_merged": 2,
-      "rank": 51
-    },
-    {
-      "engineer": "ishaq2321",
-      "profile_url": "https://github.com/ishaq2321",
-      "prs_created": 2,
-      "prs_merged": 2,
-      "rank": 52
-    },
-    {
-      "engineer": "romalpani",
-      "profile_url": "https://github.com/romalpani",
-      "prs_created": 2,
-      "prs_merged": 2,
-      "rank": 53
-    },
-    {
-      "engineer": "vivekjm",
-      "profile_url": "https://github.com/vivekjm",
-      "prs_created": 5,
-      "prs_merged": 1,
-      "rank": 54
-    },
-    {
-      "engineer": "yogeshwaran-c",
-      "profile_url": "https://github.com/yogeshwaran-c",
-      "prs_created": 5,
-      "prs_merged": 1,
-      "rank": 55
-    },
-    {
-      "engineer": "aashna",
-      "profile_url": "https://github.com/aashna",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 56
-    },
-    {
-      "engineer": "ajasad25",
-      "profile_url": "https://github.com/ajasad25",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 57
-    },
-    {
-      "engineer": "bikeshgyawali",
-      "profile_url": "https://github.com/bikeshgyawali",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 58
-    },
-    {
-      "engineer": "carlbrochu",
-      "profile_url": "https://github.com/carlbrochu",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 59
-    },
-    {
-      "engineer": "jukasper",
-      "profile_url": "https://github.com/jukasper",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 60
-    },
-    {
-      "engineer": "kangarko",
-      "profile_url": "https://github.com/kangarko",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 61
-    },
-    {
-      "engineer": "RedCMD",
-      "profile_url": "https://github.com/RedCMD",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 62
-    },
-    {
-      "engineer": "tamuratak",
-      "profile_url": "https://github.com/tamuratak",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 63
-    },
-    {
-      "engineer": "wszgrcy",
-      "profile_url": "https://github.com/wszgrcy",
-      "prs_created": 2,
-      "prs_merged": 1,
-      "rank": 64
-    },
+  "schema_version": 2,
+  "schema_v1_import": "Collected by the ranked-leaderboard pipeline before PR classification existed. Counts are as measured; rank has been removed and no type split is available for this month.",
+  "individuals": [
     {
       "engineer": "1Burhanuddin",
       "profile_url": "https://github.com/1Burhanuddin",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 65
-    },
-    {
-      "engineer": "Bryan2333",
-      "profile_url": "https://github.com/Bryan2333",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 66
-    },
-    {
-      "engineer": "g0w6y",
-      "profile_url": "https://github.com/g0w6y",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 67
-    },
-    {
-      "engineer": "jakebailey",
-      "profile_url": "https://github.com/jakebailey",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 68
-    },
-    {
-      "engineer": "jamesmontemagno",
-      "profile_url": "https://github.com/jamesmontemagno",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 69
-    },
-    {
-      "engineer": "jytjyt05",
-      "profile_url": "https://github.com/jytjyt05",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 70
-    },
-    {
-      "engineer": "karthiknadig",
-      "profile_url": "https://github.com/karthiknadig",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 71
-    },
-    {
-      "engineer": "KirtiRamchandani",
-      "profile_url": "https://github.com/KirtiRamchandani",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 72
-    },
-    {
-      "engineer": "merfanian",
-      "profile_url": "https://github.com/merfanian",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 73
-    },
-    {
-      "engineer": "michiisai",
-      "profile_url": "https://github.com/michiisai",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 74
-    },
-    {
-      "engineer": "Sid200026",
-      "profile_url": "https://github.com/Sid200026",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 75
-    },
-    {
-      "engineer": "tbogoodnews",
-      "profile_url": "https://github.com/tbogoodnews",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 76
-    },
-    {
-      "engineer": "yavanosta",
-      "profile_url": "https://github.com/yavanosta",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 77
-    },
-    {
-      "engineer": "yulia-vasyura",
-      "profile_url": "https://github.com/yulia-vasyura",
-      "prs_created": 1,
-      "prs_merged": 1,
-      "rank": 78
-    },
-    {
-      "engineer": "aaronpowell",
-      "profile_url": "https://github.com/aaronpowell",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 79
-    },
-    {
-      "engineer": "cavalloJustinEmery",
-      "profile_url": "https://github.com/cavalloJustinEmery",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 80
-    },
-    {
-      "engineer": "dymaaaj7",
-      "profile_url": "https://github.com/dymaaaj7",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 81
-    },
-    {
-      "engineer": "gryan11",
-      "profile_url": "https://github.com/gryan11",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 82
-    },
-    {
-      "engineer": "lucaspar",
-      "profile_url": "https://github.com/lucaspar",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 83
-    },
-    {
-      "engineer": "maruthang",
-      "profile_url": "https://github.com/maruthang",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 84
-    },
-    {
-      "engineer": "mohanrajvenkatesan23-04",
-      "profile_url": "https://github.com/mohanrajvenkatesan23-04",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 85
-    },
-    {
-      "engineer": "mohityadav8",
-      "profile_url": "https://github.com/mohityadav8",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 86
-    },
-    {
-      "engineer": "mutl3y",
-      "profile_url": "https://github.com/mutl3y",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 87
-    },
-    {
-      "engineer": "sgoedecke",
-      "profile_url": "https://github.com/sgoedecke",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 88
-    },
-    {
-      "engineer": "Tyriar",
-      "profile_url": "https://github.com/Tyriar",
-      "prs_created": 0,
-      "prs_merged": 1,
-      "rank": 89
-    },
-    {
-      "engineer": "ghost",
-      "profile_url": "https://github.com/ghost",
-      "prs_created": 26,
-      "prs_merged": 0,
-      "rank": 90
-    },
-    {
-      "engineer": "arnavnagzirkar",
-      "profile_url": "https://github.com/arnavnagzirkar",
-      "prs_created": 13,
-      "prs_merged": 0,
-      "rank": 91
-    },
-    {
-      "engineer": "alop-hue",
-      "profile_url": "https://github.com/alop-hue",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 92
-    },
-    {
-      "engineer": "hariharjeevan",
-      "profile_url": "https://github.com/hariharjeevan",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 93
-    },
-    {
-      "engineer": "jachinsamuel",
-      "profile_url": "https://github.com/jachinsamuel",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 94
-    },
-    {
-      "engineer": "Orvid",
-      "profile_url": "https://github.com/Orvid",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 95
-    },
-    {
-      "engineer": "pony-maggie",
-      "profile_url": "https://github.com/pony-maggie",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 96
-    },
-    {
-      "engineer": "remcohaszing",
-      "profile_url": "https://github.com/remcohaszing",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 97
-    },
-    {
-      "engineer": "sergey-zinchenko",
-      "profile_url": "https://github.com/sergey-zinchenko",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 98
-    },
-    {
-      "engineer": "sukumarp2022",
-      "profile_url": "https://github.com/sukumarp2022",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 99
-    },
-    {
-      "engineer": "sw23",
-      "profile_url": "https://github.com/sw23",
-      "prs_created": 3,
-      "prs_merged": 0,
-      "rank": 100
-    },
-    {
-      "engineer": "AbdelrahmanHafez",
-      "profile_url": "https://github.com/AbdelrahmanHafez",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 101
-    },
-    {
-      "engineer": "alichtman",
-      "profile_url": "https://github.com/alichtman",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 102
-    },
-    {
-      "engineer": "Chudesnov",
-      "profile_url": "https://github.com/Chudesnov",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 103
-    },
-    {
-      "engineer": "damnthonyy",
-      "profile_url": "https://github.com/damnthonyy",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 104
-    },
-    {
-      "engineer": "fschrhunt",
-      "profile_url": "https://github.com/fschrhunt",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 105
-    },
-    {
-      "engineer": "FuZoe",
-      "profile_url": "https://github.com/FuZoe",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 106
-    },
-    {
-      "engineer": "kevin-m-kent",
-      "profile_url": "https://github.com/kevin-m-kent",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 107
-    },
-    {
-      "engineer": "Mr-Ahmadi",
-      "profile_url": "https://github.com/Mr-Ahmadi",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 108
-    },
-    {
-      "engineer": "oryanmordo",
-      "profile_url": "https://github.com/oryanmordo",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 109
-    },
-    {
-      "engineer": "Otto-Deviant1904",
-      "profile_url": "https://github.com/Otto-Deviant1904",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 110
-    },
-    {
-      "engineer": "Soumilgit",
-      "profile_url": "https://github.com/Soumilgit",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 111
-    },
-    {
-      "engineer": "theanarkh",
-      "profile_url": "https://github.com/theanarkh",
-      "prs_created": 2,
-      "prs_merged": 0,
-      "rank": 112
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "6hl",
       "profile_url": "https://github.com/6hl",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 113
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "aaronpowell",
+      "profile_url": "https://github.com/aaronpowell",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "aashna",
+      "profile_url": "https://github.com/aashna",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "AbdelrahmanHafez",
+      "profile_url": "https://github.com/AbdelrahmanHafez",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "accnops",
       "profile_url": "https://github.com/accnops",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 114
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "aeschli",
+      "profile_url": "https://github.com/aeschli",
+      "throughput": {
+        "prs_created": 43,
+        "prs_merged": 41,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ahmetozer",
       "profile_url": "https://github.com/ahmetozer",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 115
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "aiday-mar",
+      "profile_url": "https://github.com/aiday-mar",
+      "throughput": {
+        "prs_created": 13,
+        "prs_merged": 10,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "ajasad25",
+      "profile_url": "https://github.com/ajasad25",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "AlejandroRomeroG",
       "profile_url": "https://github.com/AlejandroRomeroG",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 116
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "alexdima",
+      "profile_url": "https://github.com/alexdima",
+      "throughput": {
+        "prs_created": 63,
+        "prs_merged": 53,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "alexr00",
+      "profile_url": "https://github.com/alexr00",
+      "throughput": {
+        "prs_created": 24,
+        "prs_merged": 19,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "alichtman",
+      "profile_url": "https://github.com/alichtman",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "almayor",
       "profile_url": "https://github.com/almayor",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 117
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "alop-hue",
+      "profile_url": "https://github.com/alop-hue",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "amanraj069",
       "profile_url": "https://github.com/amanraj069",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 118
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "amunger",
+      "profile_url": "https://github.com/amunger",
+      "throughput": {
+        "prs_created": 7,
+        "prs_merged": 5,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "andreyfel",
       "profile_url": "https://github.com/andreyfel",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 119
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "andysharman",
       "profile_url": "https://github.com/andysharman",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 120
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "anthonykim1",
+      "profile_url": "https://github.com/anthonykim1",
+      "throughput": {
+        "prs_created": 23,
+        "prs_merged": 13,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "anuragyadav0311",
       "profile_url": "https://github.com/anuragyadav0311",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 121
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "arnavnagzirkar",
+      "profile_url": "https://github.com/arnavnagzirkar",
+      "throughput": {
+        "prs_created": 13,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "arun-357",
+      "profile_url": "https://github.com/arun-357",
+      "throughput": {
+        "prs_created": 4,
+        "prs_merged": 3,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ashfakhm",
       "profile_url": "https://github.com/ashfakhm",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 122
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ashwin31",
       "profile_url": "https://github.com/ashwin31",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 123
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ayu-haker",
       "profile_url": "https://github.com/ayu-haker",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 124
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Bappoz",
       "profile_url": "https://github.com/Bappoz",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 125
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ben-dlwlrma",
       "profile_url": "https://github.com/ben-dlwlrma",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 126
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "benibenj",
+      "profile_url": "https://github.com/benibenj",
+      "throughput": {
+        "prs_created": 128,
+        "prs_merged": 120,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "benvillalobos",
+      "profile_url": "https://github.com/benvillalobos",
+      "throughput": {
+        "prs_created": 16,
+        "prs_merged": 10,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "bhavyaus",
+      "profile_url": "https://github.com/bhavyaus",
+      "throughput": {
+        "prs_created": 31,
+        "prs_merged": 27,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "bikeshgyawali",
+      "profile_url": "https://github.com/bikeshgyawali",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "BoSeal",
       "profile_url": "https://github.com/BoSeal",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 127
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "brian-stoker",
       "profile_url": "https://github.com/brian-stoker",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 128
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Bryan2333",
+      "profile_url": "https://github.com/Bryan2333",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "bryanchen-d",
+      "profile_url": "https://github.com/bryanchen-d",
+      "throughput": {
+        "prs_created": 5,
+        "prs_merged": 4,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "carlbrochu",
+      "profile_url": "https://github.com/carlbrochu",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "cavalloJustinEmery",
+      "profile_url": "https://github.com/cavalloJustinEmery",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "cgaspard",
       "profile_url": "https://github.com/cgaspard",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 129
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "chrmarti",
+      "profile_url": "https://github.com/chrmarti",
+      "throughput": {
+        "prs_created": 24,
+        "prs_merged": 22,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Chubercik",
       "profile_url": "https://github.com/Chubercik",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 130
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Chudesnov",
+      "profile_url": "https://github.com/Chudesnov",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Chulong-Li",
       "profile_url": "https://github.com/Chulong-Li",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 131
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "clarafdomingos",
       "profile_url": "https://github.com/clarafdomingos",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 132
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "connor4312",
+      "profile_url": "https://github.com/connor4312",
+      "throughput": {
+        "prs_created": 53,
+        "prs_merged": 52,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "cwebster-99",
+      "profile_url": "https://github.com/cwebster-99",
+      "throughput": {
+        "prs_created": 5,
+        "prs_merged": 4,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "DakshUbhadia",
       "profile_url": "https://github.com/DakshUbhadia",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 133
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "damnthonyy",
+      "profile_url": "https://github.com/damnthonyy",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "danielrobbins",
       "profile_url": "https://github.com/danielrobbins",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 134
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "DaniilBabanin",
       "profile_url": "https://github.com/DaniilBabanin",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 135
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "dbaeumer",
+      "profile_url": "https://github.com/dbaeumer",
+      "throughput": {
+        "prs_created": 6,
+        "prs_merged": 5,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "deepak1556",
+      "profile_url": "https://github.com/deepak1556",
+      "throughput": {
+        "prs_created": 16,
+        "prs_merged": 13,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "DevFlex-AI",
       "profile_url": "https://github.com/DevFlex-AI",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 136
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "dferreiralopessc",
       "profile_url": "https://github.com/dferreiralopessc",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 137
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "digitarald",
+      "profile_url": "https://github.com/digitarald",
+      "throughput": {
+        "prs_created": 10,
+        "prs_merged": 10,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "dileepyavan",
+      "profile_url": "https://github.com/dileepyavan",
+      "throughput": {
+        "prs_created": 48,
+        "prs_merged": 43,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "dmitrivMS",
+      "profile_url": "https://github.com/dmitrivMS",
+      "throughput": {
+        "prs_created": 45,
+        "prs_merged": 43,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "dnicolson",
       "profile_url": "https://github.com/dnicolson",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 138
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Dodothereal",
       "profile_url": "https://github.com/Dodothereal",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 139
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "DonJayamanne",
+      "profile_url": "https://github.com/DonJayamanne",
+      "throughput": {
+        "prs_created": 87,
+        "prs_merged": 81,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "dripfyyy",
       "profile_url": "https://github.com/dripfyyy",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 140
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "dwidge",
       "profile_url": "https://github.com/dwidge",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 141
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "dymaaaj7",
+      "profile_url": "https://github.com/dymaaaj7",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "EdrilanBerisha",
       "profile_url": "https://github.com/EdrilanBerisha",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 142
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "edwardmiller-mesirow",
       "profile_url": "https://github.com/edwardmiller-mesirow",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 143
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Eiji-Kudo",
       "profile_url": "https://github.com/Eiji-Kudo",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 144
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "eleanorjboyd",
+      "profile_url": "https://github.com/eleanorjboyd",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 2,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "eli-w-king",
       "profile_url": "https://github.com/eli-w-king",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 145
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "er91",
       "profile_url": "https://github.com/er91",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 146
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "federicobrancasi",
+      "profile_url": "https://github.com/federicobrancasi",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 3,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "fhwvtqdc2q-svg",
       "profile_url": "https://github.com/fhwvtqdc2q-svg",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 147
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "fschrhunt",
+      "profile_url": "https://github.com/fschrhunt",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "FuZoe",
+      "profile_url": "https://github.com/FuZoe",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "g0w6y",
+      "profile_url": "https://github.com/g0w6y",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "g1910",
       "profile_url": "https://github.com/g1910",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 148
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "galaxysj",
       "profile_url": "https://github.com/galaxysj",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 149
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "galvessantos",
       "profile_url": "https://github.com/galvessantos",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 150
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "ghost",
+      "profile_url": "https://github.com/ghost",
+      "throughput": {
+        "prs_created": 26,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Giuspepe",
+      "profile_url": "https://github.com/Giuspepe",
+      "throughput": {
+        "prs_created": 19,
+        "prs_merged": 16,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "gjsjohnmurray",
+      "profile_url": "https://github.com/gjsjohnmurray",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 4,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "gryan11",
+      "profile_url": "https://github.com/gryan11",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "gunjanjaswal",
       "profile_url": "https://github.com/gunjanjaswal",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 151
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "guomaggie",
+      "profile_url": "https://github.com/guomaggie",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 3,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "hakoneriksson",
       "profile_url": "https://github.com/hakoneriksson",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 152
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "hand-dot",
       "profile_url": "https://github.com/hand-dot",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 153
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "hariharjeevan",
+      "profile_url": "https://github.com/hariharjeevan",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "hawkticehurst",
+      "profile_url": "https://github.com/hawkticehurst",
+      "throughput": {
+        "prs_created": 13,
+        "prs_merged": 11,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "hediet",
+      "profile_url": "https://github.com/hediet",
+      "throughput": {
+        "prs_created": 20,
+        "prs_merged": 15,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "hugodeco",
       "profile_url": "https://github.com/hugodeco",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 154
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Iamliuxiaozhen",
       "profile_url": "https://github.com/Iamliuxiaozhen",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 155
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Ijtihed",
       "profile_url": "https://github.com/Ijtihed",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 156
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "ishaq2321",
+      "profile_url": "https://github.com/ishaq2321",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 2,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ivanm696",
       "profile_url": "https://github.com/ivanm696",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 157
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "jachinsamuel",
+      "profile_url": "https://github.com/jachinsamuel",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "jakebailey",
+      "profile_url": "https://github.com/jakebailey",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "jamesmontemagno",
+      "profile_url": "https://github.com/jamesmontemagno",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "jasurb309-png",
       "profile_url": "https://github.com/jasurb309-png",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 158
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "JeffreyCA",
       "profile_url": "https://github.com/JeffreyCA",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 159
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "jiec-msft",
       "profile_url": "https://github.com/jiec-msft",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 160
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "joaomoreno",
+      "profile_url": "https://github.com/joaomoreno",
+      "throughput": {
+        "prs_created": 4,
+        "prs_merged": 3,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "joaopmpinheiro",
       "profile_url": "https://github.com/joaopmpinheiro",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 161
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "josh-qm-mishra",
       "profile_url": "https://github.com/josh-qm-mishra",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 162
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "joshspicer",
+      "profile_url": "https://github.com/joshspicer",
+      "throughput": {
+        "prs_created": 20,
+        "prs_merged": 14,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "jruales",
+      "profile_url": "https://github.com/jruales",
+      "throughput": {
+        "prs_created": 8,
+        "prs_merged": 10,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "jukasper",
+      "profile_url": "https://github.com/jukasper",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "justschen",
+      "profile_url": "https://github.com/justschen",
+      "throughput": {
+        "prs_created": 54,
+        "prs_merged": 49,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "jytjyt05",
+      "profile_url": "https://github.com/jytjyt05",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "kaiquesigma2441-collab",
       "profile_url": "https://github.com/kaiquesigma2441-collab",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 163
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "kangarko",
+      "profile_url": "https://github.com/kangarko",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "karthiknadig",
+      "profile_url": "https://github.com/karthiknadig",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "kevin-m-kent",
+      "profile_url": "https://github.com/kevin-m-kent",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "KirtiRamchandani",
+      "profile_url": "https://github.com/KirtiRamchandani",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "KTibow",
       "profile_url": "https://github.com/KTibow",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 164
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "kycutler",
+      "profile_url": "https://github.com/kycutler",
+      "throughput": {
+        "prs_created": 47,
+        "prs_merged": 46,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "lfraleigh",
       "profile_url": "https://github.com/lfraleigh",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 165
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "lostspace003",
       "profile_url": "https://github.com/lostspace003",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 166
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "lramos15",
+      "profile_url": "https://github.com/lramos15",
+      "throughput": {
+        "prs_created": 28,
+        "prs_merged": 29,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "lszomoru",
+      "profile_url": "https://github.com/lszomoru",
+      "throughput": {
+        "prs_created": 64,
+        "prs_merged": 61,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "lucaspar",
+      "profile_url": "https://github.com/lucaspar",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "maisuma",
       "profile_url": "https://github.com/maisuma",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 167
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "maruthang",
+      "profile_url": "https://github.com/maruthang",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "matthewcorven",
       "profile_url": "https://github.com/matthewcorven",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 168
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "meganrogge",
+      "profile_url": "https://github.com/meganrogge",
+      "throughput": {
+        "prs_created": 59,
+        "prs_merged": 49,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "MeGaurav4",
       "profile_url": "https://github.com/MeGaurav4",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 169
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "mengxiangxi666",
       "profile_url": "https://github.com/mengxiangxi666",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 170
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "merahul22",
       "profile_url": "https://github.com/merahul22",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 171
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "merfanian",
+      "profile_url": "https://github.com/merfanian",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "MichaelDanCurtis",
       "profile_url": "https://github.com/MichaelDanCurtis",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 172
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "michiisai",
+      "profile_url": "https://github.com/michiisai",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "mjbvz",
+      "profile_url": "https://github.com/mjbvz",
+      "throughput": {
+        "prs_created": 18,
+        "prs_merged": 18,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "mo078-lang",
       "profile_url": "https://github.com/mo078-lang",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 173
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "mohanrajvenkatesan23-04",
+      "profile_url": "https://github.com/mohanrajvenkatesan23-04",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "mohityadav8",
+      "profile_url": "https://github.com/mohityadav8",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Monrother",
       "profile_url": "https://github.com/Monrother",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 174
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Mr-Ahmadi",
+      "profile_url": "https://github.com/Mr-Ahmadi",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "mrleemurray",
+      "profile_url": "https://github.com/mrleemurray",
+      "throughput": {
+        "prs_created": 86,
+        "prs_merged": 85,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "mst-mkt",
       "profile_url": "https://github.com/mst-mkt",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 175
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "mukaschultze",
       "profile_url": "https://github.com/mukaschultze",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 176
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "mutl3y",
+      "profile_url": "https://github.com/mutl3y",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Nanda-Kiran",
       "profile_url": "https://github.com/Nanda-Kiran",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 177
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "NaufalK25",
       "profile_url": "https://github.com/NaufalK25",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 178
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "neoGeneva",
       "profile_url": "https://github.com/neoGeneva",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 179
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "ntrogh",
+      "profile_url": "https://github.com/ntrogh",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 3,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "oaslananka",
       "profile_url": "https://github.com/oaslananka",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 180
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Orvid",
+      "profile_url": "https://github.com/Orvid",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "oryanmordo",
+      "profile_url": "https://github.com/oryanmordo",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Osamaali313",
       "profile_url": "https://github.com/Osamaali313",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 181
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "osortega",
+      "profile_url": "https://github.com/osortega",
+      "throughput": {
+        "prs_created": 15,
+        "prs_merged": 7,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Otto-Deviant1904",
+      "profile_url": "https://github.com/Otto-Deviant1904",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "pankajdagar",
       "profile_url": "https://github.com/pankajdagar",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 182
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Parasaran-Python",
       "profile_url": "https://github.com/Parasaran-Python",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 183
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "pdwhoward",
       "profile_url": "https://github.com/pdwhoward",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 184
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "PenguinDOOM",
       "profile_url": "https://github.com/PenguinDOOM",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 185
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "peterdanwan",
       "profile_url": "https://github.com/peterdanwan",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 186
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Piyush142",
       "profile_url": "https://github.com/Piyush142",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 187
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "pony-maggie",
+      "profile_url": "https://github.com/pony-maggie",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "PonyMaa",
       "profile_url": "https://github.com/PonyMaa",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 188
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "pratheeknathani",
       "profile_url": "https://github.com/pratheeknathani",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 189
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "pwang347",
+      "profile_url": "https://github.com/pwang347",
+      "throughput": {
+        "prs_created": 50,
+        "prs_merged": 39,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "rajkandula",
       "profile_url": "https://github.com/rajkandula",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 190
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "rebornix",
       "profile_url": "https://github.com/rebornix",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 191
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "RedCMD",
+      "profile_url": "https://github.com/RedCMD",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "remcohaszing",
+      "profile_url": "https://github.com/remcohaszing",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "rfeltis",
+      "profile_url": "https://github.com/rfeltis",
+      "throughput": {
+        "prs_created": 5,
+        "prs_merged": 3,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ricardoofnl",
       "profile_url": "https://github.com/ricardoofnl",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 192
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "roblourens",
+      "profile_url": "https://github.com/roblourens",
+      "throughput": {
+        "prs_created": 77,
+        "prs_merged": 75,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "robmonte",
       "profile_url": "https://github.com/robmonte",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 193
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "robot-mazeee",
       "profile_url": "https://github.com/robot-mazeee",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 194
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "romalpani",
+      "profile_url": "https://github.com/romalpani",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 2,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "rushil-b-patel",
       "profile_url": "https://github.com/rushil-b-patel",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 195
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "rwoll",
+      "profile_url": "https://github.com/rwoll",
+      "throughput": {
+        "prs_created": 6,
+        "prs_merged": 5,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "rzhao271",
+      "profile_url": "https://github.com/rzhao271",
+      "throughput": {
+        "prs_created": 10,
+        "prs_merged": 5,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "s-moffett",
       "profile_url": "https://github.com/s-moffett",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 196
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "sandy081",
+      "profile_url": "https://github.com/sandy081",
+      "throughput": {
+        "prs_created": 121,
+        "prs_merged": 116,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "sarathfrancis90",
       "profile_url": "https://github.com/sarathfrancis90",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 197
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "scarab-systems",
       "profile_url": "https://github.com/scarab-systems",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 198
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "sciafri",
       "profile_url": "https://github.com/sciafri",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 199
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "seanj39",
       "profile_url": "https://github.com/seanj39",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 200
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "sebdanielsson",
       "profile_url": "https://github.com/sebdanielsson",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 201
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Sepi1010011",
       "profile_url": "https://github.com/Sepi1010011",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 202
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "sergey-zinchenko",
+      "profile_url": "https://github.com/sergey-zinchenko",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "sgent-epic",
       "profile_url": "https://github.com/sgent-epic",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 203
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "sgoedecke",
+      "profile_url": "https://github.com/sgoedecke",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "shunfeng8421",
       "profile_url": "https://github.com/shunfeng8421",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 204
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Sid200026",
+      "profile_url": "https://github.com/Sid200026",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "SimonSiefke",
+      "profile_url": "https://github.com/SimonSiefke",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 4,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Soumilgit",
+      "profile_url": "https://github.com/Soumilgit",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "SprTybi",
       "profile_url": "https://github.com/SprTybi",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 205
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "sukumarp2022",
+      "profile_url": "https://github.com/sukumarp2022",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "sw23",
+      "profile_url": "https://github.com/sw23",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "tamuratak",
+      "profile_url": "https://github.com/tamuratak",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "tangyuan0821",
       "profile_url": "https://github.com/tangyuan0821",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 206
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Tatlatat",
       "profile_url": "https://github.com/Tatlatat",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 207
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "tauhazmat",
       "profile_url": "https://github.com/tauhazmat",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 208
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "tbogoodnews",
+      "profile_url": "https://github.com/tbogoodnews",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Tejas-Raj01",
       "profile_url": "https://github.com/Tejas-Raj01",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 209
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "theanarkh",
+      "profile_url": "https://github.com/theanarkh",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "thernstig",
       "profile_url": "https://github.com/thernstig",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 210
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "ThioJoe",
       "profile_url": "https://github.com/ThioJoe",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 211
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "thsid",
       "profile_url": "https://github.com/thsid",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 212
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "tomokuroki",
       "profile_url": "https://github.com/tomokuroki",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 213
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "TylerLeonhardt",
+      "profile_url": "https://github.com/TylerLeonhardt",
+      "throughput": {
+        "prs_created": 34,
+        "prs_merged": 32,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "Tyriar",
+      "profile_url": "https://github.com/Tyriar",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "ulugbekna",
+      "profile_url": "https://github.com/ulugbekna",
+      "throughput": {
+        "prs_created": 41,
+        "prs_merged": 34,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "vaclavHala",
       "profile_url": "https://github.com/vaclavHala",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 214
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "vijayupadya",
+      "profile_url": "https://github.com/vijayupadya",
+      "throughput": {
+        "prs_created": 16,
+        "prs_merged": 15,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "vivekjm",
+      "profile_url": "https://github.com/vivekjm",
+      "throughput": {
+        "prs_created": 5,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "vivganes",
       "profile_url": "https://github.com/vivganes",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 215
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "vritant24",
+      "profile_url": "https://github.com/vritant24",
+      "throughput": {
+        "prs_created": 17,
+        "prs_merged": 14,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Wangmz-1211",
       "profile_url": "https://github.com/Wangmz-1211",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 216
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "warptengood",
       "profile_url": "https://github.com/warptengood",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 217
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "wibaek",
       "profile_url": "https://github.com/wibaek",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 218
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "wibisanabama",
       "profile_url": "https://github.com/wibisanabama",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 219
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "woot903",
       "profile_url": "https://github.com/woot903",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 220
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "wszgrcy",
+      "profile_url": "https://github.com/wszgrcy",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "XananasX7",
       "profile_url": "https://github.com/XananasX7",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 221
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Xio-Shark",
       "profile_url": "https://github.com/Xio-Shark",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 222
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "yadu-tv",
       "profile_url": "https://github.com/yadu-tv",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 223
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "yash3605",
       "profile_url": "https://github.com/yash3605",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 224
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "yavanosta",
+      "profile_url": "https://github.com/yavanosta",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "yogeshwaran-c",
+      "profile_url": "https://github.com/yogeshwaran-c",
+      "throughput": {
+        "prs_created": 5,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "yuezhang030",
       "profile_url": "https://github.com/yuezhang030",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 225
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "yulia-vasyura",
+      "profile_url": "https://github.com/yulia-vasyura",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "zaewc",
       "profile_url": "https://github.com/zaewc",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 226
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
+    },
+    {
+      "engineer": "zhichli",
+      "profile_url": "https://github.com/zhichli",
+      "throughput": {
+        "prs_created": 6,
+        "prs_merged": 4,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "zhiru",
       "profile_url": "https://github.com/zhiru",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 227
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     },
     {
       "engineer": "Zubad2",
       "profile_url": "https://github.com/Zubad2",
-      "prs_created": 1,
-      "prs_merged": 0,
-      "rank": 228
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": null,
+        "by_type": null
+      }
     }
   ]
 }

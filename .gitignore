@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+.venv/
+
+# Layer 1's raw record dump: a debug artifact, regenerated on every run and
+# ~2 MB per month at the scale of a busy repo. The layers downstream of it read
+# <month>.json, .mapping.json and .interpretation.json, none of which are large.
+data/**/*.collect.json

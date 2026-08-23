@@ -1,202 +1,275 @@
 # Engineering Metrics
 
-A monthly GitHub Action that measures pull request activity on a public
-repository and publishes a per-engineer leaderboard back into this repo.
+A four-layer pipeline that measures engineering work on a GitHub repository and
+distributes what it finds to four different audiences — each getting only what
+they should see, and the engineer getting theirs first.
 
-- **Source repo (read-only):** [microsoft/vscode](https://github.com/microsoft/vscode)
-- **Metrics tracked, per engineer (PR author):**
-  - PRs created in the month
-  - PRs merged in the month
-  - Rank (by PRs merged, ties broken by PRs created)
+```
+SOURCES   pull requests · reviews given · board/Linear · CI & deploys · incidents
+   |
+[1] COLLECT      deterministic, no model
+   |             size, files, timestamps, reviews, reverts, churn, time-in-state
+   |             classify every PR by filename rule:
+   |             dependency · config · docs · test · fix · feature
+   |                          ↓ 23 becomes 14 — no model, no argument
+[2] COMPUTE      deterministic, no model
+   |             team: the four DORA metrics · review latency · WIP · carryover
+   |             individual: throughput split by PR type · reviews · rework
+   |                         — a profile, never one score
+   |                          ↓ names stripped → Engineer A, B, C
+[3] INTERPRET    THE ONLY PLACE A MODEL RUNS
+   |             reads diffs and review comments; returns plain-English summary,
+   |             complexity with the diff cited, blockers, evidence of
+   |             unblocking others. Must give the most and least favourable
+   |             reading. "Insufficient evidence" is allowed.
+   |                          ↓ JSON — every claim carries an evidence field
+GUARDRAIL GATE   no citation → claim dropped in code
+   |             two runs disagree → flagged, never averaged
+   |             no rating, no rank
+[4] DISTRIBUTE   who sees what
+   |
+   ├── each engineer  their own page — FIRST, before anyone discusses it ──┐
+   ├── the EM         everything, as a 1:1 agenda — not a verdict          │
+   ├── squad leads    their own squad + team aggregate                     │
+   ├── founder        team metrics and risk only                           │
+   └── ranked list    NEVER GENERATED, so it cannot leak                   │
+                                                                           │
+        1:1 correction — the only loop ────────────────────────────────────┘
+                         (back into layer 3)
+```
 
-Everything is committed as plain files — no database, no dashboard to host,
-no credentials beyond the token GitHub Actions provides automatically.
+**Layers 1, 2 and the gate are code. Layer 3 is the model. Layer 4 is policy.**
 
 ---
 
-## Viewing the reports
+## The three ideas this encodes
 
-Reports live in [`reports/microsoft-vscode/`](reports/microsoft-vscode) and
-render as tables directly in GitHub — no tooling needed.
+**A PR count is not a measure of work.** Layer 1 classifies every PR by the
+files it touches, before anything counts it. A month of 23 merged PRs where
+nine are lockfile bumps, CI tweaks and typo fixes is a month of 14 substantive
+PRs. That deflation happens in code from filenames, so there is nothing to
+argue about — and both numbers are always shown, so nothing is hidden either.
 
-| File | What it is |
-|---|---|
-| [`latest.md`](reports/microsoft-vscode/latest.md) | The most recent report. This is the one to bookmark. |
-| `YYYY-MM.md` | Per-month archive, e.g. `2026-07.md` |
+**A model should interpret, not measure.** Every number comes from Layer 2,
+which has no model in it. The model reads diffs and review comments and says
+what the work *was* — the part a count genuinely cannot capture. It is required
+to give both the most and the least favourable reading of the same evidence,
+and to say "insufficient evidence" when that is the truth. Then a code gate
+deletes any claim that cites nothing.
 
-Each report opens with a **Merged PRs by month** table (a rolling
-multi-month view, ranked by the target month), followed by a detail table
-for the target month itself.
+**A ranked list is a leak waiting to happen.** So one is never generated. Not
+suppressed at render time, not access-controlled — never computed. Layer 2's
+individual output has no score field; Layer 3's schema has nowhere to put one;
+the gate strips score-shaped keys and refuses any list of engineers carrying an
+ordinal. Three independent checks, each of which fails the build rather than
+shipping a ranking.
 
-| Engineer | May | Jun | Jul | Jul rank |
-|---|---:|---:|---:|---:|
-| octocat | — | — | 23 | 1 |
-| hubot | 16 | 14 | 15 | 2 |
-| monalisa | 14 | 15 | 14 | 3 |
+---
 
-Cell meanings:
+## What each audience gets
 
-- **A number** — merged PRs that month.
-- **An em dash (—)** — no merged PRs that month; e.g. an engineer who hadn't
-  joined yet.
-- **A blank cell** — that month hasn't been generated yet. Backfill it by
-  running the workflow with that `month` input (see below).
+| Audience | File | Contains | Explicitly excludes |
+|---|---|---|---|
+| Each engineer | `reports/<slug>/<month>/engineers/<login>.md` | Their own numbers, their own interpretation, both readings, what the data can't show, dropped claims | Anyone else's data |
+| The EM | `reports/<slug>/<month>/em.md` | Everything, framed as questions to ask | Any ordering that means anything |
+| Squad leads | `reports/<slug>/<month>/squads/<squad>.md` | Their squad + team aggregate | Other squads' individuals |
+| Founder | `reports/<slug>/<month>/founder.md` | Team metrics and risk | All individual data |
 
-The rendered tables show the top 10 engineers. Full data for **every**
-engineer is in [`data/microsoft-vscode/`](data/microsoft-vscode) as JSON.
+### "Engineer FIRST" is enforced, not intended
+
+The engineer's page is not merely written first — the manager-facing pages
+**cannot be written** until the embargo expires. Phase `engineers` releases the
+engineer pages and stamps `release-manifest.json`. Phase `rest` reads that
+stamp and refuses to run until `EMBARGO_HOURS` (default 24) have passed:
+
+```
+$ python scripts/monthly_metrics.py --phase rest
+Embargo holds: engineer pages were released 0.2h ago; the embargo is 24h.
+23.8h remain before manager-facing pages may be written.
+$ echo $?
+3
+```
+
+The scheduled workflow runs `engineers` on the 1st and `rest` on the 2nd. Set
+`EMBARGO_HOURS=0` to run both back to back — the *ordering* still holds, since
+`rest` always fails if no engineer release is stamped.
+
+---
+
+## The correction loop
+
+The one loop in the system runs from the engineer back into Layer 3. An
+engineer reads their page, finds something the data could not see, and writes:
+
+```bash
+mkdir -p corrections/microsoft-vscode/2026-07
+cat > corrections/microsoft-vscode/2026-07/octocat.json <<'JSON'
+{"corrections": [
+  "PR #481 was deliberately scoped down after an incident review — the small
+   diff was the point, not a sign the work was small."
+]}
+JSON
+```
+
+On the next run that text is passed into Layer 3 as first-hand evidence about
+work the data does not show. It changes the *interpretation* only — never the
+counts, because the counts are what they are.
 
 ---
 
 ## Running it
 
-### On a schedule (automatic)
-
-The workflow runs at **03:00 UTC on the 1st of every month** (cron
-`0 3 1 * *`) and reports on the month that just ended. No action needed —
-results are committed automatically when it finishes.
-
-### On demand (manual)
-
-1. Open the [**Monthly Engineering Metrics** workflow](../../actions/workflows/monthly-metrics.yml).
-2. Click **Run workflow**.
-3. Optionally fill in the inputs:
-
-   | Input | Default | Notes |
-   |---|---|---|
-   | `month` | previous month | Target month as `YYYY-MM`, e.g. `2026-04` |
-   | `source_repo` | `microsoft/vscode` | Any public `owner/name` repo |
-
-4. Click the green **Run workflow** button.
-
-A run takes **roughly 5 minutes** against `microsoft/vscode` — it pages
-through about 2,000 pull requests twice (once for created, once for
-merged). The job commits its own results, so when the run goes green the
-report is already in the repo.
-
-### Backfilling history
-
-The trend table can only show months that have a data file. To add an
-earlier month, dispatch the workflow with that `month`, then re-run the
-current month so the table is redrawn with the new column filled in.
-
-**Run backfills one at a time.** Concurrent runs both generate their data
-and then contend on the commit; the workflow retries a rejected push, but
-sequential runs are faster than watching retries resolve.
-
----
-
-## Output
-
-Each run writes three files, under a slug derived from the source repo
-(`owner/name` with the `/` replaced by `-`, e.g. `microsoft-vscode`):
-
-- `data/<slug>/YYYY-MM.json` — full machine-readable results, all engineers
-- `reports/<slug>/YYYY-MM.md` — the report as markdown tables
-- `reports/<slug>/latest.md` — a copy of the newest report
-
-The JSON is the source of truth; the markdown is a rendering of it. The
-trend table is built by reading back the JSON that earlier runs committed,
-so showing history costs **no extra API calls**.
-
----
-
-## How it works
-
-`.github/workflows/monthly-metrics.yml` calls `scripts/monthly_metrics.py`,
-which:
-
-1. Pages through the target repo's pull requests via the REST `pulls` list
-   endpoint to find PRs created in the target month, and separately PRs
-   merged in the target month.
-2. Aggregates counts per PR author, excluding bot accounts.
-3. Ranks engineers by PRs merged, reads prior months back from `data/`, and
-   writes the JSON and markdown outputs.
-
-**Why not the Search API?** `search/issues` supports exactly the query this
-needs, but truncates at 1,000 results. `microsoft/vscode` merges more than
-that in a typical month (July 2026: 1,470), so Search would silently
-undercount. Paging the `pulls` endpoint has no such cap.
-
-### Configuration
-
-The two most-used settings are exposed as workflow inputs (`month`,
-`source_repo`). The rest are environment variables read by the script — set
-them in the workflow's `env:` block, or export them when running locally.
-
-| Variable | Default | Effect |
-|---|---|---|
-| `SOURCE_REPO` | `microsoft/vscode` | Repo to read stats from |
-| `TARGET_MONTH` | previous month | Month to report on, `YYYY-MM` |
-| `GH_TOKEN` | — | API auth; the workflow passes `GITHUB_TOKEN` automatically |
-| `TREND_MONTHS` | `3` | How many months wide the trend table is |
-| `TREND_TOP_N` | `10` | How many rows the trend table shows |
-| `TOP_N` | `25` | How many rows the month-detail table shows |
-
----
-
-## Troubleshooting
-
-Open the failed run from the
-[Actions tab](../../actions/workflows/monthly-metrics.yml) and check the
-failing step. The metrics step prints its PR counts before committing, so
-the logs distinguish a fetch problem from a push problem.
-
-| Symptom | Cause and fix |
-|---|---|
-| Run is red on **Commit and push results** | Another run pushed first. The step fetches, rebases and retries up to 5 times; if it still fails, re-dispatch that month. |
-| Run is red on **Generate monthly PR metrics** | Usually API rate limiting. The script backs off and retries; a persistent failure means the token is missing or the `source_repo` doesn't exist. |
-| A month's column is blank in the trend table | That month has no data file yet — backfill it (see above). |
-| "No changes to commit" | The run produced output identical to what's already committed. Not an error. |
-
----
-
-## Metrics we don't track (and why)
-
-Some engineering-analytics reports include columns like *PR quality score*,
-*median PR size*, *reviews given*, *rework rate*, and *incidents*. This
-system deliberately scopes to **PRs created, PRs merged, and rank** — here's
-what it would take to add the rest, and where the GitHub API stops helping:
-
-| Metric | Available from GitHub API? | How |
-|---|---|---|
-| **Median PR size (LOC)** | Yes | `GET /repos/{owner}/{repo}/pulls/{number}` returns `additions`, `deletions`, `changed_files` per PR. Requires one API call *per PR* (not present in list/search responses) — hundreds of extra calls per month for a repo like vscode. Median = median(additions + deletions) across an engineer's PRs. |
-| **Reviews given** | Yes, but costly | `GET /repos/{owner}/{repo}/pulls/{number}/reviews` lists reviewer + timestamp per PR. There's no repo-wide "reviews by user" endpoint — every PR's reviews must be pulled and tallied by reviewer. GraphQL can batch this more efficiently than REST. |
-| **Rework rate** | Derivable, not a real metric | Not a GitHub field. A common proxy: % of PRs with a `CHANGES_REQUESTED` review, or with commits pushed after the first review. Needs `.../pulls/{number}/commits` cross-referenced with `.../reviews` per PR, and a formula you define yourself. |
-| **PR quality score** | No | Not a GitHub metric. This is a composite score from a paid engineering-analytics tool (LinearB, Swarmia, Jellyfish, Code Climate Velocity, etc.) or a custom internal formula. No API field exists for it. |
-| **Incidents** | No | Comes from an incident-management system (PagerDuty, Opsgenie, an internal tracker) linking an outage to the engineer/change that caused it. A public repo exposes no such linkage via GitHub — this is outside the scope of a read-only public-repo integration entirely. |
-
-**Bottom line:** PR size and reviews-given are addable with real API calls,
-at real added cost (per-PR fetches instead of the cheap page-scan this
-pipeline currently uses). Rework rate can only be *approximated* via a
-formula you'd define, not measured directly. PR quality score and incidents
-aren't things GitHub exposes for any repo, public or private — they'd
-require either a third-party analytics tool or data from a system outside
-GitHub entirely.
-
-### Reading the numbers
-
-PR count measures throughput, not value. It says nothing about scope,
-difficulty, review effort, or defect rate — a months-long refactor lands as
-one PR just as a typo fix does, and an engineer doing heavy review work may
-author fewer PRs precisely because they're unblocking everyone else. Rank is
-useful for spotting month-over-month shifts worth asking about; it is not a
-performance comparison between individuals.
-
-Note also that **PRs created and PRs merged describe different sets** — a PR
-created in June can merge in July — so the two columns should not be divided
-into a ratio. An engineer can legitimately merge more PRs in a month than
-they opened.
-
----
-
-## Running locally
+### Locally, no model, no API key
 
 ```bash
 export SOURCE_REPO=microsoft/vscode
-export TARGET_MONTH=2026-07   # optional, defaults to previous month
-export GH_TOKEN=ghp_...       # optional, but avoids low anonymous rate limits
-python scripts/monthly_metrics.py
+export TARGET_MONTH=2026-07      # optional; defaults to last month
+export GH_TOKEN=ghp_...          # optional, but avoids anonymous rate limits
+export EMBARGO_HOURS=0           # optional; for a single-shot local run
+
+python scripts/monthly_metrics.py --phase all
 ```
 
-Writes the same `data/` and `reports/` files the workflow does. No
-third-party dependencies; verified on Python 3.10–3.13 (CI runs 3.12).
+Layers 1, 2, the gate and Layer 4 need **no third-party dependencies and no
+model**. You get every number, every audience page, and the interpretation
+section marked "not generated".
+
+### With interpretation
+
+```bash
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=sk-ant-...
+export INTERPRET=true
+python scripts/monthly_metrics.py --phase all
+```
+
+Layer 3 runs `claude-opus-5` with adaptive thinking and a closed JSON schema,
+twice per engineer so the gate has two runs to compare, and it uses server-side
+refusal fallback so a declined request produces a page rather than a gap.
+
+### Phases
+
+| Phase | Runs | Writes |
+|---|---|---|
+| `collect` | Layers 1–2 | `data/` only |
+| `engineers` | Layers 1–3, gate, Layer 4 (part) | engineer pages + manifest |
+| `rest` | Layer 4 (part), from data on disk | EM, squad, founder pages |
+| `all` | Everything | Everything (embargo still applies) |
+
+`rest` re-reads `data/` rather than re-running collection, so the manager-facing
+pages cost no API calls and no tokens.
+
+---
+
+## Configuration
+
+| Variable | Default | Effect |
+|---|---|---|
+| `SOURCE_REPO` | `microsoft/vscode` | Repo to read from |
+| `TARGET_MONTH` | previous month | `YYYY-MM` |
+| `GH_TOKEN` | — | GitHub auth |
+| `PHASE` | `all` | Same values as `--phase` |
+| `DETAIL_BUDGET` | `400` | Per-PR API calls allowed (size, files, reviews) |
+| `NON_SUBSTANTIVE_TYPES` | `dependency,config,docs` | Which types the substantive count excludes |
+| `INTERPRET` | `false` | Turn Layer 3 on |
+| `INTERPRET_MODEL` | `claude-opus-5` | Model for Layer 3 |
+| `INTERPRET_EFFORT` | `high` | `low`…`max` |
+| `INTERPRET_RUNS` | `2` | Runs per engineer; the gate needs ≥2 to detect disagreement |
+| `INTERPRET_ENGINEERS` | `12` | Cap on profiles interpreted per run |
+| `EMBARGO_HOURS` | `24` | Hold on manager-facing pages |
+| `SQUADS_PATH` | `config/squads.json` | Squad membership |
+| `BOARD_PATH` / `DEPLOYS_PATH` / `INCIDENTS_PATH` | — | Optional off-GitHub feeds |
+
+See [`config/README.md`](config/README.md) for the feed formats.
+
+---
+
+## What this cannot measure, and why that shows up as a blank
+
+Three of the five sources in the architecture do not live in GitHub. Without
+them, the metrics that depend on them report **insufficient evidence** — never
+zero, and never a substitute quietly swapped in:
+
+| Metric | Needs | Without it |
+|---|---|---|
+| Deployment frequency | A deploy feed | *insufficient evidence.* A merge is not a deploy. |
+| Lead time for changes | A deploy feed | Falls back to open→merge, **and says so in the basis** |
+| Change failure rate | An incident feed | *insufficient evidence*, or a revert-rate proxy labelled as a proxy |
+| Time to restore | An incident feed | *insufficient evidence* |
+| WIP | A board feed | Falls back to concurrently-open PRs, labelled as a proxy |
+
+This is the point of the source row in the architecture. A dashboard that shows
+`0` for change failure rate because nobody wired up PagerDuty is worse than one
+that shows a blank, because the zero looks like good news.
+
+---
+
+## Reading the numbers
+
+PR count measures throughput, not value. A months-long refactor lands as one PR
+just as a typo fix does, and an engineer doing heavy review work authors fewer
+PRs precisely because they are unblocking everyone else — which is why reviews
+given is a first-class part of every profile rather than a footnote.
+
+PRs created and PRs merged describe **different sets**: a PR created in June can
+merge in July. Do not divide one by the other.
+
+Rework rate is not a defect count. A changes-requested review is usually the
+review process working.
+
+And the individual profile is deliberately several numbers that do not add up
+to one. There is no composite because a composite invites a ranking, and the
+moment a ranking exists somebody will paste it into a promotion committee.
+
+---
+
+## Development
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+123 tests covering the deterministic layers and the gate — the classifier's
+priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
+and the audience/embargo policy. Layer 3's contract is tested without a network
+call (schema shape, prompt constraints, payload anonymization).
+
+CI runs the suite before the pipeline on every run: layers 1, 2 and the gate are
+code, so they are tested before they are trusted to produce anything a person
+reads.
+
+### Layout
+
+```
+metrics/
+  classify.py      Layer 1  filename rules
+  collect.py       Layer 1  source fan-in
+  sources/         Layer 1  one adapter per source box
+  compute.py       Layer 2  DORA, flow, individual profiles
+  anonymize.py     the layer 2 → 3 arrow
+  interpret.py     Layer 3  the only model call
+  guardrails.py    the gate
+  distribute.py    Layer 4  audience policy + embargo
+  corrections.py   the 1:1 loop
+  pipeline.py      orchestration
+scripts/
+  monthly_metrics.py       entry point
+  migrate_v1_artifacts.py  one-off: retire the old ranked artifacts
+```
+
+### A worked example
+
+`reports/balajilandge-Engineering-Metrics/2026-08/` holds a real run of the
+pipeline against this repository — all four audience pages, generated with
+Layer 3 off. It is the quickest way to see what each audience actually
+receives, including a founder page where three of the four DORA metrics read
+*insufficient evidence* because this repo has no deploy or incident feed.
+
+### History
+
+This repo previously generated a ranked per-engineer leaderboard. That is the
+artifact this architecture exists to prevent, so
+`scripts/migrate_v1_artifacts.py` retired it: historical `data/` files were
+migrated to schema 2 with every count preserved and 1,045 `rank` fields
+removed, and the rendered ranked reports were deleted. Those months predate PR
+classification and carry no type split — see `schema_v1_import` in the JSON.
