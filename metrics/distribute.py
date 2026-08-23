@@ -244,12 +244,26 @@ def render_engineer_page(profile: dict, gated: GateResult | None, repo: str,
                           "Nothing flagged — which is itself worth questioning.")
 
         if gated.contested:
+            lines += ["", "### Contested", ""]
+            if gated.corroborated_prs:
+                lines += [
+                    "Both interpretation runs independently raised "
+                    + ", ".join(f"PR #{pr}" for pr in gated.corroborated_prs)
+                    + ". Where they differ below is in *wording and emphasis*, "
+                    "not in which work they thought worth describing.",
+                    "",
+                ]
+            if gated.one_sided_prs:
+                lines += [
+                    "Only one run raised "
+                    + ", ".join(f"PR #{pr}" for pr in gated.one_sided_prs)
+                    + " — treat those as genuinely unsettled.",
+                    "",
+                ]
             lines += [
-                "",
-                "### Contested",
-                "",
-                "The interpretation ran twice and the runs disagreed on the "
-                "following. Disagreements are shown, never averaged:",
+                "Claim by claim, the runs differed on the following. These are "
+                "shown, never averaged. The comparison is textual, so a claim "
+                "restated in different words can appear here as a difference:",
                 "",
             ]
             for item in gated.disagreements:

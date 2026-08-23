@@ -46,8 +46,23 @@ _RATING_PROSE = re.compile(
     re.IGNORECASE,
 )
 
-# How similar two claims must be to count as "the same claim".
-AGREEMENT_THRESHOLD = 0.72
+# How similar two claims resting on the SAME cited PR must be to count as the
+# same claim. Tuned against real two-run output: paraphrases of one observation
+# scored 0.45-0.60 on the blended measure below, distinct claims about the same
+# PR scored under 0.40.
+#
+# Lexical similarity cannot truly decide semantic equivalence, so this errs
+# toward listing a near-duplicate as contested rather than silently merging two
+# claims that differ in substance. Over-reporting is recoverable by a reader;
+# a wrongly merged claim is not.
+AGREEMENT_THRESHOLD = 0.45
+
+# Words carrying no discriminating signal when comparing two claims.
+_STOPWORDS = frozenset(
+    "the a an of to and or in on for with that this is are was were by as at "
+    "it its be been from which who whom into than then so such not no".split()
+)
+_WORD = re.compile(r"[a-z0-9_.`/]+")
 
 
 @dataclasses.dataclass
@@ -59,6 +74,8 @@ class GateResult:
     stripped_keys: list[str] = dataclasses.field(default_factory=list)
     rating_prose: list[str] = dataclasses.field(default_factory=list)
     runs_compared: int = 0
+    corroborated_prs: list[int] = dataclasses.field(default_factory=list)
+    one_sided_prs: list[int] = dataclasses.field(default_factory=list)
 
     @property
     def contested(self) -> bool:
@@ -70,6 +87,8 @@ class GateResult:
             "interpretation": self.interpretation,
             "audit": {
                 "runs_compared": self.runs_compared,
+                "corroborated_prs": self.corroborated_prs,
+                "one_sided_prs": self.one_sided_prs,
                 "dropped_claims": self.dropped_claims,
                 "disagreements": self.disagreements,
                 "stripped_keys": self.stripped_keys,
@@ -120,27 +139,89 @@ def drop_uncited(run: dict, valid_prs: set[int]) -> tuple[dict, list[dict]]:
 # Rule 2 — disagreement is flagged, never averaged
 # --------------------------------------------------------------------------
 
+def _tokens(text: str) -> set[str]:
+    return {w for w in _WORD.findall(text.lower())
+            if w not in _STOPWORDS and len(w) > 1}
+
+
 def _similar(a: str, b: str) -> float:
-    return difflib.SequenceMatcher(None, a.lower().strip(), b.lower().strip()).ratio()
+    """
+    Blend of character-level and token-level similarity.
+
+    SequenceMatcher alone is brittle here: two runs describing one observation
+    open identically and diverge in the tail, which drags the ratio down. Token
+    overlap alone is too permissive on long claims sharing boilerplate. Using
+    both, weighted evenly, separates paraphrase from substance better than
+    either does on its own.
+    """
+    a, b = a.lower().strip(), b.lower().strip()
+    if not a or not b:
+        return 0.0
+    sequence = difflib.SequenceMatcher(None, a, b).ratio()
+    ta, tb = _tokens(a), _tokens(b)
+    overlap = len(ta & tb) / len(ta | tb) if (ta | tb) else 0.0
+    return 0.5 * sequence + 0.5 * overlap
+
+
+def claim_pr(claim: dict) -> int | None:
+    evidence = claim.get("evidence")
+    return evidence.get("pr") if isinstance(evidence, dict) else None
 
 
 def _match_claims(left: list[dict], right: list[dict]) -> tuple[list[dict], list[dict], list[dict]]:
-    """Returns (agreed, only_in_left, only_in_right)."""
+    """
+    Returns (agreed, only_in_left, only_in_right).
+
+    Two claims can only be the same claim if they rest on the same PR. That
+    single constraint removes the worst error the text comparison made on real
+    output — pairing a claim about one PR with an unrelated claim about
+    another purely because they shared phrasing.
+    """
     agreed, unmatched_right = [], list(right)
     only_left = []
     for claim in left:
-        text = claim.get("claim", "")
+        pr = claim_pr(claim)
+        candidates = ([c for c in unmatched_right if claim_pr(c) == pr]
+                      if pr is not None else list(unmatched_right))
+
         best, best_score = None, 0.0
-        for candidate in unmatched_right:
-            score = _similar(text, candidate.get("claim", ""))
+        for candidate in candidates:
+            score = _similar(claim.get("claim", ""), candidate.get("claim", ""))
             if score > best_score:
                 best, best_score = candidate, score
+
         if best is not None and best_score >= AGREEMENT_THRESHOLD:
             unmatched_right.remove(best)
             agreed.append(claim)
         else:
             only_left.append(claim)
     return agreed, only_left, unmatched_right
+
+
+def corroboration(runs: list[dict]) -> tuple[list[int], list[int]]:
+    """
+    Which PRs both runs made claims about, and which only one did.
+
+    This is the part of the two-run comparison that does not depend on
+    matching free text. Two runs that describe PR 41 in different words still
+    agree that PR 41 is worth describing; a PR only one run raised is the
+    genuinely one-sided signal. Where the claim-level comparison below is
+    lexical and therefore approximate, this is exact.
+    """
+    if len(runs) < 2:
+        return [], []
+
+    def prs(run: dict) -> set[int]:
+        found = set()
+        for field in CLAIM_LISTS:
+            for claim in run.get(field) or []:
+                pr = claim_pr(claim)
+                if isinstance(pr, int):
+                    found.add(pr)
+        return found
+
+    a, b = prs(runs[0]), prs(runs[1])
+    return sorted(a & b), sorted(a ^ b)
 
 
 def compare_runs(runs: list[dict]) -> tuple[dict, list[dict]]:
@@ -170,9 +251,11 @@ def compare_runs(runs: list[dict]) -> tuple[dict, list[dict]]:
         agreed[field] = both
         for claim in only_a:
             disagreements.append({"field": field, "kind": "only_in_run_1",
+                                  "pr": claim_pr(claim),
                                   "claim": claim.get("claim", "")})
         for claim in only_b:
             disagreements.append({"field": field, "kind": "only_in_run_2",
+                                  "pr": claim_pr(claim),
                                   "claim": claim.get("claim", "")})
 
     for field in NARRATIVE_FIELDS:
@@ -275,6 +358,7 @@ def gate(label: str, runs: list[dict], valid_prs: set[int]) -> GateResult:
         rating_prose.extend(f"run {index} {item}" for item in run_prose)
 
     agreed, disagreements = compare_runs(cleaned_runs)
+    corroborated, one_sided = corroboration(cleaned_runs)
 
     # The comparison output is rebuilt from already-scrubbed runs, but re-run
     # the rules on it so nothing reintroduced by the merge escapes the gate.
@@ -292,6 +376,8 @@ def gate(label: str, runs: list[dict], valid_prs: set[int]) -> GateResult:
         stripped_keys=stripped_keys,
         rating_prose=rating_prose,
         runs_compared=len(cleaned_runs),
+        corroborated_prs=corroborated,
+        one_sided_prs=one_sided,
     )
 
 

@@ -3,8 +3,8 @@ import unittest
 
 from tests.helpers import claim, make_run
 from metrics.guardrails import (assert_no_ranked_list, compare_runs,
-                                drop_uncited, gate, scrub_rating_prose,
-                                strip_ratings)
+                                corroboration, drop_uncited, gate,
+                                scrub_rating_prose, strip_ratings)
 
 VALID = {1, 2, 3}
 
@@ -86,6 +86,59 @@ class TestDisagreementIsFlaggedNotAveraged(unittest.TestCase):
         agreed, disagreements = compare_runs([make_run("A", [claim("X", pr=1)])])
         self.assertEqual(len(agreed["complexity"]), 1)
         self.assertEqual(disagreements[0]["kind"], "unverified")
+
+
+class TestClaimMatchingRestsOnTheCitedPR(unittest.TestCase):
+    """
+    Real two-run output paired a claim about one PR with an unrelated claim
+    about another purely on shared phrasing. Requiring the same PR removes
+    that class of error outright.
+    """
+
+    def test_similar_wording_about_different_prs_never_matches(self):
+        runs = [make_run("A", [claim("Reworked the retry loop for batches", pr=1)]),
+                make_run("A", [claim("Reworked the retry loop for batches", pr=2)])]
+        agreed, disagreements = compare_runs(runs)
+        self.assertEqual(agreed["complexity"], [])
+        self.assertEqual({d["kind"] for d in disagreements},
+                         {"only_in_run_1", "only_in_run_2"})
+
+    def test_paraphrase_of_one_claim_on_one_pr_is_matched(self):
+        runs = [make_run("A", [claim("PR 1 chose the paginated pulls listing "
+                                     "over the Search API because Search "
+                                     "truncates at 1000 results", pr=1)]),
+                make_run("A", [claim("PR 1 chose the paginated pulls REST "
+                                     "endpoint over the Search API because "
+                                     "Search truncates at 1000 results", pr=1)])]
+        agreed, disagreements = compare_runs(runs)
+        self.assertEqual(len(agreed["complexity"]), 1)
+        self.assertEqual(disagreements, [])
+
+    def test_disagreements_record_the_cited_pr_for_diagnosis(self):
+        runs = [make_run("A", [claim("Something only run 1 said", pr=7)]),
+                make_run("A", [])]
+        _, disagreements = compare_runs(runs)
+        self.assertEqual(disagreements[0]["pr"], 7)
+
+
+class TestCorroborationNeedsNoTextMatching(unittest.TestCase):
+    def test_prs_both_runs_discussed_are_corroborated(self):
+        runs = [make_run("A", [claim("worded one way", pr=1),
+                               claim("about three", pr=3)]),
+                make_run("A", [claim("worded completely differently", pr=1)])]
+        corroborated, one_sided = corroboration(runs)
+        self.assertEqual(corroborated, [1])
+        self.assertEqual(one_sided, [3])
+
+    def test_a_single_run_corroborates_nothing(self):
+        self.assertEqual(corroboration([make_run("A", [claim("x", pr=1)])]), ([], []))
+
+    def test_gate_exposes_corroboration_in_the_audit(self):
+        runs = [make_run("A", [claim("one phrasing", pr=1)]),
+                make_run("A", [claim("an entirely different phrasing", pr=1)])]
+        result = gate("A", runs, {1})
+        self.assertEqual(result.corroborated_prs, [1])
+        self.assertEqual(result.to_dict()["audit"]["corroborated_prs"], [1])
 
 
 class TestNoRatingNoRank(unittest.TestCase):
