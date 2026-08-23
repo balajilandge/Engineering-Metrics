@@ -1,0 +1,1210 @@
+{
+  "schema_version": 2,
+  "repo": "pallets/flask",
+  "month": "2026-07",
+  "period": {
+    "start": "2026-07-01T00:00:00Z",
+    "end": "2026-07-31T23:59:59Z"
+  },
+  "generated_at": "2026-08-23T04:46:19.905681Z",
+  "sources": [
+    {
+      "name": "pull_requests",
+      "availability": "ok",
+      "detail": "38 pull requests in window"
+    },
+    {
+      "name": "reviews",
+      "availability": "ok",
+      "detail": "reviews read for 37 of 37 PRs"
+    },
+    {
+      "name": "board",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    },
+    {
+      "name": "deploys",
+      "availability": "empty",
+      "detail": "repo publishes no GitHub Deployments in window"
+    },
+    {
+      "name": "incidents",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    }
+  ],
+  "non_substantive_types": [
+    "dependency",
+    "config",
+    "docs"
+  ],
+  "team": {
+    "dora": [
+      {
+        "name": "deployment_frequency",
+        "value": null,
+        "unit": "per day",
+        "basis": "insufficient evidence — needs a deploy feed (DEPLOYS_PATH) or GitHub Deployments; merges are not deploys",
+        "available": false
+      },
+      {
+        "name": "lead_time_for_changes",
+        "value": 390.73,
+        "unit": "hours",
+        "basis": "median PR open -> merge, n=1 (no deploy feed: this is merge time, not deploy time)",
+        "available": true
+      },
+      {
+        "name": "change_failure_rate",
+        "value": null,
+        "unit": "%",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH); revert rate is a weak proxy",
+        "available": false
+      },
+      {
+        "name": "time_to_restore",
+        "value": null,
+        "unit": "hours",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH) with resolved_at",
+        "available": false
+      }
+    ],
+    "flow": [
+      {
+        "name": "review_latency",
+        "value": 105.53,
+        "unit": "hours",
+        "basis": "median PR open -> first review, n=2",
+        "available": true
+      },
+      {
+        "name": "work_in_progress",
+        "value": 1.0,
+        "unit": "PRs",
+        "basis": "median concurrently-open PRs (proxy: no board feed configured)",
+        "available": true
+      },
+      {
+        "name": "carryover",
+        "value": 0.0,
+        "unit": "%",
+        "basis": "0 of 1 merged PRs were opened in an earlier month",
+        "available": true
+      }
+    ],
+    "totals": {
+      "prs_created": 37,
+      "prs_merged": 1,
+      "contributors": 32,
+      "merged_by_type": {
+        "dependency": 0,
+        "config": 0,
+        "docs": 0,
+        "test": 1,
+        "fix": 0,
+        "feature": 0
+      },
+      "reverts": 0
+    }
+  },
+  "individuals": [
+    {
+      "engineer": "ARYANatGIT",
+      "profile_url": "https://github.com/ARYANatGIT",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Akankshaaaa-01",
+      "profile_url": "https://github.com/Akankshaaaa-01",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Akshay4527",
+      "profile_url": "https://github.com/Akshay4527",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Hasnaathussain",
+      "profile_url": "https://github.com/Hasnaathussain",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Ibrahimibrahimi",
+      "profile_url": "https://github.com/Ibrahimibrahimi",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "M0nd0R",
+      "profile_url": "https://github.com/M0nd0R",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Muhtasim-Munif-Fahim",
+      "profile_url": "https://github.com/Muhtasim-Munif-Fahim",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Nagendraprasad-hub",
+      "profile_url": "https://github.com/Nagendraprasad-hub",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "RonnyPfannschmidt",
+      "profile_url": "",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 1,
+        "authors_reviewed": 1,
+        "median_latency_h": 0.11,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Samielakkad",
+      "profile_url": "",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 1,
+        "authors_reviewed": 1,
+        "median_latency_h": 210.94,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "Tarunjit45",
+      "profile_url": "https://github.com/Tarunjit45",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "abhi-0203",
+      "profile_url": "https://github.com/abhi-0203",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "alaramartin",
+      "profile_url": "https://github.com/alaramartin",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "amir-rezaei",
+      "profile_url": "https://github.com/amir-rezaei",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "aouxwoux",
+      "profile_url": "https://github.com/aouxwoux",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "arib06",
+      "profile_url": "https://github.com/arib06",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "darkhpk",
+      "profile_url": "https://github.com/darkhpk",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "dhruvatr",
+      "profile_url": "https://github.com/dhruvatr",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "eeshsaxena",
+      "profile_url": "https://github.com/eeshsaxena",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "gasalabi",
+      "profile_url": "https://github.com/gasalabi",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "ghost",
+      "profile_url": "https://github.com/ghost",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "hrnciar",
+      "profile_url": "https://github.com/hrnciar",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "iammcoding",
+      "profile_url": "https://github.com/iammcoding",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "ishaanlabs-gg",
+      "profile_url": "https://github.com/ishaanlabs-gg",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "koppularoshitha",
+      "profile_url": "https://github.com/koppularoshitha",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "lkk7",
+      "profile_url": "https://github.com/lkk7",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "mgorny",
+      "profile_url": "https://github.com/mgorny",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": 1,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 1,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": 51.0,
+        "median_time_to_merge_h": 390.73
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 1,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 6095,
+          "title": "Replace the use of private `monkeypatch` fixture API",
+          "type": "test",
+          "url": "https://github.com/pallets/flask/pull/6095",
+          "churn": 51,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "mohamedjaazeer4-sketch",
+      "profile_url": "https://github.com/mohamedjaazeer4-sketch",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "saitejabandaru-in",
+      "profile_url": "https://github.com/saitejabandaru-in",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "sbisl",
+      "profile_url": "https://github.com/sbisl",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "sunis2005",
+      "profile_url": "https://github.com/sunis2005",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "usamashehab",
+      "profile_url": "https://github.com/usamashehab",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "vtino17",
+      "profile_url": "https://github.com/vtino17",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "webdevdot",
+      "profile_url": "https://github.com/webdevdot",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    }
+  ]
+}
