@@ -247,7 +247,7 @@ moment a ranking exists somebody will paste it into a promotion committee.
 python -m unittest discover -s tests -v
 ```
 
-127 tests covering the deterministic layers and the gate — the classifier's
+128 tests covering the deterministic layers and the gate — the classifier's
 priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
 and the audience/embargo policy. Layer 3's contract is tested without a network
 call (schema shape, prompt constraints, payload anonymization).

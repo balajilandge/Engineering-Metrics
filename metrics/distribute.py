@@ -157,7 +157,8 @@ def _type_table(by_type: dict[str, int], non_substantive: tuple[str, ...]) -> li
 # --------------------------------------------------------------------------
 
 def render_engineer_page(profile: dict, gated: GateResult | None, repo: str,
-                         month: str, non_substantive: tuple[str, ...]) -> str:
+                         month: str, non_substantive: tuple[str, ...],
+                         layer3_error: str = "") -> str:
     throughput = profile["throughput"]
     reviews = profile["reviews"]
     rework = profile["rework"]
@@ -268,12 +269,25 @@ def render_engineer_page(profile: dict, gated: GateResult | None, repo: str,
             ]
             lines += [f"- ~~{item['claim']}~~ — {item['reason']}"
                       for item in gated.dropped_claims]
+    elif layer3_error:
+        # Say which of the two it was. "Disabled" and "attempted and failed"
+        # are different facts, and the second one means a page is missing
+        # content someone expected to be here.
+        lines += [
+            "## Read of your month",
+            "",
+            "_**Not generated — interpretation was requested but could not "
+            "run.** The numbers above are unaffected; they come from layers "
+            "that use no model._",
+            "",
+            f"> {layer3_error}",
+        ]
     else:
         lines += [
             "## Read of your month",
             "",
-            "_Not generated: interpretation was disabled for this run, so this "
-            "page is the deterministic numbers only._",
+            "_Not generated: interpretation was switched off for this run, so "
+            "this page is the deterministic numbers only._",
         ]
 
     lines += [
@@ -511,7 +525,8 @@ def _write(path: str, content: str) -> str:
 
 def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult],
                          mapping: dict[str, str], repo: str, month: str,
-                         non_substantive: tuple[str, ...]) -> list[str]:
+                         non_substantive: tuple[str, ...],
+                         layer3_error: str = "") -> list[str]:
     """Phase 1. Writes every engineer's own page and stamps the manifest."""
     assert_no_ranked_list(computed["individuals"])
 
@@ -520,7 +535,8 @@ def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult]
         login = profile["engineer"]
         label = mapping.get(login)
         result = gated.get(label) if label else None
-        page = render_engineer_page(profile, result, repo, month, non_substantive)
+        page = render_engineer_page(profile, result, repo, month,
+                                    non_substantive, layer3_error)
         written.append(_write(os.path.join(root, "engineers", f"{login}.md"), page))
 
     manifest = read_manifest(root)

@@ -105,12 +105,23 @@ class TestEngineerPagesComeFirst(DistributeCase):
         self.assertIn("corrections/acme-app/2026-07/",
                       self.read("engineers", "sham.md"))
 
+    def test_a_failed_layer_3_says_so_rather_than_claiming_it_was_off(self):
+        distribute_engineers(self.root, self.computed, {}, self.mapping,
+                             "acme/app", "2026-07", NON_SUBSTANTIVE,
+                             "request rejected: credit balance too low")
+        page = self.read("engineers", "sham.md")
+        self.assertIn("could not run", page)
+        self.assertIn("credit balance too low", page)
+        self.assertNotIn("switched off", page)
+        # The numbers are still all there.
+        self.assertIn("What you shipped", page)
+
     def test_page_without_interpretation_still_renders_the_numbers(self):
         distribute_engineers(self.root, self.computed, {}, self.mapping,
                              "acme/app", "2026-07", NON_SUBSTANTIVE)
         page = self.read("engineers", "sham.md")
         self.assertIn("What you shipped", page)
-        self.assertIn("Not generated", page)
+        self.assertIn("switched off", page)
 
 
 class TestEmbargo(DistributeCase):

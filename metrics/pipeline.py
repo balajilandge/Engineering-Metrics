@@ -195,7 +195,7 @@ def run(config, phase: str = "all") -> dict:
 
     # ---- Layer 4 ---------------------------------------------------------
     distribute_engineers(root, computed, gated, mapping, config.repo,
-                         config.month, config.non_substantive)
+                         config.month, config.non_substantive, layer3_error)
     _write_json(os.path.join(ddir, f"{config.month}.mapping.json"), {
         "note": "engineer -> anonymized label, for re-attaching names after "
                 "Layer 3. Never sent to the model.",
