@@ -6,7 +6,7 @@
     "start": "2026-08-01T00:00:00Z",
     "end": "2026-08-31T23:59:59Z"
   },
-  "generated_at": "2026-08-23T05:21:50.893046Z",
+  "generated_at": "2026-08-23T05:24:19.470285Z",
   "sources": [
     {
       "name": "pull_requests",
@@ -198,6 +198,5 @@
         }
       ]
     }
-  ],
-  "layer3_error": "request rejected: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeK7tGcwMC5jThNpzZ4q8'}"
+  ]
 }
