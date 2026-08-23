@@ -17,13 +17,13 @@
 
 | Metric | Value | Basis |
 |---|---|---|
-| review latency | insufficient evidence | insufficient evidence — needs a review by someone other than the author — none of the 6 PRs inspected had one |
+| review latency | insufficient evidence | insufficient evidence — needs a review by someone other than the author — none of the 7 PRs inspected had one |
 | work in progress | 0.5 PRs | median concurrently-open PRs (proxy: no board feed configured) |
 | carryover | 0 % | 0 of 6 merged PRs were opened in an earlier month |
 
 ### Totals
 
-- PRs created: 6 · merged: 6
+- PRs created: 7 · merged: 6
 - Contributors: 1 · reverts: 0
 
 | PR type | Merged | Counted as substantive |
@@ -42,8 +42,8 @@ _Interpretation disabled for this run; per-engineer numbers are on each engineer
 
 | Source | Availability | Detail |
 |---|---|---|
-| pull_requests | ok | 12 pull requests in window |
-| reviews | ok | reviews read for 6 of 6 PRs |
+| pull_requests | ok | 13 pull requests in window |
+| reviews | ok | reviews read for 7 of 7 PRs |
 | board | unconfigured | no path configured |
 | deploys | empty | repo publishes no GitHub Deployments in window |
 | incidents | unconfigured | no path configured |

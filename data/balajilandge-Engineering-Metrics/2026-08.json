@@ -6,17 +6,17 @@
     "start": "2026-08-01T00:00:00Z",
     "end": "2026-08-31T23:59:59Z"
   },
-  "generated_at": "2026-08-23T04:28:54.915344Z",
+  "generated_at": "2026-08-23T04:41:31.812821Z",
   "sources": [
     {
       "name": "pull_requests",
       "availability": "ok",
-      "detail": "12 pull requests in window"
+      "detail": "13 pull requests in window"
     },
     {
       "name": "reviews",
       "availability": "ok",
-      "detail": "reviews read for 6 of 6 PRs"
+      "detail": "reviews read for 7 of 7 PRs"
     },
     {
       "name": "board",
@@ -75,7 +75,7 @@
         "name": "review_latency",
         "value": null,
         "unit": "hours",
-        "basis": "insufficient evidence — needs a review by someone other than the author — none of the 6 PRs inspected had one",
+        "basis": "insufficient evidence — needs a review by someone other than the author — none of the 7 PRs inspected had one",
         "available": false
       },
       {
@@ -94,7 +94,7 @@
       }
     ],
     "totals": {
-      "prs_created": 6,
+      "prs_created": 7,
       "prs_merged": 6,
       "contributors": 1,
       "merged_by_type": {
@@ -113,7 +113,7 @@
       "engineer": "balajilandge",
       "profile_url": "https://github.com/balajilandge",
       "throughput": {
-        "prs_created": 6,
+        "prs_created": 7,
         "prs_merged": 6,
         "prs_merged_substantive": 3,
         "by_type": {

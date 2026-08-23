@@ -6,7 +6,7 @@ Repository: `balajilandge/Engineering-Metrics`. This page is about your work onl
 
 ## What you shipped
 
-- PRs opened: **6**
+- PRs opened: **7**
 - PRs merged: **6**
 - Of those, substantive (excluding dependency, config, docs): **3**
 

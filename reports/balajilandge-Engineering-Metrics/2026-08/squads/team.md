@@ -13,7 +13,7 @@ Repository: `balajilandge/Engineering-Metrics`. This page covers **team** plus t
 
 | Metric | Value | Basis |
 |---|---|---|
-| review latency | insufficient evidence | insufficient evidence — needs a review by someone other than the author — none of the 6 PRs inspected had one |
+| review latency | insufficient evidence | insufficient evidence — needs a review by someone other than the author — none of the 7 PRs inspected had one |
 | work in progress | 0.5 PRs | median concurrently-open PRs (proxy: no board feed configured) |
 | carryover | 0 % | 0 of 6 merged PRs were opened in an earlier month |
 

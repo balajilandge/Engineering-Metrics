@@ -15,7 +15,7 @@ Team metrics and risk. **No individual data appears on this page**, by design: i
 
 | Metric | Value | Basis |
 |---|---|---|
-| review latency | insufficient evidence | insufficient evidence — needs a review by someone other than the author — none of the 6 PRs inspected had one |
+| review latency | insufficient evidence | insufficient evidence — needs a review by someone other than the author — none of the 7 PRs inspected had one |
 | work in progress | 0.5 PRs | median concurrently-open PRs (proxy: no board feed configured) |
 | carryover | 0 % | 0 of 6 merged PRs were opened in an earlier month |
 
@@ -29,14 +29,14 @@ Team metrics and risk. **No individual data appears on this page**, by design: i
 - **deployment frequency** cannot be measured — needs a deploy feed (DEPLOYS_PATH) or GitHub Deployments; merges are not deploys.
 - **change failure rate** cannot be measured — needs an incident feed (INCIDENTS_PATH); revert rate is a weak proxy.
 - **time to restore** cannot be measured — needs an incident feed (INCIDENTS_PATH) with resolved_at.
-- **review latency** cannot be measured — needs a review by someone other than the author — none of the 6 PRs inspected had one.
+- **review latency** cannot be measured — needs a review by someone other than the author — none of the 7 PRs inspected had one.
 
 ## What we can and cannot measure
 
 | Source | Availability | Detail |
 |---|---|---|
-| pull_requests | ok | 12 pull requests in window |
-| reviews | ok | reviews read for 6 of 6 PRs |
+| pull_requests | ok | 13 pull requests in window |
+| reviews | ok | reviews read for 7 of 7 PRs |
 | board | unconfigured | no path configured |
 | deploys | empty | repo publishes no GitHub Deployments in window |
 | incidents | unconfigured | no path configured |
