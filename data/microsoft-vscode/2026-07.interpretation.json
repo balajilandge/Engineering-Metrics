@@ -1,0 +1,1164 @@
+{
+  "schema_version": 2,
+  "repo": "microsoft/vscode",
+  "month": "2026-07",
+  "generated_at": "2026-08-23T09:36:26.601813Z",
+  "model": "claude-opus-5",
+  "runs_per_engineer": 2,
+  "gated": {
+    "Engineer FZ": {
+      "engineer": "Engineer FZ",
+      "interpretation": {
+        "engineer": "Engineer FZ",
+        "summary": "This payload contains almost no observable work. The metrics record one pull request created, zero merged, and zero reviews given, and the `pull_requests` array is empty — so there is no diff, no title, no review thread, and no PR number available for any claim. Churn, time-to-merge, review latency and rework rate are all null, meaning they were not measurable rather than measured as zero. As a result there is nothing in this payload that describes what Engineer FZ worked on, how hard it was, or what it interacted with. Any account of this month has to come from outside the pull request record.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The single created, unmerged PR and the absent PR bodies are consistent with a month spent on work that does not surface as merged pull requests in this repository — for example design work, an incident, onboarding, cross-team or cross-repo work, planning, leave, or a long-running branch still in progress. Nothing in this payload contradicts that, because the payload contains no PR content at all to contradict it.",
+        "least_favourable_reading": "Read strictly as a record of repository activity, this month shows one PR created, zero merged (`prs_merged: 0`), and zero code reviews given (`given: 0`, `authors_reviewed: 0`) — no shipped change and no visible contribution to other people's work in this repo. On this data alone a manager cannot point to a single completed unit of output.",
+        "insufficient_evidence": [
+          "What the one created PR actually was: no PR number, title, diff, or state is present (`pull_requests: []`).",
+          "Why that PR was not merged — abandoned, superseded, still open, blocked on review, or blocked on a dependency.",
+          "Whether Engineer FZ worked in other repositories or on branches not captured by this payload.",
+          "Whether the month included leave, an on-call rotation, an incident, or a reassignment.",
+          "Any design, architecture, or scoping work, which by definition does not appear in a PR record.",
+          "Any mentoring, pairing, or unblocking done in DMs, issue threads, or verbally rather than in review comments.",
+          "Whether zero reviews given reflects no review requests received, or requests not acted on — the payload records the count but not the demand.",
+          "Code quality, rework rate, or reliability: `rework.measured_over: 0` means there was nothing to measure.",
+          "The content, scope, and current state of the single PR created — the `pull_requests` array is empty, so its title, diff, size, and status are all unknown.",
+          "Whether the engineer was present and working this month at all (leave, sabbatical, medical absence, parental leave, or a company shutdown would all produce this pattern).",
+          "Whether the engineer was reassigned to non-code work: design documents, RFCs, architecture review, incident command, on-call, customer escalations, or planning.",
+          "Whether work happened in a repository, org, or system not covered by this data collection.",
+          "Whether the engineer contributed to others' pull requests as a co-author or pair, which would not appear as authored PRs.",
+          "Any mentoring, unblocking, or technical guidance delivered in DMs, chat, meetings, or verbally — none of which is captured by PR data.",
+          "Whether the one open PR is blocked on review, on a dependency, on infrastructure, or on a decision from someone else.",
+          "Whether zero reviews given reflects a lack of review requests directed at this engineer or a lack of response to requests received.",
+          "Any measure of quality, since `\"measured_over\": 0` means the rework rate is undefined rather than zero-in-a-meaningful-sense."
+        ],
+        "questions_for_the_1_1": [
+          "What did you spend this month on? Walk me through it from your side, not from the PR list.",
+          "There's one PR created and not merged in the record — what was it, and where did it end up?",
+          "Was any of your work this month happening outside this repo, or on a branch that hasn't been opened as a PR yet?",
+          "Was there anything non-code that took the month — an incident, a design, a migration plan, hiring, onboarding, leave?",
+          "Zero reviews are recorded for you this month. Were you being asked for reviews, and if so what got in the way of getting to them?",
+          "Is there anything blocking you right now that wouldn't show up in a pull request?",
+          "What would you want a manager to look at instead of PRs to understand your last month?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "This payload contains almost no observable work. The metrics record one pull request created, zero merged, and zero reviews given, and the `pull_requests` array is empty — so there is no diff, no title, no review thread, and no PR number available for any claim. Churn, time-to-merge, review latency and rework rate are all null, meaning they were not measurable rather than measured as zero. As a result there is nothing in this payload that describes what Engineer FZ worked on, how hard it was, or what it interacted with. Any account of this month has to come from outside the pull request record.",
+            "run_2": "The payload for this month contains almost no observable activity: one pull request was created, none were merged, and the `pull_requests` array is empty, so no diffs, titles, or review threads are available to read. The type breakdown shows zeros across every category (dependency, config, docs, test, fix, feature), and median churn and median time-to-merge are null, meaning nothing reached a merged state that could be measured. No code reviews were given (`\"given\": 0`, `\"authors_reviewed\": 0`), and the rework section reports `\"measured_over\": 0`, so there is no basis to say anything about revision cycles either. In short, this month's PR record is effectively empty rather than negative or positive. Any account of what Engineer FZ actually worked on this month must come from outside this payload — the data here cannot support conclusions about output, difficulty, or collaboration."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The single created, unmerged PR and the absent PR bodies are consistent with a month spent on work that does not surface as merged pull requests in this repository — for example design work, an incident, onboarding, cross-team or cross-repo work, planning, leave, or a long-running branch still in progress. Nothing in this payload contradicts that, because the payload contains no PR content at all to contradict it.",
+            "run_2": "An empty PR record is consistent with a month spent on work that pull requests do not capture: design or architecture documents, incident response, an investigation or spike that produced no shippable code, onboarding to a new area, planning, hiring, pairing with others where a colleague authored the commits, or a single long-running piece of work still open as the one created PR. The payload shows one PR was created but not merged, which is compatible with a substantial in-flight change that had not landed by the close of the month. Nothing in this evidence contradicts a productive month; the instrumentation simply has no visibility into it."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Read strictly as a record of repository activity, this month shows one PR created, zero merged (`prs_merged: 0`), and zero code reviews given (`given: 0`, `authors_reviewed: 0`) — no shipped change and no visible contribution to other people's work in this repo. On this data alone a manager cannot point to a single completed unit of output.",
+            "run_2": "Taken at face value, this month produced no merged code, no reviews for teammates, and no artifacts a reader can inspect — one PR created, zero merged, zero reviews given, zero authors reviewed. If the team's expectation is that engineers land changes and participate in review, none of that is visible here, and the absence of even a single review given means colleagues received no reviewing support that this system recorded. Without any diff or comment to point to, a manager reading only this payload has nothing to affirm."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer HX": {
+      "engineer": "Engineer HX",
+      "interpretation": {
+        "engineer": "Engineer HX",
+        "summary": "The payload contains one merged PR for the month: PR 325806, which removes the GPT/Anthropic model-family gate from the search, explore, and execution subagent tools in the Copilot agent intent. The change deletes the `isGptOrAnthropic` predicate and drops it from three `allowTools[...]` assignments and from the condition that guards the `getAllChatEndpoints()` lookup, so subagent availability now depends only on the experiment configs and on whether the relevant endpoint family is present. The PR also updates the existing gating spec: the stub user endpoint switches from `gpt-5` to `gemini-3-pro`, and a new test asserts `ExecutionSubagent` is exposed when `gemini-3-flash` is available for a non-GPT/non-Anthropic CAPI model. It merged in about 3.15 hours with no review comments recorded, and the payload shows no reviews given to others this month.",
+        "complexity": [],
+        "blockers": [
+          {
+            "claim": "No blockers are visible in this payload: the single PR merged with a median time to merge of 3.15 hours and no changes requested.",
+            "evidence": {
+              "pr": 325806,
+              "kind": "metric",
+              "quote": "\"median_time_to_merge_h\": 3.15"
+            }
+          }
+        ],
+        "unblocking_others": [],
+        "most_favourable_reading": "This is a clean, well-scoped removal of a temporary model-family restriction in a hot path of the agent tooling. The author did not simply delete a flag: they noticed the same predicate was guarding an endpoint lookup and restructured that condition too, kept the Search/Explore mutual exclusion intact, and preserved the remaining legitimate capability gate on `hasGemini3Flash`. They also repaired the test fixture that had baked in the old assumption (`gpt-5` → `gemini-3-pro`) and added a regression test for the newly reachable path. It merged in roughly three hours with no requested changes, which is consistent with a change reviewers found straightforward and correct.",
+        "least_favourable_reading": "The month's visible output is one small feature PR consisting largely of removing a boolean term from four expressions, plus one new test case; `prs_created` is 1 and `median_churn` is null so the size cannot be independently confirmed. No reviews were given to anyone (`given: 0`), and the PR drew no review comments, so there is no visible collaboration or design discussion in this data at all. The change also broadens which models can invoke subagents without any evidence in the payload of behind-a-flag safety analysis beyond the pre-existing experiment configs, and the added test covers only the ExecutionSubagent positive case — no new test covers Search/Explore behaviour for a non-GPT/non-Anthropic model.",
+        "insufficient_evidence": [
+          "Whether this PR represents the engineer's full month of work — a single PR may reflect work that happened outside pull requests (design, investigation, incident response, on-call) that this payload cannot show.",
+          "Actual diff size and complexity: `median_churn` and `churn` are both null, so lines changed cannot be verified.",
+          "Why no code reviews were given this month — capacity, team norms, or a period spent outside the repository are all consistent with `given: 0`.",
+          "Whether the gate removal was validated behind an experiment/rollout, and whether any telemetry or eval results informed the decision to remove it.",
+          "Who decided the gate should be removed, and whether Engineer HX drove that decision or implemented someone else's.",
+          "Whether the change caused any downstream regressions; the payload includes no post-merge incident, revert, or metric data (`reverts_authored: 0` only covers reverts this engineer authored).",
+          "Any mentoring, pairing, or design-review contribution, since none of that appears in PR data.",
+          "Whether Engineer HX did substantial work outside pull requests this month — design documents, incident response, experiment analysis, on-call, or planning — none of which would appear here.",
+          "Why only one PR appears: the payload cannot distinguish a light month from a month spent on long-running work, a different repository, non-code work, or partial-month availability (leave, onboarding, reassignment).",
+          "Whether the un-gating was validated behind an experiment flag or telemetry, and what the rollout/rollback plan was — the diff only shows config-based enablement (`getExperimentBasedConfig`) that pre-existed.",
+          "Whether the absence of reviews given reflects no requests received, a different review tool, or a deliberate focus elsewhere.",
+          "Whether the PR was discussed and approved out-of-band (chat, in person) rather than in PR comments, which would explain the 3.15h merge with zero recorded comments.",
+          "Whether the untested SearchSubagent/ExploreSubagent paths for non-GPT/non-Anthropic models were consciously judged low-risk or simply not covered."
+        ],
+        "questions_for_the_1_1": [
+          "Is PR 325806 a representative slice of your month, or was most of your time on work that didn't land as a PR?",
+          "What prompted removing the GPT/Anthropic gate now — was there eval or telemetry showing subagents behave acceptably on other model families?",
+          "Removing `isGptOrAnthropic` from the `allEndpoints` guard means `getAllChatEndpoints()` is now called whenever either subagent flag is on. Did you look at the cost or latency impact of that broader lookup?",
+          "The new test covers ExecutionSubagent for a non-GPT/non-Anthropic model. Should Search/Explore have equivalent coverage for that case, or is it already covered elsewhere?",
+          "Is there still a scenario where subagents should be model-family gated, or is `hasGemini3Flash` / `searchAgentAvailable` now the complete set of capability checks?",
+          "The PR merged in about three hours with no review comments — did you get the level of review you wanted on a change that widens tool availability?",
+          "You reviewed no PRs this month. Was that a deliberate focus choice, or is something making review work hard to fit in?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [
+          325806
+        ],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "PR 325806 required reasoning about an availability short-circuit, not just deleting a boolean: the `isGptOrAnthropic` term was also guarding an endpoint network lookup, and removing it changes when that lookup runs."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "The gate removal touched three separate tool-enablement expressions that each combine differently with the experiment flags, so the change had to preserve the mutually exclusive Search/Explore split."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "The author adjusted the existing test fixture so it no longer relies on a GPT-family model, including a direct family override, rather than leaving the old fixture in place."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "A new test was added that specifically covers the behaviour the change unlocks — execution subagent availability for a non-GPT/non-Anthropic model."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "The change required reasoning about a short-circuit condition, not just deleting a boolean: the endpoint-lookup guard had to be rewritten so the (potentially expensive) `getAllChatEndpoints()` call still only happens when a gated subagent could be enabled."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "The author updated the test fixture's model family so the existing gating spec exercised the newly-widened path rather than continuing to pass under the old assumption, including a cast to override the mock's family field."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "The removal touched three separate tool-enablement expressions with differing remaining conditions (explore-vs-search branch on `exploreAgentEnabled`, execution gated on `hasGemini3Flash`), so each had to be edited individually rather than by a single substitution."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "The unused import was cleaned up as part of the change, keeping the remaining family predicates intact."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "There is no recorded review discussion on the PR, so no reviewer-driven delay or debate is evidenced."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "Rework rate could not be computed at all this month because the sample was empty by the tool's own measure."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "No reviews were given to other authors this month, so the payload contains no evidence of unblocking others through code review."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_1",
+            "pr": 325806,
+            "claim": "The one merged change widens subagent availability beyond GPT/Anthropic models, which could unblock users or teams on other model families, though the payload contains no rollout or usage data confirming that effect."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "No code review activity toward other authors is recorded for this month."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_2",
+            "pr": 325806,
+            "claim": "The one visible contribution to shared surface area is a widened enablement path plus a regression test that documents the new behaviour for non-GPT/non-Anthropic models, which others working on subagent rollout can rely on."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "This is a clean, well-scoped removal of a temporary model-family restriction in a hot path of the agent tooling. The author did not simply delete a flag: they noticed the same predicate was guarding an endpoint lookup and restructured that condition too, kept the Search/Explore mutual exclusion intact, and preserved the remaining legitimate capability gate on `hasGemini3Flash`. They also repaired the test fixture that had baked in the old assumption (`gpt-5` → `gemini-3-pro`) and added a regression test for the newly reachable path. It merged in roughly three hours with no requested changes, which is consistent with a change reviewers found straightforward and correct.",
+            "run_2": "This is a clean, well-scoped rollout change: removing a model-family restriction so subagents can be offered to a broader set of models, done carefully. The author preserved the existing lazy-endpoint-lookup optimisation and its explanatory comment, dropped the now-unused `isGptFamily` import, and — importantly — did not just delete a condition but retargeted the test fixture from `gpt-5` to `gemini-3-pro` so the existing spec actually exercises the widened path, then added a positive test for `ExecutionSubagent` with `gemini-3-flash`. The remaining availability gates (`searchAgentAvailable`, `hasGemini3Flash`, the CAPI-fetch-failure fallback) are left intact, so the change loosens who is eligible without weakening the safety checks. A three-hour merge with no requested changes is consistent with a change that reviewers found easy to verify."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The month's visible output is one small feature PR consisting largely of removing a boolean term from four expressions, plus one new test case; `prs_created` is 1 and `median_churn` is null so the size cannot be independently confirmed. No reviews were given to anyone (`given: 0`), and the PR drew no review comments, so there is no visible collaboration or design discussion in this data at all. The change also broadens which models can invoke subagents without any evidence in the payload of behind-a-flag safety analysis beyond the pre-existing experiment configs, and the added test covers only the ExecutionSubagent positive case — no new test covers Search/Explore behaviour for a non-GPT/non-Anthropic model.",
+            "run_2": "The payload shows one merged PR for the entire month, of modest size: a few lines in one production file plus a nine-line test addition. No reviews were given to anyone (`\"given\": 0`, `\"authors_reviewed\": 0`), and there are no review comments on the PR itself, so there is no evidence in this data of collaboration, design discussion, or influence beyond the diff. The change is largely subtractive — removing a gate that someone else presumably added — and the test coverage added is a single happy-path assertion; there is no new test for the SearchSubagent/ExploreSubagent branches under a non-GPT/non-Anthropic model, even though those paths were also un-gated. On this evidence alone, the visible output for the month is small."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer BF": {
+      "engineer": "Engineer BF",
+      "interpretation": {
+        "engineer": "Engineer BF",
+        "summary": "The payload for this month contains almost no observable activity: one pull request was created, none were merged, and no reviews were given (`prs_created: 1`, `prs_merged: 0`, `reviews.given: 0`). The `pull_requests` array is empty, so the single created PR has no title, diff, files, or comments attached — there is nothing about its content, size, or subject matter to describe. All derived metrics are null (`median_churn`, `median_time_to_merge_h`, `median_latency_h`), and the rework block was measured over zero PRs, so it reports nothing either. The by_type breakdown is zero across every category (dependency, config, docs, test, fix, feature), meaning no merged work of any kind is recorded here. This is a data-absence profile rather than a low-output profile: the evidence does not show what this engineer worked on, and it equally does not show that they were idle. Any account of the month has to come from the engineer or from sources outside pull request data.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The dataset simply does not cover this engineer's month. A single created-but-unmerged PR with no attached diff is consistent with work that lives outside merged pull requests entirely — a long-running branch, an incident, a design or planning cycle, onboarding, leave, work in a repository not captured by this export, or pairing where someone else authored the commits. Nothing in the payload contradicts a productive month; there is no revert, no changes-requested signal, and no failed review interaction, because there is no recorded interaction at all.",
+        "least_favourable_reading": "Taken at face value, the month produced no merged code and no peer review contribution: `prs_merged: 0`, `prs_merged_substantive: 0`, `reviews.given: 0`, `authors_reviewed: 0`. The one PR that was opened did not land within the window, and no review latency exists because no reviews were performed. On this evidence alone, the engineer left no trace in the shared repository and no trace in anyone else's pull requests either.",
+        "insufficient_evidence": [
+          "The content of the single created PR — its title, diff, files touched, size, and whether it is still open, closed, or draft — is absent because `pull_requests` is empty.",
+          "Whether the engineer was present and working for the full month (leave, secondment, on-call rotation, or partial availability are not represented in this data).",
+          "Whether work was done in repositories, forks, or branches outside the scope of this export.",
+          "Any design documents, RFCs, architecture decisions, or technical planning produced this month.",
+          "Incident response, on-call load, production debugging, or operational toil, none of which appears as pull requests.",
+          "Mentoring, pairing, onboarding of others, or code review conducted verbally or in DMs rather than as recorded GitHub reviews.",
+          "Whether the single open PR is blocked on someone else, on a dependency, on an environment, or on a decision — no comments or review history are present.",
+          "Whether the engineer's role in this period was primarily non-code (e.g., interviewing, project coordination, customer support).",
+          "Any measure of quality, complexity, or difficulty of work, since no diff is available to inspect.",
+          "Whether the zero review count reflects no review requests being routed to them or requests going unanswered.",
+          "What the one created PR actually contains — no title, diff, files, or line counts are present in the payload.",
+          "Whether that PR is still open, closed without merge, or blocked on review or CI.",
+          "Whether the month included leave, on-call, incident response, or a rotation onto non-code work.",
+          "Whether mentoring, pairing, code review over DMs/in person, or unblocking of teammates occurred outside GitHub review records.",
+          "Whether scope was negotiated, deferred, or reassigned during the month.",
+          "Whether the absence of reviews given reflects a team norm, a reassignment, or an availability gap.",
+          "Whether any of this engineer's work landed under another author's PR (e.g., pairing or handoff)."
+        ],
+        "questions_for_the_1_1": [
+          "The export shows one PR opened and nothing merged this month — what was that PR, and where does it stand now?",
+          "Is that PR blocked on anything (a review, a dependency, an environment, a product decision), and if so, for how long?",
+          "Was the bulk of your month's work outside pull requests — incident work, design, planning, support, or another repository we aren't capturing here?",
+          "Were you fully available this month, or was time taken by leave, on-call, interviewing, or another commitment?",
+          "No code reviews are recorded for you this month. Are review requests reaching you, and is review something you want more or less of going forward?",
+          "Is there work you'd point to from this month that this kind of PR-based data structurally cannot see? I'd like to record it somewhere it counts.",
+          "Would breaking your current work into smaller, mergeable pieces be feasible, or is the shape of the problem forcing a long-lived branch?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "The payload for this month contains almost no observable activity: one pull request was created, none were merged, and no reviews were given (`prs_created: 1`, `prs_merged: 0`, `reviews.given: 0`). The `pull_requests` array is empty, so the single created PR has no title, diff, files, or comments attached — there is nothing about its content, size, or subject matter to describe. All derived metrics are null (`median_churn`, `median_time_to_merge_h`, `median_latency_h`), and the rework block was measured over zero PRs, so it reports nothing either. The by_type breakdown is zero across every category (dependency, config, docs, test, fix, feature), meaning no merged work of any kind is recorded here. This is a data-absence profile rather than a low-output profile: the evidence does not show what this engineer worked on, and it equally does not show that they were idle. Any account of the month has to come from the engineer or from sources outside pull request data.",
+            "run_2": "The payload for this month contains almost no observable activity: one pull request created, none merged, and no PR records at all in the `pull_requests` array. No reviews were given (0 reviews, 0 authors reviewed), and every derived metric — median churn, time to merge, review latency, rework rate — is null because there was nothing to compute it over. Because the `pull_requests` list is empty, I cannot see the title, diff, size, or discussion of the one PR that was created, so I cannot describe what that work was or whether it is still open, abandoned, or in progress. This is not evidence of low output; it is an absence of evidence about output. Any account of what Engineer BF worked on this month has to come from the engineer or from sources outside this payload."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The dataset simply does not cover this engineer's month. A single created-but-unmerged PR with no attached diff is consistent with work that lives outside merged pull requests entirely — a long-running branch, an incident, a design or planning cycle, onboarding, leave, work in a repository not captured by this export, or pairing where someone else authored the commits. Nothing in the payload contradicts a productive month; there is no revert, no changes-requested signal, and no failed review interaction, because there is no recorded interaction at all.",
+            "run_2": "The dataset captures pull request activity only, and one month of PR data with a single open PR is entirely consistent with work that this instrument cannot see: a long-running design or investigation effort, work landing in a repository outside the scan, an incident or on-call rotation, contributions to someone else's branch, or a long stretch away from the codebase. The single created-but-unmerged PR may be substantial work still in flight, and with no diff in the payload there is nothing here that contradicts that reading."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Taken at face value, the month produced no merged code and no peer review contribution: `prs_merged: 0`, `prs_merged_substantive: 0`, `reviews.given: 0`, `authors_reviewed: 0`. The one PR that was opened did not land within the window, and no review latency exists because no reviews were performed. On this evidence alone, the engineer left no trace in the shared repository and no trace in anyone else's pull requests either.",
+            "run_2": "On the only signals present, the month shows no merged code (`prs_merged: 0`, `prs_merged_substantive: 0`) and no participation in others' work (`reviews.given: 0`, `authors_reviewed: 0`), meaning there is no recorded delivery and no recorded contribution to the team's review throughput. If the expectation was that PR-visible work would be the primary output this month, that expectation was not met in a way this data can confirm."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer EY": {
+      "engineer": "Engineer EY",
+      "interpretation": {
+        "engineer": "Engineer EY",
+        "summary": "This payload contains almost no evidence about the month's work. The metrics block records 3 PRs created, 0 merged and 0 merged-substantive, with every by_type bucket (dependency, config, docs, test, fix, feature) at zero, and median_churn and median_time_to_merge_h both null. Reviews given is 0, authors_reviewed is 0, and the rework block reports measured_over: 0 with rate_pct null and no reverts authored. The pull_requests array is empty, so there are no diffs, titles, descriptions or review comments to read — the three created PRs are counted but not described. On this data I cannot say what Engineer EY worked on, how hard it was, or what happened to the three open PRs; any narrative beyond the counters would be invention.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "Three PRs were opened during the month, and the absence of merges plus an empty pull_requests array is consistent with work that is genuinely in flight — long-running branches, work blocked on external review or dependencies, or work whose visible output falls outside this repository's PR records (design, incident response, pairing, spec work). The zeroed rework block (measured_over: 0, reverts_authored: 0) means nothing in this window was recorded as reverted or as having changes requested. Nothing here shows a problem; it shows a window with no observable output captured by this tooling.",
+        "least_favourable_reading": "For the month as measured, there is no merged output at all (prs_merged: 0, prs_merged_substantive: 0), no code review contribution to other people (reviews.given: 0, authors_reviewed: 0), and no PR bodies for the three PRs that were created. Read strictly, the visible collaborative and delivered footprint in this repository for this window is empty, and there is no artifact in the payload a manager could point to as completed work.",
+        "insufficient_evidence": [
+          "The pull_requests array is empty, so there is no diff, title, description, or file list for any of the 3 created PRs.",
+          "Why 0 of 3 created PRs merged: still open, closed unmerged, awaiting review, blocked on a dependency, or superseded — the data does not distinguish these.",
+          "Whether the 3 PRs are small or large, and whether they are related to one another (median_churn is null).",
+          "Time-to-merge and review latency cannot be computed (both medians null, measured_over: 0).",
+          "Whether Engineer EY reviewed, commented on, or unblocked others outside of formal PR reviews — the reviews counter only records PR review events.",
+          "Any work that does not produce pull requests: design docs, incident response, on-call, migrations executed by hand, customer or cross-team work, mentoring, interviewing.",
+          "Whether this engineer was present and working for the full month (leave, onboarding, rotation onto another repository or another codebase not covered by this payload).",
+          "Whether work landed in a repository or account not included in this anonymized extract.",
+          "Any scope changes, re-prioritisation, or reassignment that would explain the shape of the month.",
+          "The content of the three PRs recorded as created — no titles, diffs, file paths, or line counts are present in the payload.",
+          "Whether those three PRs are still open, closed unmerged, merged after the reporting window, or simply missing from the export.",
+          "Whether the empty `pull_requests` array is a data-extraction failure or an intentional filter (e.g. only merged PRs included), which changes the interpretation entirely.",
+          "Any technical difficulty encountered: with no diffs, no claim about complexity can be supported.",
+          "Any blockers: no review comments, CI results, or timestamps are available to show what slowed work down.",
+          "Any contribution to unblocking others: reviews are recorded as zero, but mentoring, pairing, debugging help, DMs, and design feedback would not appear in this payload even if they occurred.",
+          "Non-PR work of any kind — incident response, on-call, architecture or design work, scoping and planning, interviewing, documentation outside the repo.",
+          "Whether the engineer was present and available for all of this month (leave, onboarding, ramp-up on a new area, or reassignment would all produce this shape of data).",
+          "Whether zero reviews given reflects a team norm, an explicit reallocation of their time, or something else."
+        ],
+        "questions_for_the_1_1": [
+          "What are the three PRs you opened this month, and what state is each in right now?",
+          "For each of them, what is standing between the PR and a merge — review, a dependency, a decision, test failures, or something else?",
+          "Was there work this month that never became a pull request in this repo? What was it, and where did it live?",
+          "Did anything change about your scope or priorities during the month that would explain where the effort went?",
+          "The extract shows no code reviews given this month — is that accurate for how you spent your time, or is review work happening somewhere this data doesn't capture?",
+          "Is there anything you needed from me or from another team that you didn't get, and would getting it have changed the outcome for these PRs?",
+          "Are the three PRs part of one larger piece of work that's intended to land together, or are they independent?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "This payload contains almost no evidence about the month's work. The metrics block records 3 PRs created, 0 merged and 0 merged-substantive, with every by_type bucket (dependency, config, docs, test, fix, feature) at zero, and median_churn and median_time_to_merge_h both null. Reviews given is 0, authors_reviewed is 0, and the rework block reports measured_over: 0 with rate_pct null and no reverts authored. The pull_requests array is empty, so there are no diffs, titles, descriptions or review comments to read — the three created PRs are counted but not described. On this data I cannot say what Engineer EY worked on, how hard it was, or what happened to the three open PRs; any narrative beyond the counters would be invention.",
+            "run_2": "This payload contains almost no observable work product. The metrics record three pull requests created during the month, zero merged, and zero reviews given, while the `pull_requests` array is empty — so there are no titles, diffs, review comments, or timestamps to read. Every derived metric that depends on merged work or reviews is null (`median_churn`, `median_time_to_merge_h`, `median_latency_h`, rework `rate_pct`), and rework was measured over zero PRs. That combination means I cannot describe what Engineer EY worked on, how hard it was, what held it up, or whether it helped anyone else. The discrepancy between `prs_created: 3` and an empty PR list is itself worth resolving before any interpretation is attempted: either the three PRs were excluded by the export filter (e.g. still open, or in a repository outside the payload's scope) or the extraction is incomplete. This document should therefore be treated as a list of questions, not findings."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Three PRs were opened during the month, and the absence of merges plus an empty pull_requests array is consistent with work that is genuinely in flight — long-running branches, work blocked on external review or dependencies, or work whose visible output falls outside this repository's PR records (design, incident response, pairing, spec work). The zeroed rework block (measured_over: 0, reverts_authored: 0) means nothing in this window was recorded as reverted or as having changes requested. Nothing here shows a problem; it shows a window with no observable output captured by this tooling.",
+            "run_2": "The three created-but-unmerged PRs may represent work that is genuinely in flight — a long-running or large change, work blocked on review or on an upstream dependency, or work whose merge landed just outside this month's window — and the engineer's substantive contribution this month may sit entirely in places this payload does not capture: design documents, incident response, pairing, DM-based mentoring, or work in a repository not included in the export. Zero reviews given and zero changes requested may reflect how their time was allocated rather than a withdrawal from the team. Nothing in this evidence contradicts a productive month; the evidence simply does not reach it."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "For the month as measured, there is no merged output at all (prs_merged: 0, prs_merged_substantive: 0), no code review contribution to other people (reviews.given: 0, authors_reviewed: 0), and no PR bodies for the three PRs that were created. Read strictly, the visible collaborative and delivered footprint in this repository for this window is empty, and there is no artifact in the payload a manager could point to as completed work.",
+            "run_2": "Taken only at face value, the month shows no merged code, no substantive merged change, and no code review participation (`reviews.given: 0`, `authors_reviewed: 0`), with three PRs opened and none landed. A reader with only this payload would see no completed, integrated output and no visible contribution to other people's work. But this reading rests on absence of data rather than presence of a problem, and the empty `pull_requests` array means even the three created PRs cannot be inspected to test it."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer FG": {
+      "engineer": "Engineer FG",
+      "interpretation": {
+        "engineer": "Engineer FG",
+        "summary": "This payload contains almost no observable work. The metrics record one PR created, zero merged, zero substantive merges, and zero reviews given; every by_type counter (dependency, config, docs, test, fix, feature) is 0, and median churn, median time-to-merge, and review latency are all null. The pull_requests list is empty, so there is no diff, no title, no review thread, and no PR number attached to the single created PR — nothing that can be read or cited. As a result I cannot describe what was hard, what slowed the work down, or whether anyone else was unblocked, because no artifact in this payload supports any such statement. This is a report about missing data, not about performance: the correct conclusion from this evidence is that the engineer's month is not visible in pull request activity, and the reason for that is not determinable from what is here.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The absence of merged PRs and reviews is fully consistent with a month spent on work that pull requests do not capture — design, incident response, cross-team support, investigation, onboarding, leave, or a long-running effort still in progress behind the single created PR. The payload contains no diff and no review thread, so there is literally nothing here that contradicts a productive month; the data collection simply did not reach whatever the work was.",
+        "least_favourable_reading": "Taken at face value, the tracked output for the month is one created PR that never merged (prs_merged: 0), zero reviews given to zero authors (given: 0, authors_reviewed: 0), and no code landed in any category. On this evidence alone there is no visible contribution to the shared codebase and no visible participation in other people's work, and a reader with only this payload would have no way to see value delivered.",
+        "insufficient_evidence": [
+          "The identity, title, scope, and current state of the single created PR — pull_requests is empty, so it cannot be examined.",
+          "Whether the engineer was present and working for the full month (leave, illness, onboarding, or a partial month are all consistent with these numbers).",
+          "Any work outside pull requests: design documents, architecture decisions, incident response, on-call, debugging sessions, customer escalations, or migrations coordinated elsewhere.",
+          "Mentoring, pairing, or code review conducted verbally, in DMs, or in tools not captured here (reviews.given: 0 measures only recorded PR reviews).",
+          "Whether the engineer was reassigned, blocked on someone else, or waiting on infrastructure or dependencies during the month.",
+          "Whether work landed in a different repository, fork, or under a different account not included in this payload.",
+          "Code quality, rework rate, or review responsiveness — rework.measured_over is 0, so no rate exists to interpret.",
+          "What Engineer FG actually spent the month on — the payload contains an empty `pull_requests` array and no titles, diffs, or descriptions.",
+          "The content, size, and status of the one PR recorded as created (`prs_created: 1`) — no PR object is present.",
+          "Whether the engineer was on leave, partially allocated, or working in a repository not covered by this payload.",
+          "Any code review or mentoring done via comments, DMs, or synchronous channels (`reviews.given: 0` only shows no recorded PR reviews in this dataset).",
+          "Whether scope was negotiated, blocked by dependencies, or reprioritised mid-month."
+        ],
+        "questions_for_the_1_1": [
+          "What did you spend the bulk of this month on, and where does that work live if not in pull requests?",
+          "What is the status of the one PR you opened this month — is it still open, closed, superseded, or blocked on something?",
+          "Was any part of this month affected by leave, on-call, an incident, or a reassignment I should know about?",
+          "Were you blocked waiting on another team, an environment, a review, or a decision at any point?",
+          "Is there work you did that our tooling isn't picking up — another repo, a design doc, a spike, or support work — that should be part of how we track your month?",
+          "Would it help to break the current work into smaller, mergeable pieces so progress is visible earlier?",
+          "You have no recorded reviews this month — is review load something you want more of, less of, or was there simply nothing routed to you?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "This payload contains almost no observable work. The metrics record one PR created, zero merged, zero substantive merges, and zero reviews given; every by_type counter (dependency, config, docs, test, fix, feature) is 0, and median churn, median time-to-merge, and review latency are all null. The pull_requests list is empty, so there is no diff, no title, no review thread, and no PR number attached to the single created PR — nothing that can be read or cited. As a result I cannot describe what was hard, what slowed the work down, or whether anyone else was unblocked, because no artifact in this payload supports any such statement. This is a report about missing data, not about performance: the correct conclusion from this evidence is that the engineer's month is not visible in pull request activity, and the reason for that is not determinable from what is here.",
+            "run_2": "The payload for this month contains almost no observable work: metrics record one PR created, zero merged, and zero reviews given, and the `pull_requests` array is empty, so there is no diff, title, or review comment to read. Every type bucket (dependency, config, docs, test, fix, feature) is zero, and median churn, median time-to-merge, and review latency are all null. Rework was measured over zero PRs, so the rework rate is null rather than low. This means there is nothing in the data that describes what Engineer FG worked on, how hard it was, or who it helped. Any account of this month's work will have to come from the engineer and from sources outside the pull request record — this payload cannot supply one."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The absence of merged PRs and reviews is fully consistent with a month spent on work that pull requests do not capture — design, incident response, cross-team support, investigation, onboarding, leave, or a long-running effort still in progress behind the single created PR. The payload contains no diff and no review thread, so there is literally nothing here that contradicts a productive month; the data collection simply did not reach whatever the work was.",
+            "run_2": "The absence of merged pull requests is consistent with a month spent on work that does not land as PRs in this repository: design or architecture work, an incident, on-call, planning, hiring, onboarding, cross-team support, leave, or a long-running effort still in progress behind the single created PR. The one created PR may be substantial and simply not yet merged within the window, and the payload gives no visibility into its size or content. A tracked-work record this thin is at least as likely to reflect the limits of the instrumentation as the limits of the activity."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Taken at face value, the tracked output for the month is one created PR that never merged (prs_merged: 0), zero reviews given to zero authors (given: 0, authors_reviewed: 0), and no code landed in any category. On this evidence alone there is no visible contribution to the shared codebase and no visible participation in other people's work, and a reader with only this payload would have no way to see value delivered.",
+            "run_2": "Read strictly on what is here, there is no completed, reviewable output this month: zero PRs merged, zero substantive merges, and zero reviews given to any author, meaning no visible contribution to other people's work either. The single created PR has no recorded diff, merge, or review activity, so there is not even partial evidence of progress. On this data alone, a reader cannot confirm that any engineering artifact was produced or that any teammate was unblocked."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer HJ": {
+      "engineer": "Engineer HJ",
+      "interpretation": {
+        "engineer": "Engineer HJ",
+        "summary": "The payload contains a single merged pull request for the month, PR 287966, which makes custom editor models get disposed when their underlying file is deleted. The change adds a `FileOperation.DELETE` branch to the existing file-operation listener in `customEditors.ts`, adds `disposeAllModelsForResource` to the `ICustomEditorModelManager` interface, and implements it in `CustomEditorModelManager` by scanning the reference map for keys prefixed with the resource URI. No PRs were created during the month and none were reviewed; the recorded median time to merge is 4650.76 hours, which suggests this PR was authored well before the month in question and merged inside it. There are no review comments attached to the PR, so there is no visible discussion, pushback, or iteration to read. This is a small, contained fix in a specific VS Code contrib area; the evidence does not extend beyond it.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "Engineer HJ landed a correct, tightly scoped fix to a real state-management bug in the VS Code custom editor stack, closing out a contribution that had been open for months. The change is minimal and well-placed: it hooks the existing file-operation listener rather than adding a new one (`if (e.isOperation(FileOperation.DELETE))`), extends the manager interface deliberately, and documents the reason for the disposal in a comment about \"recreating files with the same name.\" Landing a long-pending change in a large shared codebase often means persistence through review queues and rebases that leave no trace in the PR record, and the absence of any requested changes (`\"prs_with_changes_requested\": 0`) is consistent with the change being accepted as written.",
+        "least_favourable_reading": "The visible output for the month is one small PR that was authored earlier — zero PRs created, zero reviews given, zero changes requested of others — so there is almost no evidence of activity originating in this month. The change itself takes a shortcut that a reviewer might flag: it rebuilds the composite map key inline (`const keyStart = `${resource.toString()}@@@`;`) rather than reusing the manager's own `key()` helper, coupling the new method to an encoding detail, and it fires disposal without awaiting (`value.model.then(x => x.dispose());`) with no test added anywhere in the diff (`\"test\": 0`). Read strictly on this payload alone, the month shows one modest merge and no collaboration footprint.",
+        "insufficient_evidence": [
+          "Whether Engineer HJ did substantial work this month that never reached a pull request — design docs, incident response, investigation, or code still in progress.",
+          "Why PR 287966 took ~4650 hours to merge: whether the delay was review queue, CI, maintainer availability, the engineer's own responsiveness, or the PR simply being old and recently rediscovered.",
+          "Whether the engineer is an external or occasional contributor to this repository versus a team member with day-to-day ownership; zero PRs created and zero reviews given are consistent with either.",
+          "Whether the stale-cache bug was validated manually or by an existing test; the diff contains no test changes and no verification notes.",
+          "Whether reviewers raised concerns about the key-prefix matching or fire-and-forget disposal in a channel outside the PR — the review_comments array is empty.",
+          "Any mentoring, pairing, code review outside this repository, or scope negotiation, none of which appear in PR data.",
+          "Whether the engineer's review load is genuinely zero or simply not captured for this repository/time window.",
+          "The reason for the ~194-hundred-hour time to merge (maintainer availability, release branch policy, external contribution queue, or author inactivity) cannot be determined from the data given.",
+          "Whether the DELETE path intentionally skips `asCanonicalUri` normalization used on the MOVE path, or whether that is an oversight, cannot be resolved without the surrounding code and any offline discussion.",
+          "Whether tests exist elsewhere for this behaviour, or whether the reviewer waived them, is not shown; the payload contains no review comments at all.",
+          "Mentoring, pairing, or design review conducted in DMs, issues, or meetings is entirely outside this dataset, so the zero reviews-given figure says nothing about collaboration off the PR surface.",
+          "Whether this repository is the engineer's primary work location, or whether their main output lands in a repo not represented here, is unknown."
+        ],
+        "questions_for_the_1_1": [
+          "PR 287966 shows a ~6 month gap between authoring and merge — what happened in between, and was anything blocking you that I could have helped with?",
+          "No PRs were created this month in this data. What were you actually working on, and is there work that didn't show up as a pull request here?",
+          "In `disposeAllModelsForResource` you rebuild the key prefix as `${resource.toString()}@@@` rather than using the private `key()` helper — was that deliberate, and is there a risk if the key format changes?",
+          "The models are disposed with `value.model.then(x => x.dispose())` without awaiting. Did you consider cases where a model is still resolving when the file is deleted?",
+          "How did you verify the original bug (stale references when recreating a file with the same name)? Would a regression test in the customEditor suite be worth adding?",
+          "You gave no code reviews in this window. Is review something you're being pulled into elsewhere, or is there a reason it hasn't been part of your load?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [
+          287966
+        ],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "The fix required touching three files across the customEditor layer — the service, the shared interface, and the model manager — rather than a single local edit, because the disposal capability did not previously exist on the manager's public surface."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "The implementation depends on knowledge of the internal composite key format used by the manager, reconstructing the `resource@@@viewType` prefix by hand instead of going through the private `key()` helper."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "The disposal path handles models held as promises, disposing asynchronously while removing the map entry synchronously — a lifecycle ordering the author had to decide on."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "The stated motivation is a specific stale-state bug — recreating a file with the same name after deletion — which is a non-obvious failure mode rather than a generic cleanup."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 287966,
+            "claim": "PR 287966 required reasoning about the model manager's composite key encoding rather than a simple map lookup, because models are keyed by resource and view type together."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 287966,
+            "claim": "The fix required mutating the reference map while iterating it and disposing models that are stored as promises, i.e. handling asynchronous disposal inside a synchronous method."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 287966,
+            "claim": "The change spans three files including a public interface, so it touches the contract other implementers of the model manager must satisfy, not just local code."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 287966,
+            "claim": "The stated root cause is a lifecycle/staleness bug rather than a visible functional gap: stale model references surviving deletion and affecting later recreation of a same-named file."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "The one merged PR sat for an extremely long time before merging: the recorded median time to merge is 4650.76 hours (roughly six months), with zero PRs created this month, indicating the merge closed out work started long before."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "No review activity is recorded on the PR, so whatever caused the long wait is not visible in the data — there is no review comment, requested change, or approval thread to explain it."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 287966,
+            "claim": "The one merged PR sat for roughly 194 days between opening and merge, indicating a very long review or waiting period outside the engineer's own turnaround."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 287966,
+            "claim": "There is no recorded review conversation on the PR, so nothing in the payload explains what the delay consisted of or what feedback was needed."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_1",
+            "pr": 287966,
+            "claim": "There is no evidence in this payload of the engineer unblocking anyone: zero reviews were given and zero authors were reviewed."
+          },
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "The payload contains a single merged pull request for the month, PR 287966, which makes custom editor models get disposed when their underlying file is deleted. The change adds a `FileOperation.DELETE` branch to the existing file-operation listener in `customEditors.ts`, adds `disposeAllModelsForResource` to the `ICustomEditorModelManager` interface, and implements it in `CustomEditorModelManager` by scanning the reference map for keys prefixed with the resource URI. No PRs were created during the month and none were reviewed; the recorded median time to merge is 4650.76 hours, which suggests this PR was authored well before the month in question and merged inside it. There are no review comments attached to the PR, so there is no visible discussion, pushback, or iteration to read. This is a small, contained fix in a specific VS Code contrib area; the evidence does not extend beyond it.",
+            "run_2": "The payload contains a single merged pull request, PR 287966, which adds handling for file deletion in VS Code's custom editor service. The change hooks `FileOperation.DELETE` into the existing file-operation listener, adds a `disposeAllModelsForResource` method to the `ICustomEditorModelManager` interface, and implements it in `CustomEditorModelManager` by prefix-matching the composite `resource@@@viewType` key and disposing the matching model references. No PRs were created during the month (`prs_created: 0`), and the merged PR shows a median time to merge of 4650.76 hours, so the authoring work almost certainly predates this reporting window. No code reviews were given (`given: 0`) and the PR carries no review comments, so this month's evidence is essentially one landing event with no visible discussion around it."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Engineer HJ landed a correct, tightly scoped fix to a real state-management bug in the VS Code custom editor stack, closing out a contribution that had been open for months. The change is minimal and well-placed: it hooks the existing file-operation listener rather than adding a new one (`if (e.isOperation(FileOperation.DELETE))`), extends the manager interface deliberately, and documents the reason for the disposal in a comment about \"recreating files with the same name.\" Landing a long-pending change in a large shared codebase often means persistence through review queues and rebases that leave no trace in the PR record, and the absence of any requested changes (`\"prs_with_changes_requested\": 0`) is consistent with the change being accepted as written.",
+            "run_2": "Engineer HJ shipped a genuine correctness fix into a shared VS Code subsystem: the custom editor service previously reacted to file moves but not deletions, leaving disposed-file models cached (`this._models.disposeAllModelsForResource(resource)` is newly wired to `FileOperation.DELETE`). Landing it required understanding the model manager's composite key format (`${resource.toString()}@@@`), extending a public interface, and handling promise-held models during disposal — small in line count but precise in placement. The fact that it merged with zero requested changes and zero reverts suggests the change was accepted as written, and a ~194-day time-to-merge points at review or release-gating latency rather than at the author's iteration speed."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The visible output for the month is one small PR that was authored earlier — zero PRs created, zero reviews given, zero changes requested of others — so there is almost no evidence of activity originating in this month. The change itself takes a shortcut that a reviewer might flag: it rebuilds the composite map key inline (`const keyStart = `${resource.toString()}@@@`;`) rather than reusing the manager's own `key()` helper, coupling the new method to an encoding detail, and it fires disposal without awaiting (`value.model.then(x => x.dispose());`) with no test added anywhere in the diff (`\"test\": 0`). Read strictly on this payload alone, the month shows one modest merge and no collaboration footprint.",
+            "run_2": "For this month, the observable footprint is one merged PR authored earlier, no new PRs opened, and no reviews given to anyone (`given: 0`, `authors_reviewed: 0`), so there is no evidence here of ongoing throughput or of participation in others' work. The change itself is also worth probing on its merits: `disposeAllModelsForResource` relies on string prefix matching of a `@@@`-delimited key, which is brittle if a resource string can itself contain the delimiter or if canonicalization differs (the MOVE path uses `this.uriIdentityService.asCanonicalUri(...)` while the new DELETE path passes `e.resource` directly), and there are no tests in the diff (`by_type.test: 0`) demonstrating the stale-cache scenario is fixed."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer AN": {
+      "engineer": "Engineer AN",
+      "interpretation": {
+        "engineer": "Engineer AN",
+        "summary": "Engineer X's merged work this month is two tightly related changes to the same file, `extensions/copilot/src/extension/byok/common/anthropicMessageConverter.ts`, both concerning PDF handling in the BYOK Anthropic message path. PR 324960 fixes outbound conversion so that `application/pdf` data parts become `type: 'document'` blocks instead of being mislabelled as images, including inside tool results, and adds the first test suite for `apiMessageToAnthropicMessage`. PR 325833 completes the round trip inbound, mapping Anthropic `document` blocks to `Raw.ChatCompletionContentPartKind.Document`, wiring cache-control through, and redacting base64 document payloads in the logging path. Both PRs ship with focused unit tests covering top-level content, tool-result content, and the logging redaction case. The metrics show 4 PRs created and 2 merged, no reviews given, no changes requested on their own PRs, and a median time-to-merge of about 219 hours; the payload contains diffs for only the two merged PRs.",
+        "complexity": [
+          {
+            "claim": "The fix required knowing that PDFs must use a different Anthropic block type than images, and applying it in two distinct code paths (top-level content and tool-result content), not just one.",
+            "evidence": {
+              "pr": 324960,
+              "kind": "diff",
+              "quote": "} else if (p instanceof LanguageModelDataPart && p.mimeType === 'application/pdf') {\n\t\t\t\t\t\treturn { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: Buffer.from(p.data).toString('base64') } };"
+            }
+          },
+          {
+            "claim": "The inbound conversion preserves cache-control semantics for document blocks by mirroring the existing image handling (`pushCache`) rather than only pushing content.",
+            "evidence": {
+              "pr": 325833,
+              "kind": "diff",
+              "quote": "} else if (block.type === 'document') {\n\t\t\t\t\tconst documentPart = toRawDocument(block);\n\t\t\t\t\tif (documentPart) {\n\t\t\t\t\t\tcontent.push(documentPart);\n\t\t\t\t\t\tpushCache(block);\n\t\t\t\t\t}"
+            }
+          }
+        ],
+        "blockers": [],
+        "unblocking_others": [
+          {
+            "claim": "No pull-request-level evidence of unblocking others exists in this payload: zero reviews were given and neither merged PR carries review comments.",
+            "evidence": {
+              "pr": 324960,
+              "kind": "metric",
+              "quote": "\"given\": 0,\n      \"authors_reviewed\": 0"
+            }
+          }
+        ],
+        "most_favourable_reading": "Engineer X identified and closed a concrete correctness bug — PDFs sent to Anthropic BYOK endpoints as image blocks — and then, rather than stopping at the symptom, followed the data through the rest of the pipeline: inbound `document` blocks in PR 325833, tool-result nesting in both PRs, cache-control parity via `pushCache(block)`, and log redaction so base64 payloads become `'(document)'`. Each change is accompanied by targeted tests that assert exact output shapes, including the tool-result and logging cases, and they added the first test coverage for `apiMessageToAnthropicMessage`. They also cleaned up an `as any` cast they touched in passing. This reads as careful, end-to-end ownership of one feature area with no rework requested.",
+        "least_favourable_reading": "The evidenced output is narrow: two merged PRs, both editing the same file and the adjacent spec, on a single mime-type special case. The core logic is a hardcoded `part.mimeType === 'application/pdf'` branch rather than a general non-image data-part path, so the next document type will require the same edit again in the same four places. Half the month's PRs (2 of 4) did not merge and are unexplained in this payload, time-to-merge sat around 219 hours, and there is zero review activity given to other authors. On this evidence alone there is no visible contribution outside this one converter.",
+        "insufficient_evidence": [
+          "What the two unmerged PRs were, whether they were abandoned, superseded, or still open.",
+          "Why median time to merge was ~219 hours — no review comments are present to show whether the delay was reviewer availability, CI, deliberate holding, or something else.",
+          "Whether Engineer X did design, incident response, triage, or mentoring outside pull requests; none of that appears here.",
+          "Whether the PDF bug was reported by a customer, found by Engineer X, or assigned to them, and how the scope of the follow-up feature PR was decided.",
+          "Whether zero reviews given reflects team norms, a review rotation they are not on, or an expectation not met.",
+          "Churn figures are null for both PRs and median_churn is null, so the size of the changes cannot be measured beyond the visible diffs.",
+          "Whether a more general (non-PDF-specific) abstraction was considered and rejected — no review discussion is present.",
+          "Why 2 of 4 PRs created did not merge — the payload contains no diffs, titles, or status for those two.",
+          "What caused the ~219-hour median time to merge: reviewer availability, release timing, CI, batching, or the engineer's own iteration. No review comments or timestamps are present.",
+          "Whether Engineer AN reported, triaged, or was assigned the original PDF-as-image bug, and whether it came from a customer report or internal testing.",
+          "Whether the two PRs were part of a larger planned effort (e.g. cross-provider document support) or opportunistic follow-ups; no linked issues or design docs are included.",
+          "Any mentoring, design review, pairing, incident response, or scope negotiation, none of which appear in PR data.",
+          "Whether the `churn` figures (all null) would change the picture of how large these changes actually were.",
+          "Whether other providers' converters (e.g. non-Anthropic BYOK endpoints) have the same PDF-as-image bug and whether that was investigated."
+        ],
+        "questions_for_the_1_1": [
+          "What happened to the two PRs you opened but didn't merge this month?",
+          "The PDF handling is a mime-type-specific branch in four places. Did you consider a general data-part-to-block mapping, and what made the explicit branch the better call for now?",
+          "Both merged PRs took over a week to land. What was the holdup — waiting on review, on the SDK types, on validation with a real endpoint?",
+          "How did the PDF-as-image bug surface? Was it reported, or did you find it while working on something else?",
+          "Are there other mime types or block kinds (e.g. non-base64 `url` document sources) still unhandled in this converter that you'd want to follow up on? `toRawDocument` returns undefined for non-base64 sources.",
+          "You gave no code reviews this month — is that a workload thing, a rotation thing, or is review not currently part of your remit?",
+          "Is there work you did this month that wouldn't show up as a pull request that I should know about?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [
+          324960,
+          325833
+        ],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 324960,
+            "claim": "The change tightened a previously unsafe type assertion in the tool-result branch, replacing `as any` with an explicit image media-type union."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 325833,
+            "claim": "The inbound work handled the logging path separately so raw base64 document bytes are not written to logs, a concern distinct from the functional conversion."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 324960,
+            "claim": "Engineer X introduced test coverage for a function that previously had none in this spec file, importing `apiMessageToAnthropicMessage` for the first time."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 324960,
+            "claim": "The change tightened a type escape hatch rather than leaving it: an existing `media_type: p.mimeType as any` cast was replaced with an explicit image MIME union, which is what made the PDF mismatch expressible in the type system."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 325833,
+            "claim": "PR 325833 recognised that the inbound direction had a separate logging path needing its own redaction, so raw base64 PDF bytes would not be written to logs."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 324960,
+            "claim": "Both PRs added test coverage in the same change, including a test that asserts the exact nested tool_result document structure rather than a snapshot."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 324960,
+            "claim": "Median time from open to merge was roughly 9 days (219.35 hours) across the two merged PRs, though the payload contains no review comments explaining the delay."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 325833,
+            "claim": "Two of the four PRs created this month are not merged and are not present in the payload, so nothing can be said about what happened to them."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 325833,
+            "claim": "Merged PRs sat for a long time before landing: median time to merge was 219.35 hours (roughly nine days), with no review comments recorded on either merged PR to explain the delay."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 324960,
+            "claim": "Two of the four PRs created this month are not in the merged set and are not included in the payload, so their status and any obstacle they hit is not visible here."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 324960,
+            "claim": "The work depended on the shape of a third-party SDK's type definitions; the fix begins by importing a type that was not previously in scope, meaning the correct block type existed upstream but was unused."
+          },
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "Engineer X's merged work this month is two tightly related changes to the same file, `extensions/copilot/src/extension/byok/common/anthropicMessageConverter.ts`, both concerning PDF handling in the BYOK Anthropic message path. PR 324960 fixes outbound conversion so that `application/pdf` data parts become `type: 'document'` blocks instead of being mislabelled as images, including inside tool results, and adds the first test suite for `apiMessageToAnthropicMessage`. PR 325833 completes the round trip inbound, mapping Anthropic `document` blocks to `Raw.ChatCompletionContentPartKind.Document`, wiring cache-control through, and redacting base64 document payloads in the logging path. Both PRs ship with focused unit tests covering top-level content, tool-result content, and the logging redaction case. The metrics show 4 PRs created and 2 merged, no reviews given, no changes requested on their own PRs, and a median time-to-merge of about 219 hours; the payload contains diffs for only the two merged PRs.",
+            "run_2": "Engineer AN's visible output this month is two merged PRs, both confined to the same file — `extensions/copilot/src/extension/byok/common/anthropicMessageConverter.ts` — and its spec file. PR 324960 fixes a bug where PDF attachments were being sent to BYOK Anthropic endpoints as `type: 'image'` blocks, adding an `application/pdf` branch that emits `type: 'document'` instead, in both the top-level content path and the nested `tool_result` content path. PR 325833 completes the round trip in the other direction, mapping inbound Anthropic `document` blocks into `Raw.ChatCompletionContentPartKind.Document` and adding a redaction branch so base64 PDF bytes render as `'(document)'` in logging output. Both PRs ship unit tests alongside the change, including tool-result and logging-redaction cases. Metrics show 4 PRs created and 2 merged, a median time-to-merge of 219 hours, zero reviews given, and zero review comments received on either merged PR."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Engineer X identified and closed a concrete correctness bug — PDFs sent to Anthropic BYOK endpoints as image blocks — and then, rather than stopping at the symptom, followed the data through the rest of the pipeline: inbound `document` blocks in PR 325833, tool-result nesting in both PRs, cache-control parity via `pushCache(block)`, and log redaction so base64 payloads become `'(document)'`. Each change is accompanied by targeted tests that assert exact output shapes, including the tool-result and logging cases, and they added the first test coverage for `apiMessageToAnthropicMessage`. They also cleaned up an `as any` cast they touched in passing. This reads as careful, end-to-end ownership of one feature area with no rework requested.",
+            "run_2": "Engineer AN found and closed a real correctness bug in the BYOK Anthropic path — PDFs were being marshalled as `type: 'image'` with a cast (`media_type: part.mimeType as 'image/jpeg' | ...`) that silently lied about the payload — and then followed through on the whole round trip rather than stopping at the symptom. PR 324960 handles outbound conversion in both the top-level and nested tool-result paths; PR 325833 handles inbound conversion, keeps cache-control behaviour consistent with the image branch (`pushCache(block)`), and adds a logging redaction so base64 document bytes surface as `'(document)'`. Each PR ships targeted tests asserting exact structures, including tool-result nesting and the redaction path, and the `as any` cast was replaced with an explicit union — a small tidying that makes the class of bug harder to reintroduce. Both merged without a single review comment, which is consistent with changes that were scoped tightly and well covered."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The evidenced output is narrow: two merged PRs, both editing the same file and the adjacent spec, on a single mime-type special case. The core logic is a hardcoded `part.mimeType === 'application/pdf'` branch rather than a general non-image data-part path, so the next document type will require the same edit again in the same four places. Half the month's PRs (2 of 4) did not merge and are unexplained in this payload, time-to-merge sat around 219 hours, and there is zero review activity given to other authors. On this evidence alone there is no visible contribution outside this one converter.",
+            "run_2": "The visible month is two small merged changes to one file and its test file, adding `application/pdf` branches to existing if/else chains. Half of the PRs opened did not merge and are not represented here, so there is no evidence of what happened to them. No code review was given to anyone (`\"given\": 0`), and merged work took a median of 219.35 hours to land with no recorded review discussion, so there is no evidence in this payload of collaboration, design input, or influence beyond the diff. The PDF handling is also implemented as string-literal comparison duplicated across four call sites (`part.mimeType === 'application/pdf'`, `p.mimeType === 'application/pdf'`, `block.type === 'document'`, `c.type === 'document'`) rather than factored into a shared predicate, so the next non-image MIME type will require the same four edits again."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer AK": {
+      "engineer": "Engineer AK",
+      "interpretation": {
+        "engineer": "Engineer AK",
+        "summary": "The payload for this month contains almost no observable activity: metrics report `prs_created: 1` and `prs_merged: 0`, and the `pull_requests` list is empty, so there is no diff, title, or review thread to read. Every type bucket (dependency, config, docs, test, fix, feature) is zero, and median churn and median time-to-merge are null because nothing merged. Review activity is also recorded as zero given, with no authors reviewed and no changes requested. Rework metrics were measured over zero PRs, so the rework rate is null rather than low. On this evidence I cannot describe what Engineer AK worked on, how hard it was, or what got in the way — the single created PR has no attached record. Any statement about output or contribution this month would be invented rather than observed.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The dataset simply does not capture this engineer's month. One PR was created but never appears in the `pull_requests` array, which is itself a sign of incomplete capture rather than incomplete work; the engineer may have spent the month on activity this payload structurally cannot see — design documents, incident response, an unmerged long-running branch, onboarding, cross-team support, leave, or work in a repository outside the scope of this export. Zero reviews given and zero rework are equally consistent with someone who was not present in this codebase at all during the period.",
+        "least_favourable_reading": "Taken at face value, the recorded footprint in this repository for the month is one unmerged PR, no merged changes of any type, and no code review participation (`reviews.given: 0`, `authors_reviewed: 0`). If this repository was expected to be the engineer's primary area, then neither shipped code nor collaboration through review is visible in it, and the one PR that was opened did not reach merge.",
+        "insufficient_evidence": [
+          "What the single created PR actually contains — no title, diff, or description is present in the payload.",
+          "Why that PR did not merge: whether it was closed, abandoned, still open at month end, or superseded.",
+          "Whether the engineer was present and working during the whole month (leave, onboarding, rotation, or transfer are all invisible here).",
+          "Whether work happened in other repositories, forks, or branches not covered by this export.",
+          "Any non-PR contribution: design docs, RFCs, incident response, on-call, debugging, pairing, mentoring, or DM-based unblocking.",
+          "Whether reviews were given outside this repository or through channels not captured as GitHub review events.",
+          "Whether scope was negotiated, deferred, or reassigned during the month.",
+          "Any signal about quality, since no diff or review comment exists to read.",
+          "Whether that PR is still open, closed, draft, or was merged outside the measurement window.",
+          "Any mentoring, pairing, or unblocking that happened in DMs, issue threads, or verbally rather than in code review.",
+          "Whether zero reviews given reflects no requests received, a deliberate reallocation of their time, or reviews performed in a system not captured here.",
+          "Whether work was blocked on dependencies, environments, approvals, or another team.",
+          "Scope negotiation: whether planned work was cut, deferred, or absorbed by someone else."
+        ],
+        "questions_for_the_1_1": [
+          "What did you spend most of your time on this month? I have almost no PR record and want to understand what the data missed.",
+          "There is one PR created and none merged — what is that PR, and what is its current state?",
+          "If most of your work landed outside this repository or outside pull requests entirely, where should I be looking to see it?",
+          "Were there stretches this month where you were away, on-call, onboarding, or pulled onto something unplanned?",
+          "Review activity shows zero in this repo — are you reviewing elsewhere, or has review not been part of your responsibilities here?",
+          "Is anything currently blocking you from getting changes to a merged state, such as review latency, unclear ownership, or an environment problem?",
+          "What would you want reflected in a record of this month that a PR log would never show?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "The payload for this month contains almost no observable activity: metrics report `prs_created: 1` and `prs_merged: 0`, and the `pull_requests` list is empty, so there is no diff, title, or review thread to read. Every type bucket (dependency, config, docs, test, fix, feature) is zero, and median churn and median time-to-merge are null because nothing merged. Review activity is also recorded as zero given, with no authors reviewed and no changes requested. Rework metrics were measured over zero PRs, so the rework rate is null rather than low. On this evidence I cannot describe what Engineer AK worked on, how hard it was, or what got in the way — the single created PR has no attached record. Any statement about output or contribution this month would be invented rather than observed.",
+            "run_2": "The payload for this month contains almost no observable activity: metrics report one PR created, zero merged, and the `pull_requests` list is empty, so there is no diff, title, or review thread to read. Review activity is recorded as zero given, with no authors reviewed and no changes requested. Rework metrics are measured over zero PRs, so the rework rate and median time-to-merge are null rather than low. In practical terms, this is a month with no reviewable engineering artifacts in the dataset, not a month with weak artifacts. No claim about what Engineer AK worked on, how hard it was, or what blocked it can be supported from this payload, because the one PR that is counted has no accompanying record. Any read on this month has to come from outside the PR data — the 1:1 is the place to get it."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The dataset simply does not capture this engineer's month. One PR was created but never appears in the `pull_requests` array, which is itself a sign of incomplete capture rather than incomplete work; the engineer may have spent the month on activity this payload structurally cannot see — design documents, incident response, an unmerged long-running branch, onboarding, cross-team support, leave, or work in a repository outside the scope of this export. Zero reviews given and zero rework are equally consistent with someone who was not present in this codebase at all during the period.",
+            "run_2": "The engineer may have spent the month on work that does not produce pull requests — design documents, incident response, on-call, planning, cross-team support, interviewing, mentoring, or an exploratory spike that had not yet landed. The single created-but-unmerged PR is consistent with work in progress at the month boundary, and a null time-to-merge means nothing merged, not that anything merged slowly. Under this reading the absence of data is an artifact of what PR metrics can and cannot see, and says nothing negative about the month."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Taken at face value, the recorded footprint in this repository for the month is one unmerged PR, no merged changes of any type, and no code review participation (`reviews.given: 0`, `authors_reviewed: 0`). If this repository was expected to be the engineer's primary area, then neither shipped code nor collaboration through review is visible in it, and the one PR that was opened did not reach merge.",
+            "run_2": "Taken purely at face value, the dataset shows no merged code, no substantive merges of any type (dependency, config, docs, test, fix, and feature are all zero), and no code review given to any teammate over a full month. A reader with only this payload would see neither delivered output nor contribution to others' throughput, and would have no record of the work being discussed anywhere in the PR system. This reading is weak precisely because the payload is empty rather than contradictory — but it is the only reading the numbers alone support."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer DS": {
+      "engineer": "Engineer DS",
+      "interpretation": {
+        "engineer": "Engineer DS",
+        "summary": "This payload contains almost no observable evidence. The metrics record one pull request created during the month, zero merged, and zero substantive merges; the `pull_requests` array is empty, so there is no diff, title, description, or review thread to read. Review activity is recorded as zero given, with no authors reviewed and no changes requested. Rework metrics are null because they were measured over zero PRs. On this data I cannot describe what Engineer DS worked on, how hard it was, or what it affected — the correct conclusion is that the evidence is insufficient rather than that little work happened.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The absence of PR records is a gap in the data, not a finding about the work. A month with one open, unmerged PR and no reviews is exactly the shape you would expect from someone whose time went into work that does not surface in a pull-request feed — a long-running design or investigation, an incident, onboarding, cross-team or vendor work, leave, or contributions made in a repository not covered by this export. The single created PR may be substantial and still in flight; because no diff is attached, nothing here contradicts that reading.",
+        "least_favourable_reading": "Taken at face value, the tracked repositories show one PR created, zero merged, zero substantive merges, and zero reviews given to zero other authors for the whole month — meaning no shipped change and no reviewer support that this system can see. If the export is complete and the engineer was fully available on these repositories, that is a month with no visible output or collaboration in the code review process, and the manager would have no artifact to point to when asked what landed.",
+        "insufficient_evidence": [
+          "What the single created PR actually changes — no title, description, diff, or file list is included.",
+          "Whether the created PR is still open, closed, draft, or blocked in review.",
+          "Whether the engineer was available all month (leave, on-call rotation, incident duty, holiday) — attendance is not in this payload.",
+          "Whether work happened in repositories or systems outside the scope of this export.",
+          "Any design documents, RFCs, architecture work, or spikes that did not produce a pull request.",
+          "Mentoring, pairing, code review given verbally or in DMs, and any unblocking of teammates outside GitHub.",
+          "Incident response, on-call debugging, or production operations work.",
+          "Scope negotiation, planning, or reprioritisation that may have redirected the month's effort.",
+          "Whether zero reviews given reflects no requests received, or requests received and not actioned.",
+          "Whether the month included non-code contributions such as data analysis, customer support, or hiring.",
+          "Whether the engineer was present and working for the full month, on leave, onboarding, or partially allocated elsewhere.",
+          "Any work that does not pass through pull requests: design documents, RFCs, architecture decisions, incident response, on-call, debugging sessions, production investigations.",
+          "Mentoring, pairing, or unblocking that happened in DMs, chat, meetings, or verbal review rather than as PR comments.",
+          "Whether the engineer was assigned a long-lived or exploratory project where a low PR count is the expected shape of the work.",
+          "Whether external dependencies, environment problems, or waiting on another team blocked the single PR from merging.",
+          "Code quality, test discipline, or review responsiveness — no diff or review comment exists to assess.",
+          "Scope negotiation: whether the engineer pushed back on, resized, or absorbed additional work this month."
+        ],
+        "questions_for_the_1_1": [
+          "What did you spend the bulk of this month on, and where does that work live if not in pull requests?",
+          "The one PR you opened — what is it, and what is its current status?",
+          "Is anything blocking that PR from merging: review capacity, a dependency, an environment issue, or unfinished scope?",
+          "Were there weeks you were away, on-call, or pulled onto an incident that this data wouldn't show?",
+          "Are you working in a repository or codebase that might not be covered by our reporting?",
+          "No code reviews are recorded for you this month — were you receiving review requests, and if so what got in the way of picking them up?",
+          "Was any of this month's work deliberately front-loaded on design or investigation before code, and if so what's the plan for landing it?",
+          "What would make next month's work more visible to the team, and what do you need from me to get there?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "This payload contains almost no observable evidence. The metrics record one pull request created during the month, zero merged, and zero substantive merges; the `pull_requests` array is empty, so there is no diff, title, description, or review thread to read. Review activity is recorded as zero given, with no authors reviewed and no changes requested. Rework metrics are null because they were measured over zero PRs. On this data I cannot describe what Engineer DS worked on, how hard it was, or what it affected — the correct conclusion is that the evidence is insufficient rather than that little work happened.",
+            "run_2": "This payload contains almost no observable activity. The metrics record one pull request created, zero merged (`prs_merged: 0`, `prs_merged_substantive: 0`), zero reviews given, and an empty `pull_requests` array — meaning even the single created PR has no diff, title, or discussion attached for inspection. Every derived metric that would normally characterise the work is null: `median_churn`, `median_time_to_merge_h`, review latency, and rework rate (`measured_over: 0`). As a result there is nothing in this data about what the engineer worked on, how hard it was, what slowed it down, or how they interacted with colleagues. I can make no evidenced claims about complexity, blockers, or unblocking others, because there is no citable diff or comment in the payload. The correct reading of this month is that the evidence is missing, not that the work was absent — this data cannot distinguish between those two possibilities."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The absence of PR records is a gap in the data, not a finding about the work. A month with one open, unmerged PR and no reviews is exactly the shape you would expect from someone whose time went into work that does not surface in a pull-request feed — a long-running design or investigation, an incident, onboarding, cross-team or vendor work, leave, or contributions made in a repository not covered by this export. The single created PR may be substantial and still in flight; because no diff is attached, nothing here contradicts that reading.",
+            "run_2": "The month's contribution simply is not captured by pull request data. An engineer can spend a month on design work, incident response, on-call, a long-running branch that had not yet been opened as a PR, cross-team coordination, hiring, mentoring, or a research spike — none of which produce merged PRs. The single created PR (`prs_created: 1`) with no merge and no recorded diff is consistent with in-flight work that had not landed by the reporting cutoff. On this reading the payload is a measurement gap, and the substantive account of the month has to come from the engineer."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Taken at face value, the tracked repositories show one PR created, zero merged, zero substantive merges, and zero reviews given to zero other authors for the whole month — meaning no shipped change and no reviewer support that this system can see. If the export is complete and the engineer was fully available on these repositories, that is a month with no visible output or collaboration in the code review process, and the manager would have no artifact to point to when asked what landed.",
+            "run_2": "Taken purely at face value, this month shows no completed engineering output and no collaborative footprint: nothing merged, and `reviews.given: 0` across `authors_reviewed: 0`, so no reviews were provided to any teammate and no changes were requested of anyone. If the expectation was landed code or participation in the team's review load, neither is visible here. Because the one created PR carries no diff in the payload, there is also nothing to point to as work-in-progress evidence."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer IG": {
+      "engineer": "Engineer IG",
+      "interpretation": {
+        "engineer": "Engineer IG",
+        "summary": "One PR merged this month (326958), a small hardening change to `GitHubOrgChatResourcesService` in the Copilot extension that wraps cache-directory creation and cache-file writes in try/catch, logs the failure with context, and rethrows the original error. The production change is roughly a dozen lines; the larger part of the diff is two new unit tests that assert both the log message and that the *identical* error object is rethrown. The review thread shows engagement rather than silence: a reviewer suggested downgrading the new logs to trace level and Engineer IG responded that they had investigated and would keep them at `error`. The same thread also contains a discussion about rate-limiting an expensive event ('Each time it fires we are making quite a few expensive calls'), which appears related to but not visibly implemented in this diff. The PR took a median 155 hours to merge, and no code reviews were given to other authors this month.",
+        "complexity": [],
+        "blockers": [
+          {
+            "claim": "The single PR took about 6.5 days to merge for a change of roughly a dozen production lines.",
+            "evidence": {
+              "pr": 326958,
+              "kind": "metric",
+              "quote": "\"median_time_to_merge_h\": 155.19"
+            }
+          }
+        ],
+        "unblocking_others": [],
+        "most_favourable_reading": "This is a careful, well-tested diagnostics fix in an area where failures were previously invisible: the old code called `createDirectory` on the strength of a comment ('createDirectory should create parent directories recursively') and now logs and rethrows instead. The tests are unusually rigorous for a logging change, asserting the exact log message and that the original error object is rethrown rather than wrapped. Engineer IG engaged substantively with review, investigated the reviewer's log-level suggestion, and gave a reasoned answer ('I looked around a bit and I think it's reasonable to keep these at `error`'), while also inviting concrete guidance on the rate-limiting question. One merged PR is a thin record, but nothing in the record suggests low-quality work.",
+        "least_favourable_reading": "The visible output for the month is one PR whose production change is a try/catch around two existing calls plus log lines, merged after 155 hours, with zero reviews given to anyone else. The review thread raises a real reliability concern — 'Each time it fires we are making quite a few expensive calls, so we should avoid firing it frequently' and a suggestion of a client cap — and the diff shown contains no rate-limiting or cap logic, so the substantive follow-up either happened elsewhere or did not happen. Engineer IG's own reply ('I don't know what a reasonable rate here would be') leaves that decision open in the thread. On this payload alone there is no evidence of larger design work, cross-team leverage, or review contribution.",
+        "insufficient_evidence": [
+          "Whether the rate-limiting / client-cap concern raised in review was implemented, deferred, or dropped — no diff in this payload contains it.",
+          "Why the PR sat for ~155 hours: reviewer availability, release timing, CI, or ongoing discussion are all consistent with the data.",
+          "Whether the review comments about an 'event' firing every 5 minutes belong to this diff or to an adjacent change; the payload does not attribute each comment to a file or line.",
+          "Whether one merged PR reflects the month's actual workload — on-call, incident response, design docs, spec review, investigation and mentoring are all invisible here.",
+          "Whether Engineer IG helped others outside pull requests; the reviews-given count of 0 only rules out in-PR review help.",
+          "Whether the change was self-initiated or requested after a production incident in the org resource cache.",
+          "Churn is null for this PR, so the true size of the change relative to the file cannot be confirmed beyond the shown hunks.",
+          "Why the review thread discusses event firing frequency and expensive calls when the attached diff only changes logging; the two may belong to different revisions of the PR that are not both represented here.",
+          "Why time to merge was 155 hours: review latency, CI, release timing, and the engineer's own iteration are indistinguishable from a single merge timestamp.",
+          "Whether the absence of reviews given reflects team norms, a non-reviewer role on this codebase, or reviews performed in a system not captured here.",
+          "Whether one merged PR is typical or atypical for this engineer — there is no baseline or prior-month data in the payload.",
+          "Whether the trace/error log-level decision was subsequently validated by anyone else, or whether the reviewer accepted the explanation."
+        ],
+        "questions_for_the_1_1": [
+          "What happened to the rate-limiting / client-cap suggestion from review — is there a follow-up PR, an issue, or was it decided to be out of scope?",
+          "What did you find when you looked into the log-level question that convinced you `error` was correct rather than `trace`?",
+          "What made the PR take about a week to merge — were you waiting on review, on the rate-limit decision, or on something else?",
+          "Was this change prompted by a specific failure report in the org chat resource cache, and did the new logs actually surface anything after merge?",
+          "What else took up your time this month that wouldn't appear as a pull request?",
+          "You have no reviews recorded this month — is that a reflection of what the team asked of you, or of how review load is currently distributed?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [
+          326958
+        ],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "The tests go beyond 'an error was thrown' and assert error identity plus exact log message, which requires stubbing both the file system and the log service."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "The change preserves existing failure semantics by rethrowing after logging rather than swallowing the error, so callers of writeCacheFile are unaffected."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "Engineer IG defended a design decision under review with stated investigation rather than accepting the reviewer's suggestion by default."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "The diff replaces an assumption stated in a code comment with observable behaviour, removing the comment that had justified the unguarded call."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "The change is small and mechanical in shape — adding error logging around two existing await calls — rather than structurally complex."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "The tests go beyond checking that an error is logged: they assert the exact identity of the rethrown error, so a wrapped-or-swallowed error would fail the test."
+          },
+          {
+            "field": "complexity",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "Engineer IG defended the chosen log level against a reviewer's suggestion, citing having investigated rather than simply conceding or ignoring."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "Review feedback introduced an unresolved scope question about rate-limiting an expensive event, with the reviewer and Engineer IG both unsure of the right threshold."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "The reviewer flagged a prior production problem ('once every 5mins') as motivation for a client cap, which suggests the surrounding work depended on history Engineer IG did not originate."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "The review thread introduced an open design question about event firing frequency and cost that was not resolved to a specific number in the thread, with the reviewers themselves proposing several different caps."
+          },
+          {
+            "field": "blockers",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "Engineer IG stated uncertainty about the correct rate limit and asked the reviewer to specify one, indicating dependence on another person's context to proceed on that point."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "No reviews were given to any other author this month, so there is no PR-visible evidence of Engineer IG unblocking teammates through code review."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_1",
+            "pr": 326958,
+            "claim": "The one indirect signal is Engineer IG crediting another engineer for prior work on the same area, indicating they built on someone else's implementation rather than the reverse."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "There is no evidence of code review provided to other authors this month."
+          },
+          {
+            "field": "unblocking_others",
+            "kind": "only_in_run_2",
+            "pr": 326958,
+            "claim": "The one collaborative signal is Engineer IG crediting a reviewer for prior work on the same code, which shows engagement in the thread but not unblocking of others."
+          },
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "One PR merged this month (326958), a small hardening change to `GitHubOrgChatResourcesService` in the Copilot extension that wraps cache-directory creation and cache-file writes in try/catch, logs the failure with context, and rethrows the original error. The production change is roughly a dozen lines; the larger part of the diff is two new unit tests that assert both the log message and that the *identical* error object is rethrown. The review thread shows engagement rather than silence: a reviewer suggested downgrading the new logs to trace level and Engineer IG responded that they had investigated and would keep them at `error`. The same thread also contains a discussion about rate-limiting an expensive event ('Each time it fires we are making quite a few expensive calls'), which appears related to but not visibly implemented in this diff. The PR took a median 155 hours to merge, and no code reviews were given to other authors this month.",
+            "run_2": "Engineer IG merged one PR this month (326958), which wraps two filesystem operations in `GitHubOrgChatResourcesService` — cache directory creation and cache file write — in try/catch blocks that log the error and rethrow, and adds trace logs around both. The change ships with two new unit tests that assert both the logged message and that the original error object is rethrown unchanged. The PR thread contains two distinct discussions: one where a reviewer asks for rate-limiting guardrails on an event that makes \"quite a few expensive calls\", and one where a reviewer questions whether the new logs should be trace rather than error, which Engineer IG pushed back on after investigating. Time to merge was 155 hours, and no reviews were given to other authors this month. The volume of PR-visible work here is very low, and the payload gives no indication of what else occupied the month."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "This is a careful, well-tested diagnostics fix in an area where failures were previously invisible: the old code called `createDirectory` on the strength of a comment ('createDirectory should create parent directories recursively') and now logs and rethrows instead. The tests are unusually rigorous for a logging change, asserting the exact log message and that the original error object is rethrown rather than wrapped. Engineer IG engaged substantively with review, investigated the reviewer's log-level suggestion, and gave a reasoned answer ('I looked around a bit and I think it's reasonable to keep these at `error`'), while also inviting concrete guidance on the rate-limiting question. One merged PR is a thin record, but nothing in the record suggests low-quality work.",
+            "run_2": "Engineer IG made a targeted diagnosability improvement to a service that silently swallowed filesystem failures, and did it carefully: every new catch block rethrows rather than absorbing the error, and the two accompanying tests pin down both the log message and the exact identity of the propagated error (`caughtError === error`). They engaged substantively in review rather than deferring reflexively — investigating the reviewer's trace-vs-error suggestion and explaining why `error` was the right level, while also actively soliciting the reviewer's operational knowledge on the event rate question (\"I don't know what a reasonable rate here would be\"). One merged PR is a thin PR record, but nothing in the code or the thread suggests the work was careless, and the payload plainly does not cover work that happens outside pull requests."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The visible output for the month is one PR whose production change is a try/catch around two existing calls plus log lines, merged after 155 hours, with zero reviews given to anyone else. The review thread raises a real reliability concern — 'Each time it fires we are making quite a few expensive calls, so we should avoid firing it frequently' and a suggestion of a client cap — and the diff shown contains no rate-limiting or cap logic, so the substantive follow-up either happened elsewhere or did not happen. Engineer IG's own reply ('I don't know what a reasonable rate here would be') leaves that decision open in the thread. On this payload alone there is no evidence of larger design work, cross-team leverage, or review contribution.",
+            "run_2": "One merged PR for the month, consisting of two try/catch wrappers and their tests, is a very small amount of PR-visible output, and no reviews were given to any other author (`\"given\": 0`). The review thread raises a concern that appears unaddressed in the diff shown: a reviewer flagged that the event fires too often and \"each time it fires we are making quite a few expensive calls\", with a specific prior incident (\"it was causing problems previously at once every 5mins\"), and the merged diff contains no rate limiting or cap. On the one design question the engineer did own, they deferred the numeric decision back to the reviewer. Six and a half days to merge a change this size also leaves the cycle time largely unexplained by the code."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer IJ": {
+      "engineer": "Engineer IJ",
+      "interpretation": {
+        "engineer": "Engineer IJ",
+        "summary": "This payload contains almost no observable activity. The metrics record one pull request created, zero merged, and zero merged substantive PRs; the per-type breakdown is zero across dependency, config, docs, test, fix and feature. The `pull_requests` array is empty, so there is no diff, title, description or review thread for the single created PR — its content, size and status are unknown. Review activity is also zero: no reviews given, no authors reviewed, no changes requested. Rework is unmeasurable (`measured_over: 0`, `rate_pct: null`), and no reverts were authored. On this data no claim about what Engineer IJ worked on, how hard it was, or what blocked it can be supported; the correct conclusion is that the evidence is missing, not that the work is missing.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The dataset is empty rather than negative: there are no reverts, no changes-requested, and no failed or reopened work recorded. A single created-but-unmerged PR with no captured diff is consistent with many situations this payload cannot see — work in a repository outside this dataset, a long-running branch, time away from code, on-call or incident work, design or planning work, pairing, or contributions made through someone else's PR. Nothing here contradicts a productive month; the instrumentation simply captured one artifact and no content for it.",
+        "least_favourable_reading": "Taken purely at face value, this month produced no merged code and no reviews visible in this dataset: `prs_merged: 0`, `prs_merged_substantive: 0`, `reviews.given: 0`, `authors_reviewed: 0`. The one PR created never merged within the window and left no recorded diff or discussion. On the PR record alone there is no evidence of delivered output or of collaboration with teammates through code review during the period.",
+        "insufficient_evidence": [
+          "The content, scope, size and current state of the single created PR — the `pull_requests` array is empty, so no diff, title, description or review thread exists.",
+          "Whether the created PR is still open, closed, superseded, or merged outside the measurement window.",
+          "Whether Engineer IJ worked in repositories or systems not covered by this dataset.",
+          "Any design, architecture, RFC or planning work, which leaves no trace in PR data.",
+          "Incident response, on-call load, or production debugging.",
+          "Mentoring, pairing, or review feedback given in DMs, meetings or verbally rather than as GitHub review comments.",
+          "Time away from work (leave, holiday, illness) or reassignment to non-coding duties.",
+          "Whether the engineer was blocked on dependencies, environment access, or another team's deliverable.",
+          "Review latency and rework rate, both of which are null because there was nothing to measure.",
+          "What the one created PR actually was: no title, description, diff, file list, or line count was supplied.",
+          "Whether the month included leave, on-call, incident response, or an interrupt-heavy support rotation.",
+          "Any design, architecture, or scoping work that happened in documents, tickets, or meetings rather than in pull requests.",
+          "Any mentoring, pairing, debugging help, or unblocking done in DMs, chat, or synchronously — none of which appears in PR data.",
+          "Why zero reviews were given: no reviews requested, reviews given outside the tracked repos, or a deliberate focus elsewhere are all indistinguishable here.",
+          "Whether the reported metrics themselves are complete, given that `prs_created` is 1 while `pull_requests` is empty and every `by_type` bucket is 0.",
+          "Any measure of code quality, since no diff or review comment is available."
+        ],
+        "questions_for_the_1_1": [
+          "What were you working on this month — and is any of it in a repository or tracker outside the one this data covers?",
+          "The dataset shows one PR created and none merged, with no diff captured. What is that PR, and where does it stand now?",
+          "Was anything holding that work back — review availability, an upstream dependency, unclear requirements, or shifting priorities?",
+          "Did the month include work that never lands in a pull request (design, incident response, planning, support, interviewing)? Roughly how much of your time went there?",
+          "No code reviews are recorded for you this month. Was review not being asked of you, was it going somewhere this data doesn't see, or was it deprioritised?",
+          "Were you on leave, on-call, or loaned to another team during any part of this period?",
+          "Is there anything about how your work is tracked that makes it invisible here — for example working on a shared branch, or committing under a different account?",
+          "What would make next month's work easier to see and easier to land?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "This payload contains almost no observable activity. The metrics record one pull request created, zero merged, and zero merged substantive PRs; the per-type breakdown is zero across dependency, config, docs, test, fix and feature. The `pull_requests` array is empty, so there is no diff, title, description or review thread for the single created PR — its content, size and status are unknown. Review activity is also zero: no reviews given, no authors reviewed, no changes requested. Rework is unmeasurable (`measured_over: 0`, `rate_pct: null`), and no reverts were authored. On this data no claim about what Engineer IJ worked on, how hard it was, or what blocked it can be supported; the correct conclusion is that the evidence is missing, not that the work is missing.",
+            "run_2": "This payload contains almost no observable work product. The metrics record one pull request created during the month, zero merged, and zero reviews given to other authors. The `pull_requests` array is empty, so there is no diff, title, description, or review comment available for the single PR that was created — no churn figure, no time-to-merge, no rework rate. Because every claim in this report must cite a specific diff, review comment, or metric tied to a PR, and no PR-level records were supplied, there is nothing here that supports a statement about what Engineer IJ worked on, how hard it was, or what slowed it down. The correct reading of this month is that the evidence is missing, not that the work was absent: a month with one open PR and no reviews is equally consistent with long-running design work, work in another repository, leave, an incident rotation, or a data-collection gap. Any characterisation of this engineer's month would have to come from sources outside this payload."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The dataset is empty rather than negative: there are no reverts, no changes-requested, and no failed or reopened work recorded. A single created-but-unmerged PR with no captured diff is consistent with many situations this payload cannot see — work in a repository outside this dataset, a long-running branch, time away from code, on-call or incident work, design or planning work, pairing, or contributions made through someone else's PR. Nothing here contradicts a productive month; the instrumentation simply captured one artifact and no content for it.",
+            "run_2": "The single PR recorded as created may represent substantial in-progress or long-horizon work whose diff simply was not captured in this export, and the absence of merges may reflect time spent on activities that never surface as pull requests — design documents, incident response, mentoring, planning, or contributions to a repository outside the scope of this data collection. Nothing in the payload contradicts that reading, because the payload contains no PR-level records at all (`\"pull_requests\": []`) to weigh against it."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Taken purely at face value, this month produced no merged code and no reviews visible in this dataset: `prs_merged: 0`, `prs_merged_substantive: 0`, `reviews.given: 0`, `authors_reviewed: 0`. The one PR created never merged within the window and left no recorded diff or discussion. On the PR record alone there is no evidence of delivered output or of collaboration with teammates through code review during the period.",
+            "run_2": "Taken purely at face value, the recorded output for the month is one created PR, zero merged PRs (`\"prs_merged\": 0`), and zero code reviews given (`\"given\": 0, \"authors_reviewed\": 0`), meaning no merged change and no visible contribution to anyone else's work appears in this dataset. A reader who assumes the dataset is complete would conclude the month produced no landed change and no review support for teammates. This reading rests entirely on the assumption that the export is complete, which the empty `pull_requests` array actively calls into question."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    },
+    "Engineer BX": {
+      "engineer": "Engineer BX",
+      "interpretation": {
+        "engineer": "Engineer BX",
+        "summary": "This payload contains almost no observable activity. The metrics record one pull request created, zero merged, and zero merged substantive PRs, with no per-type breakdown (all type counters are 0) and no churn or time-to-merge figures because nothing merged. The `pull_requests` array is empty, so there is no diff, description, or review thread for the single created PR — its size, subject matter, and current state are all unknown. Review activity is also recorded as zero: no reviews given, no authors reviewed, no changes requested. Rework is measured over 0 PRs, so the rework rate is null rather than good or bad. The honest reading is that this month's data cannot support any statement about what Engineer BX worked on; the 1:1 should start by establishing where the work went, not by interpreting these numbers.",
+        "complexity": [],
+        "blockers": [],
+        "unblocking_others": [],
+        "most_favourable_reading": "The dataset is empty of PR-visible work, and PR data is a narrow lens. An engineer with one open, unmerged PR and no review activity may have spent the month on work this payload structurally cannot see: an incident, a design document, a long-running branch not yet opened, onboarding, a migration tracked outside this repository, planned leave, or work in a codebase not covered by this export. The single created PR that never merged is consistent with a large or still-in-progress piece of work rather than an absence of work. Nothing here is evidence of a problem — the rework rate is null because it was measured over 0 PRs, not because quality was poor.",
+        "least_favourable_reading": "Across the month there is no merged output (prs_merged: 0, prs_merged_substantive: 0) and no contribution to anyone else's work (reviews given: 0, authors_reviewed: 0). Even the single created PR has no accompanying record, so there is nothing that demonstrably landed or demonstrably helped a colleague. On the evidence available in this repository's PR stream alone, this month left no trace, and if a manager's expectation was steady shipping or review participation, that expectation was not met in any way this data can confirm.",
+        "insufficient_evidence": [
+          "The identity, scope, size, and status of the single created PR — the pull_requests array is empty, so there is no diff, title, or description.",
+          "Whether the created PR is still open, closed, draft, or blocked on review.",
+          "Whether the engineer was present and working this month at all (leave, sabbatical, on-call rotation, secondment).",
+          "Any work that happened outside pull requests: design docs, RFCs, architecture decisions, incident response, on-call, customer escalations.",
+          "Mentoring, pairing, or code review conducted verbally or in DMs rather than as GitHub review comments.",
+          "Work in other repositories or organisations not included in this export.",
+          "Whether reviewing was an explicit part of this engineer's remit, so whether reviews-given of 0 is a gap or simply not applicable.",
+          "Whether the month was consumed by scope negotiation, requirements churn, or dependency on another team.",
+          "Any quality signal whatsoever: rework rate and time-to-merge are null over a sample of 0.",
+          "Whether Engineer BX worked in repositories or systems not covered by this payload.",
+          "Any design work, RFCs, architecture discussion, or planning that did not produce a pull request.",
+          "Any incident response, on-call load, or production debugging during the month.",
+          "Any mentoring, pairing, code review over DMs or in person, or scope negotiation with stakeholders.",
+          "Whether the engineer was on leave, onboarding, reassigned, or partially allocated during this period.",
+          "Whether zero reviews given reflects an expectation of the role or an absence of review requests directed at them.",
+          "Any qualitative feedback from teammates, since no review comments appear in the payload."
+        ],
+        "questions_for_the_1_1": [
+          "The data shows one PR opened and nothing merged this month — what was that PR, and where does it stand now?",
+          "Was there work this month that didn't surface as pull requests in this repository (design work, incidents, another repo, another team's codebase)?",
+          "Were you out for part or all of this period, or otherwise assigned away from normal delivery?",
+          "If the single PR is still open, what is it waiting on — review, a dependency, a decision, or more implementation?",
+          "Reviews given is recorded as zero: is code review currently part of what's expected of you, and if so, what got in the way of doing any?",
+          "Is there anything you'd want a manager to know about this month that a PR log would never show?",
+          "Looking ahead, what would need to change for your work to be visible in a way that reflects it accurately?"
+        ]
+      },
+      "audit": {
+        "runs_compared": 2,
+        "corroborated_prs": [],
+        "one_sided_prs": [],
+        "dropped_claims": [],
+        "disagreements": [
+          {
+            "field": "summary",
+            "kind": "narratives_differ",
+            "run_1": "This payload contains almost no observable activity. The metrics record one pull request created, zero merged, and zero merged substantive PRs, with no per-type breakdown (all type counters are 0) and no churn or time-to-merge figures because nothing merged. The `pull_requests` array is empty, so there is no diff, description, or review thread for the single created PR — its size, subject matter, and current state are all unknown. Review activity is also recorded as zero: no reviews given, no authors reviewed, no changes requested. Rework is measured over 0 PRs, so the rework rate is null rather than good or bad. The honest reading is that this month's data cannot support any statement about what Engineer BX worked on; the 1:1 should start by establishing where the work went, not by interpreting these numbers.",
+            "run_2": "The payload for this month contains almost no observable pull request activity: one PR was created, none were merged, and the `pull_requests` array is empty, so there is no diff, title, or description available for the single PR that exists. No reviews were given (`given: 0`, `authors_reviewed: 0`), and rework metrics are null because they were measured over zero PRs. Every derived metric — median churn, median time to merge, review latency, rework rate — is null, meaning there is nothing in this data to characterise the shape, size, or difficulty of the work. This is not evidence that little work happened; it is evidence that little or none of the month's work is visible in this data source. Any account of what Engineer BX actually did this month has to come from outside these PRs."
+          },
+          {
+            "field": "most_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "The dataset is empty of PR-visible work, and PR data is a narrow lens. An engineer with one open, unmerged PR and no review activity may have spent the month on work this payload structurally cannot see: an incident, a design document, a long-running branch not yet opened, onboarding, a migration tracked outside this repository, planned leave, or work in a codebase not covered by this export. The single created PR that never merged is consistent with a large or still-in-progress piece of work rather than an absence of work. Nothing here is evidence of a problem — the rework rate is null because it was measured over 0 PRs, not because quality was poor.",
+            "run_2": "The month's work may have been substantial but invisible to this data source: the single created and still-unmerged PR is consistent with a long-running or in-progress piece of work, and time may have gone into design, investigation, incident response, cross-team support, or work in a repository not covered by this payload. With the `pull_requests` array empty and every median null, there is genuinely nothing here that contradicts a productive month."
+          },
+          {
+            "field": "least_favourable_reading",
+            "kind": "narratives_differ",
+            "run_1": "Across the month there is no merged output (prs_merged: 0, prs_merged_substantive: 0) and no contribution to anyone else's work (reviews given: 0, authors_reviewed: 0). Even the single created PR has no accompanying record, so there is nothing that demonstrably landed or demonstrably helped a colleague. On the evidence available in this repository's PR stream alone, this month left no trace, and if a manager's expectation was steady shipping or review participation, that expectation was not met in any way this data can confirm.",
+            "run_2": "Taken purely at face value, this month shows one PR created, zero merged (`prs_merged: 0`, `prs_merged_substantive: 0`), and zero reviews given to zero authors, meaning no shipped output and no visible contribution to anyone else's work landing. If PR-based collaboration was expected as part of the role, none of it is recorded here."
+          }
+        ],
+        "stripped_keys": [],
+        "rating_prose_removed": []
+      }
+    }
+  }
+}
