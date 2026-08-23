@@ -37,82 +37,87 @@ Rework is not a defect count. A changes-requested review is often the review pro
 
 _Written by a model from your diffs and review comments, with your name removed before it ran. Every claim below survived a check that it cites a real diff; claims that did not cite one were deleted._
 
-Engineer A built and then substantially redesigned a self-contained engineering-metrics system in a single month across seven merged PRs. PR 1 laid the foundation: a scheduled GitHub Action plus a ~274-line Python script that pages the REST `pulls` endpoint (explicitly avoiding the Search API's 1,000-result cap), retries on rate limits, and writes JSON plus a markdown leaderboard. PRs 2–6 iterated on that base — a feasibility table for metrics GitHub cannot supply (PR 2), a rebase-and-retry push loop for concurrent runs (PR 3), a multi-month trend table read back from committed JSON at no extra API cost (PR 4), a default tweak (PR 5), and a full README restructure with a troubleshooting table (PR 6). PR 7 then replaced the leaderboard premise entirely with a four-layer pipeline (collect / compute / interpret / distribute), an anonymization boundary, a claim-citation gate, an enforced 24-hour embargo before manager-facing pages can be written, and a migration script that stripped 1,045 `rank` fields from historical data; its churn is 22,317 lines. No PR in the payload carries a single review comment, and the pipeline's own output for this repo records that no PR had a review by anyone other than the author.
+Engineer A built and then substantially rewrote a GitHub-Actions-based engineering metrics system inside what appears to be their own repository. PR 1 established the whole thing: a workflow plus a 274-line `scripts/monthly_metrics.py` that pages the REST `pulls` endpoint, tallies per-author PR counts, and commits JSON and markdown outputs. PRs 2–6 iterated on that base — a feasibility table for metrics the GitHub API cannot supply (PR 2), a rebase-and-retry push loop (PR 3), a multi-month trend table built from previously committed JSON (PR 4), a default tweak (PR 5), and a README restructure (PR 6). PR 7 then replaced the design outright with a four-layer pipeline (collect / compute / interpret / distribute), an anonymization boundary, a citation-enforcing guardrail gate, a two-phase schedule with a 24-hour embargo on manager-facing pages, and a migration script that removed 1,045 `rank` fields from historical data. All seven PRs merged with a median time to merge of 0.0 hours and zero review comments anywhere in the payload.
 
 ### What looked hard
 
-- PR 7 encodes a release-ordering policy as an enforced runtime failure rather than a convention: the `rest` phase exits non-zero until the embargo window since the engineer-page release has elapsed.  
-  ↳ PR #7 (diff): `Embargo holds: engineer pages were released 0.2h ago; the embargo is 24h.`
+- PR 1 chose the paginated `pulls` list endpoint over the Search API specifically to avoid a silent undercount at high PR volume, and documented the reasoning in the module docstring.  
+  ↳ PR #1 (diff): `Uses the paginated `/repos/{owner}/{repo}/pulls` list endpoint (sorted by +created/updated) rather than the Search API, since Search caps results at +1000 items and a high-traffic repo like microsoft/vscode comfortably +exceeds that in merged PRs per month.`
+- PR 1 handles GitHub rate limiting with a bounded retry that honours `Retry-After` and falls back to exponential backoff.  
+  ↳ PR #1 (diff): `if exc.code in (403, 429) and attempt < 5: +                wait = int(exc.headers.get("Retry-After", "0")) or (2 ** attempt)`
 
 ### What got in your way
 
-- Median time to merge across the seven PRs is 0.0 hours, consistent with changes landing without an external review gate.  
-  ↳ PR #7 (metric): `"median_time_to_merge_h": 0.0`
+_Nothing the evidence supports._
 
 ### Where you unblocked other people
 
-- PR 6 added an operational troubleshooting table mapping each red-step symptom to a cause and a fix, which is documentation aimed at someone other than the author operating the workflow.  
+- PR 6 adds operator-facing troubleshooting material mapping failure symptoms to causes and fixes, which is written for someone other than the author.  
   ↳ PR #6 (diff): `| Run is red on **Commit and push results** | Another run pushed first. The step fetches, rebases and retries up to 5 times; if it still fails, re-dispatch that month. |`
 
 ### The same month, read two ways
 
-**Most favourable reading.** Engineer A took a project from an empty repo to a working, tested, opinionated system in one month, and — unusually — recognised mid-stream that the thing they had built (a ranked per-engineer leaderboard, PR 1) was the wrong artifact, then rebuilt it around a defensible policy: anonymization before interpretation, a code gate that drops uncited claims, and 'engineer FIRST' enforced by a non-zero exit rather than by convention (PR 7: 'Embargo holds: engineer pages were released 0.2h ago'). The supporting work is careful in the places that usually bite: Search API truncation avoided in PR 1, concurrent-push contention handled in PR 3, history rendered from committed JSON at zero extra API cost in PR 4, and honest 'insufficient evidence' fallbacks rather than misleading zeros ('A merge is not a deploy'). The documentation (PRs 2 and 6) is written for an operator, not for the author, and PR 7 claims 123 tests running in CI before the pipeline is trusted to produce anything a person reads.
+**Most favourable reading.** Engineer A shipped a working system end to end in one month and then, having seen what it produced, replaced its central premise. PR 1's leaderboard ranked people by merged PR count; PR 7 removes ranking entirely and states why — "the gate strips score-shaped keys and refuses any list of engineers carrying an ordinal. Three independent checks, each of which fails the build rather than shipping a ranking" — and backs the change with a migration that preserved every count while deleting 1,045 rank fields. The engineering along the way is careful about failure modes others would leave implicit: the Search API cap (PR 1), the concurrent-push race (PR 3), the difference between 'no data' and 'zero' in the trend table (PR 4), and missing feeds reporting 'insufficient evidence' rather than zero (PR 7). The documentation is unusually specific for a solo project — PR 2's table says exactly which API endpoint each unavailable metric would need and what it would cost.
 
-**Least favourable reading.** Seven PRs merged with zero review comments and a median time to merge of 0.0 hours means nothing in this month was checked by another person, and a 22,317-line change (PR 7) landed the same way — a size at which meaningful review is unlikely even if someone had been asked. The month also contains visible churn against the author's own recent decisions: PR 5 retunes a default set days earlier in PR 4, and PR 7 deletes the leaderboard premise PR 1 was built to deliver, stripping 1,045 rank fields from data the same repo produced. Much of the output is prose about how the system should be used (PRs 2 and 6 are docs; PR 7 is largely README and architecture narrative) rather than code exercised by anyone; the pipeline's only demonstrated run is against this repo itself, with one contributor, three of four DORA metrics blank, and the model layer switched off.
+**Least favourable reading.** Seven PRs merged with zero external review and a median time to merge of 0.0 hours, including a 22,317-line rewrite (PR 7) that discards the architecture of PR 1 four PRs later. Substantive throughput is 4 of 7 merged PRs; PR 5 changes one default from 15 to 10 across two files (6 lines), and PRs 2 and 6 are README edits, one of which (PR 6) restructures documentation that PR 7 then rewrites again. PR 7's most load-bearing claims are visible only as prose in the README — "123 tests covering the deterministic layers and the gate" and the embargo transcript — and the diff supplied here is truncated before any of `metrics/guardrails.py`, `metrics/anonymize.py` or the test suite can be inspected, so the substance behind the architecture diagram is unverified in this payload. No reviews were given to anyone.
 
 Both readings are of the same evidence. Neither is the verdict.
 
 ### What this data cannot show
 
-- Whether anyone besides Engineer A uses, depends on, or asked for this system — the only run shown has "contributors": 1 and the source repo default is a public repo (microsoft/vscode) rather than a team's own.
-- Whether the absence of reviews reflects a solo/greenfield project, an unavailable reviewer, or a choice — the payload shows the absence but not its cause.
-- Whether the 123 tests in PR 7 pass, what they cover in practice, or whether CI was green: the visible diff is truncated before any test file and shows only README claims about them.
-- Whether Layer 3 (the model interpretation path) has ever executed — the workflow gates it behind `if: ${{ inputs.interpret }}` and the example run in PR 7 is described as 'generated with Layer 3 off'.
-- Any design discussion, RFC, or stakeholder agreement behind the decision to retire the ranked leaderboard and impose an embargo policy — no review comments or linked issues are present.
-- Time spent outside PRs: incident response, pairing, DMs, mentoring, scope negotiation, or discussion that led to the PR 1 → PR 7 direction change.
-- Whether the PR 5 default change (15 → 10) came from feedback, from rendering the report and eyeballing it, or from something else.
-- Cost and rate-limit behaviour of the new per-PR detail fetches (`DETAIL_BUDGET` = 400) against a large repo — no run against a high-traffic repo with the new pipeline is shown.
-- Whether this repository is a solo/personal project, a prototype, or something with real users — the 0.0h median merge time and single contributor in the generated data ("contributors": 1) are consistent with all three.
-- Whether PR 7's redesign was the result of feedback, a design discussion, or a stated requirement from someone else; no review comments or linked issues appear in the payload.
-- Whether the 123 tests referenced in PR 7's README actually exist and pass — the test files and the `metrics/` modules are not in the visible diff, which is truncated.
-- Whether the architectural pivot in PR 7 was planned from the start (build simple, then replace) or a late correction; the evidence shows only the outcome.
-- Any mentoring, pairing, design review, incident response, or scope negotiation that happened outside a pull request.
-- Whether anyone other than the author has run, read, or consumed the reports this system generates.
-- How much of PR 7's 22,317 churn is hand-written code versus generated data files — the visible diff includes large committed JSON artifacts such as `data/pallets-flask/2026-07.json` at 1,210 lines.
-- Whether the absence of reviews reflects a team norm, a repository with no other collaborators, or a choice by this engineer.
+- The PR 7 diff is truncated mid-file; the actual implementation of `metrics/classify.py`, `compute.py`, `anonymize.py`, `interpret.py`, `guardrails.py`, `distribute.py`, `corrections.py` and `pipeline.py` is not present, so the quality of the code behind the README's architecture cannot be assessed.
+- The claim of "123 tests covering the deterministic layers and the gate" appears only in README prose in PR 7; no test files appear in the visible diff.
+- Whether the PR 1 → PR 7 redesign was self-directed, requested by someone, or a response to feedback received outside a PR. No review comments exist on any PR in this payload.
+- Whether this repository has any users or collaborators beyond the author. The generated data shows `"contributors": 1` for this repo, but that measures PR authorship, not usage.
+- Whether the zero reviews given reflects an absence of review work or a context in which no one else was authoring code to review.
+- Whether the 0.0h median time to merge reflects self-merge policy, a solo repo, or something else.
+- Any design work, scoping conversations, mentoring, incident response, or discussion that happened outside a pull request.
+- Whether the pipeline described in PR 7 has actually been run against a real multi-engineer team, or only against this repo and a single pallets/flask backfill.
+- Whether this repository is a personal/side project, a sanctioned internal tool, or something with real users — nothing in the payload identifies stakeholders or consumers.
+- Whether the absence of reviews reflects a solo repo with no available reviewers, a choice not to seek review, or a team norm; the data shows only that no PR had a review by someone other than the author.
+- Whether the rearchitecture in PR 7 was self-initiated or requested — no issue links, design docs, or discussion appear in the payload.
+- Whether the 123 tests claimed in PR 7's README exist and pass; the provided diff shows the README claim and the workflow's `python -m unittest discover -s tests -v` step, but no test files.
+- Whether the guardrail gate, anonymization boundary and score-key stripping described in PR 7's README are actually implemented as described; only `metrics/guardrails.py` and `metrics/anonymize.py` filenames appear in the layout block, not their contents.
+- Whether the pipeline has ever been run end-to-end with Layer 3 enabled against a real API key, or only with interpretation off.
+- Whether PRs 1–6 were ever used in production before PR 7 superseded them, and whether anyone depended on the leaderboard output that the migration deleted.
 
 ### Contested
 
-The interpretation ran twice and the runs disagreed on the following. Disagreements are shown, never averaged:
+Both interpretation runs independently raised PR #1, PR #3, PR #4, PR #6, PR #7. Where they differ below is in *wording and emphasis*, not in which work they thought worth describing.
 
-- (only_in_run_1) PR 1 chose paginated `pulls` listing over the Search API specifically because Search truncates at 1,000 results, and added a page-scan safety cap plus rate-limit backoff honouring Retry-After.
-- (only_in_run_1) PR 4 added a trend table that distinguishes three states — a count, an em dash for 'no merged PRs that month', and a blank for 'month not generated yet' — by reading prior months back from committed JSON rather than making new API calls.
-- (only_in_run_1) PR 3 handled concurrent workflow runs contending on the same branch by fetching, rebasing and retrying the push up to five times with escalating sleeps, failing the job explicitly if all attempts fail.
-- (only_in_run_1) PR 7 splits a single cron schedule into two phases and resolves the phase from either the dispatch input or the specific cron expression that triggered the run.
-- (only_in_run_1) PR 7 is the largest change in the month by a wide margin at 22,317 lines of churn, versus a median of 143 across the seven PRs.
-- (only_in_run_1) PR 7 claims a test suite of 123 tests over the deterministic layers and the gate, wired to run in CI before the pipeline itself.
-- (only_in_run_2) PR 1 chose the paginated `pulls` REST endpoint over the Search API specifically because Search truncates at 1,000 results, which would silently undercount a high-traffic repo.
-- (only_in_run_2) PR 1 handles GitHub rate limiting explicitly, honouring `Retry-After` and falling back to exponential backoff over five attempts.
-- (only_in_run_2) PR 1's pagination relies on a sorted-descending early-stop, with a separate `filter_field` so merged-at can be filtered while paging by updated-at.
-- (only_in_run_2) PR 4's trend table distinguishes three distinct cell states — a count, an em dash for 'no merged PRs', and a blank for 'month not generated yet' — rather than collapsing missing data into zero.
-- (only_in_run_2) PR 3 addresses a concurrency failure mode in the workflow: a rejected push from a competing run is retried up to five times with a fetch and rebase between attempts.
-- (only_in_run_2) PR 7 splits the scheduled workflow into two crons and resolves the phase from the triggering schedule, defaulting to `engineers` for anything else.
-- (only_in_run_2) PR 7 includes a data migration that rewrote historical artifacts to a new schema and removed the ranking fields the earlier design produced.
-- (only_in_run_2) PR 7 designs missing data sources to report 'insufficient evidence' rather than zero, with the rationale stated in the README.
-- (only_in_run_1) No PR in this payload received a review comment, and the system's own generated data for this repo records that none of the seven PRs inspected had a review by someone other than the author.
-- (only_in_run_1) PR 7 reverses the core premise shipped in PR 1 within the same month: the ranked leaderboard PR 1 built is retired by a migration that deletes 1,045 rank fields and the rendered ranked reports.
-- (only_in_run_1) PR 5 changes a default introduced by PR 4 earlier in the same month (TREND_TOP_N from 15 to 10), a six-line follow-up correction to the author's own recent work.
-- (only_in_run_1) PR 7 introduces new external dependencies and a paid-API code path (an Anthropic key, two model runs per engineer) that the workflow can only exercise when a secret and an opt-in flag are both present, leaving the interpretation layer unexercised in the default run.
-- (only_in_run_2) None of the seven PRs received a review from anyone other than the author, according to the pipeline's own generated output committed in PR 7.
-- (only_in_run_2) The month's largest PR reverses the product direction of the six PRs before it: PRs 1, 2, 4 and 6 all shipped and documented a ranked leaderboard, and PR 7 removes it as the thing the architecture exists to prevent.
-- (only_in_run_2) Three of the five declared data sources were unavailable in the environment, leaving several team metrics uncomputable in the worked example committed with PR 7.
-- (only_in_run_2) PR 5 was a six-line follow-up adjusting a default introduced by PR 4 three PRs earlier, indicating the trend-table sizing was tuned after the fact rather than settled at design time.
-- (only_in_run_1) PR 2 documented, for each metric the system does not track, whether GitHub can supply it and at what cost — a decision record for anyone later asked to add those columns.
-- (only_in_run_1) PR 7 added a config/README.md specifying the exact record shape for each optional external feed, so someone wiring up a board, deploy or incident export can do it without reading the code.
-- (only_in_run_1) There is no evidence in this payload of Engineer A reviewing anyone else's code: reviews given is zero over the month.
-- (only_in_run_2) The metrics record zero reviews given to any other author this month, so there is no PR-based evidence of unblocking others through review.
-- (only_in_run_2) PR 7 added `config/README.md` documenting the exact record shape of each optional external feed, which is the interface another person would need to wire up a board, deploy or incident source.
-- (only_in_run_2) PR 7 builds an explicit correction channel so a subject of the report can inject first-hand context back into the interpretation layer.
+Only one run raised PR #2 — treat those as genuinely unsettled.
+
+Claim by claim, the runs differed on the following. These are shown, never averaged. The comparison is textual, so a claim restated in different words can appear here as a difference:
+
+- (only_in_run_1) PR 1's pagination separates the field used for early termination from the field used for filtering, so that PRs merged in a month can be found by scanning an updated-sorted list.
+- (only_in_run_1) PR 4's trend table distinguishes three different absences — no data file for a month, an engineer absent from a month that does have data, and a present count — rather than collapsing them into zero.
+- (only_in_run_1) PR 3 addresses a concurrency failure mode in the commit step by rebasing onto the remote branch and retrying the push up to five times with increasing sleeps, failing the job explicitly if all attempts fail.
+- (only_in_run_1) PR 7 encodes an ordering constraint (engineer sees their page before managers do) as a runtime failure with a non-zero exit code and a two-cron schedule, rather than as a convention.
+- (only_in_run_1) PR 7 is a very large change (22,317 lines of churn) that replaces the ranked leaderboard model from PR 1 and includes a one-off migration removing rank fields from historical data.
+- (only_in_run_1) PR 7 makes missing off-GitHub data sources surface as explicit 'insufficient evidence' rather than as zero, and carries that through the generated data files.
+- (only_in_run_2) PR 1 implements early-exit pagination that relies on the sort order being descending, with a separate filter field so 'created in month' and 'merged in month' can be gathered from differently-sorted listings.
+- (only_in_run_2) PR 4's trend table distinguishes three distinct empty states — no data file for a month (blank), engineer absent from a month that does have data (em dash), and a number — rather than collapsing them all to zero.
+- (only_in_run_2) PR 4 builds multi-month history by reading back JSON committed by earlier runs, avoiding additional API calls for historical months.
+- (only_in_run_2) PR 7 encodes an ordering constraint as a runtime failure rather than a convention: the `rest` phase exits non-zero if the engineer-facing release has not been stamped or the embargo has not elapsed.
+- (only_in_run_2) PR 7 adds phase-resolution logic to the workflow that infers the phase from which cron schedule fired, with manual dispatch able to override it.
+- (only_in_run_2) PR 7 makes missing data sources report absence rather than zero, and encodes that in the emitted JSON (`value: null` with a `basis` string explaining what feed is needed).
+- (only_in_run_2) PR 7 includes a one-off migration that rewrote historical data files to a new schema and stripped 1,045 `rank` fields, plus deletion of the previously rendered ranked reports.
+- (only_in_run_1) None of the seven PRs carries a single review comment in this payload, and the pipeline's own output records that no PR it inspected had a review by anyone other than the author.
+- (only_in_run_1) Median time to merge across all seven PRs is 0.0 hours, consistent with self-merge and no waiting on review.
+- (only_in_run_1) The GitHub API itself constrained what could be measured; PR 2 documents which metrics are unavailable or only approximable and why.
+- (only_in_run_1) Concurrent workflow runs contending on the same commit was a real failure mode that required a code fix and then a documented operational workaround.
+- (only_in_run_1) Three of the five data sources the PR 7 architecture depends on were not configured when the pipeline was run against this repo, so most DORA metrics could not be produced.
+- (only_in_run_2) Concurrent workflow runs contending on `git push` was a real operational problem the engineer had to work around; PR 3 adds a five-attempt fetch/rebase/retry loop rather than relying on a single push.
+- (only_in_run_2) The same contention constrained how the tool can be used, and the engineer had to document a manual workaround rather than solve it in code.
+- (only_in_run_2) No PR in this month received a review from anyone other than the author, so there was no external checkpoint on any of the work — including the 22,317-churn rearchitecture.
+- (only_in_run_2) Three of five intended data sources were unavailable in the environment, so several outputs of the system the engineer built cannot currently produce values.
+- (only_in_run_2) Work shipped in PRs 1, 4 and 5 was superseded within the same month by PR 7, which removed the leaderboard and rank concept those PRs built.
+- (only_in_run_1) No code reviews were given to anyone during the month; the reviews metrics are all zero or null.
+- (only_in_run_1) PR 7 adds a `config/README.md` documenting the record shape of each optional external feed so others can wire them up.
+- (only_in_run_1) PR 7 builds an explicit feedback channel for engineers to contest interpretations of their own work, with a worked example.
+- (only_in_run_2) The metrics recorded zero reviews given and zero authors reviewed, so the payload contains no in-PR evidence of Engineer A unblocking another person.
+- (only_in_run_2) PR 7 adds a `config/README.md` documenting the exact record shape each optional external feed must supply, so someone else could wire up a board, deploy or incident export without reading the adapter code.
+- (only_in_run_2) PR 7 ships a generated worked example of all four audience outputs so a reader can see what each audience receives without running the pipeline.
 - **summary** differed between runs.
 - **most_favourable_reading** differed between runs.
 - **least_favourable_reading** differed between runs.
