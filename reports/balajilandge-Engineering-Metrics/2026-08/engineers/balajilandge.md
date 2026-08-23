@@ -7,8 +7,8 @@ Repository: `balajilandge/Engineering-Metrics`. This page is about your work onl
 ## What you shipped
 
 - PRs opened: **7**
-- PRs merged: **6**
-- Of those, substantive (excluding dependency, config, docs): **3**
+- PRs merged: **7**
+- Of those, substantive (excluding dependency, config, docs): **4**
 
 The two numbers differ because every PR is classified by the files it touches. A lockfile bump and a rewrite are both one PR; only one of them is a month's work.
 
@@ -19,7 +19,7 @@ The two numbers differ because every PR is classified by the files it touches. A
 | docs | 2 | no |
 | test | 0 | yes |
 | fix | 0 | yes |
-| feature | 3 | yes |
+| feature | 4 | yes |
 
 ## Review work you did for other people
 
@@ -28,7 +28,7 @@ The two numbers differ because every PR is classified by the files it touches. A
 
 ## Rework
 
-- PRs that received a changes-requested review: **0** of 6 measured
+- PRs that received a changes-requested review: **0** of 7 measured
 - Reverts authored: **0**
 
 Rework is not a defect count. A changes-requested review is often the review process working.

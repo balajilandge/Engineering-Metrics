@@ -6,12 +6,12 @@
     "start": "2026-08-01T00:00:00Z",
     "end": "2026-08-31T23:59:59Z"
   },
-  "generated_at": "2026-08-23T04:41:31.812821Z",
+  "generated_at": "2026-08-23T05:21:50.893046Z",
   "sources": [
     {
       "name": "pull_requests",
       "availability": "ok",
-      "detail": "13 pull requests in window"
+      "detail": "14 pull requests in window"
     },
     {
       "name": "reviews",
@@ -52,7 +52,7 @@
         "name": "lead_time_for_changes",
         "value": 0.0,
         "unit": "hours",
-        "basis": "median PR open -> merge, n=6 (no deploy feed: this is merge time, not deploy time)",
+        "basis": "median PR open -> merge, n=7 (no deploy feed: this is merge time, not deploy time)",
         "available": true
       },
       {
@@ -89,13 +89,13 @@
         "name": "carryover",
         "value": 0.0,
         "unit": "%",
-        "basis": "0 of 6 merged PRs were opened in an earlier month",
+        "basis": "0 of 7 merged PRs were opened in an earlier month",
         "available": true
       }
     ],
     "totals": {
       "prs_created": 7,
-      "prs_merged": 6,
+      "prs_merged": 7,
       "contributors": 1,
       "merged_by_type": {
         "dependency": 0,
@@ -103,7 +103,7 @@
         "docs": 2,
         "test": 0,
         "fix": 0,
-        "feature": 3
+        "feature": 4
       },
       "reverts": 0
     }
@@ -114,17 +114,17 @@
       "profile_url": "https://github.com/balajilandge",
       "throughput": {
         "prs_created": 7,
-        "prs_merged": 6,
-        "prs_merged_substantive": 3,
+        "prs_merged": 7,
+        "prs_merged_substantive": 4,
         "by_type": {
           "dependency": 0,
           "config": 1,
           "docs": 2,
           "test": 0,
           "fix": 0,
-          "feature": 3
+          "feature": 4
         },
-        "median_churn": 87.5,
+        "median_churn": 143.0,
         "median_time_to_merge_h": 0.0
       },
       "reviews": {
@@ -135,11 +135,19 @@
       },
       "rework": {
         "prs_with_changes_requested": 0,
-        "measured_over": 6,
+        "measured_over": 7,
         "rate_pct": 0.0,
         "reverts_authored": 0
       },
       "evidence_prs": [
+        {
+          "number": 7,
+          "title": "Redesign metrics pipeline: four-layer architecture with audience-specific distribution",
+          "type": "feature",
+          "url": "https://github.com/balajilandge/Engineering-Metrics/pull/7",
+          "churn": 22317,
+          "detailed": true
+        },
         {
           "number": 1,
           "title": "Add monthly engineering metrics GitHub Action",
@@ -190,5 +198,6 @@
         }
       ]
     }
-  ]
+  ],
+  "layer3_error": "request rejected: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeK7tGcwMC5jThNpzZ4q8'}"
 }
