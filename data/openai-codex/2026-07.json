@@ -6,7 +6,7 @@
     "start": "2026-07-01T00:00:00Z",
     "end": "2026-07-31T23:59:59Z"
   },
-  "generated_at": "2026-08-24T04:27:23.754335Z",
+  "generated_at": "2026-08-24T04:32:04.691669Z",
   "sources": [
     {
       "name": "pull_requests",
@@ -113,7 +113,7 @@
     "engineers_reported": 10,
     "capped": true,
     "rule": "activity",
-    "note": "Individual profiles cover a sample of contributors, not the whole team. The sample is not a ranking and carries no order: team-level metrics below still cover everyone."
+    "note": "Individual profiles cover a sample of the people who authored or reviewed this month, not all of them. The sample is not a ranking and carries no order; team-level metrics still cover everyone."
   },
   "individuals": [
     {
