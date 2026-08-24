@@ -31,7 +31,7 @@ on:
         description: 'owner/name of the repo to read stats from'
         required: false
         type: string
-        default: microsoft/vscode
+        default: openai/codex
       interpret:
         description: 'Run Layer 3 (costs API tokens; needs ANTHROPIC_API_KEY)'
         required: false
@@ -86,7 +86,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TARGET_MONTH: ${{ inputs.month }}
-          SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+          SOURCE_REPO: ${{ inputs.source_repo || 'openai/codex' }}
           INTERPRET: ${{ inputs.interpret && 'true' || 'false' }}
           # Optional off-GitHub feeds; absent means "insufficient evidence",
           # never zero.
@@ -115,7 +115,7 @@ jobs:
         # should still show red.
         if: ${{ !cancelled() }}
         env:
-          SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+          SOURCE_REPO: ${{ inputs.source_repo || 'openai/codex' }}
           PHASE: ${{ steps.phase.outputs.phase }}
           TARGET_MONTH: ${{ inputs.month }}
         run: |

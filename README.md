@@ -102,8 +102,8 @@ The one loop in the system runs from the engineer back into Layer 3. An
 engineer reads their page, finds something the data could not see, and writes:
 
 ```bash
-mkdir -p corrections/microsoft-vscode/2026-07
-cat > corrections/microsoft-vscode/2026-07/octocat.json <<'JSON'
+mkdir -p corrections/openai-codex/2026-07
+cat > corrections/openai-codex/2026-07/octocat.json <<'JSON'
 {"corrections": [
   "PR #481 was deliberately scoped down after an incident review — the small
    diff was the point, not a sign the work was small."
@@ -122,7 +122,7 @@ counts, because the counts are what they are.
 ### Locally, no model, no API key
 
 ```bash
-export SOURCE_REPO=microsoft/vscode
+export SOURCE_REPO=openai/codex
 export TARGET_MONTH=2026-07      # optional; defaults to last month
 export GH_TOKEN=ghp_...          # optional, but avoids anonymous rate limits
 export EMBARGO_HOURS=0           # optional; for a single-shot local run
@@ -183,7 +183,7 @@ pages cost no API calls and no tokens.
 
 | Variable | Default | Effect |
 |---|---|---|
-| `SOURCE_REPO` | `microsoft/vscode` | Repo to read from |
+| `SOURCE_REPO` | `openai/codex` | Repo to read from |
 | `TARGET_MONTH` | previous month | `YYYY-MM` |
 | `GH_TOKEN` | — | GitHub auth |
 | `PHASE` | `all` | Same values as `--phase` |
@@ -330,6 +330,11 @@ pipeline against this repository — all four audience pages, generated with
 Layer 3 off. It is the quickest way to see what each audience actually
 receives, including a founder page where three of the four DORA metrics read
 *insufficient evidence* because this repo has no deploy or incident feed.
+
+`reports/openai-codex/2026-07/` holds a run against the default repo, capped to
+a ten-engineer cohort. It has engineer pages only — the manager-facing pages
+are still under embargo, which is itself the clearest demonstration that the
+hold is real rather than advisory.
 
 ### History
 
