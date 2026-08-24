@@ -140,9 +140,10 @@ def run(config, phase: str = "all") -> dict:
         "engineers_reported": cohort_total,
         "capped": cohort_total != contributor_total,
         "rule": config.report_engineer_select if cohort_total != contributor_total else "",
-        "note": ("Individual profiles cover a sample of contributors, not the "
-                 "whole team. The sample is not a ranking and carries no order: "
-                 "team-level metrics below still cover everyone."
+        "note": ("Individual profiles cover a sample of the people who "
+                 "authored or reviewed this month, not all of them. The sample "
+                 "is not a ranking and carries no order; team-level metrics "
+                 "still cover everyone."
                  if cohort_total != contributor_total else ""),
     }
     if computed["cohort"]["capped"]:

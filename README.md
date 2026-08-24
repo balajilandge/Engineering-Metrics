@@ -236,9 +236,14 @@ Two things stay uncapped on purpose:
 | The founder page | It carries no individual data at all, so the cohort does not change it. |
 
 The EM and squad pages carry a banner naming the sample size and rule, so a
-manager reading ten profiles from a ninety-one contributor month cannot mistake
-absence-by-configuration for absence-of-work. `release-manifest.json` records
-the same, so a partial release is auditable rather than silent.
+manager reading ten profiles cannot mistake absence-by-configuration for
+absence-of-work. `release-manifest.json` records the same, so a partial release
+is auditable rather than silent.
+
+Each run also removes engineer pages it did not itself write, so dropping from
+an uncapped run to a capped one does not leave the excluded engineers' old
+pages sitting in `reports/` — stating a stale release date, carrying numbers
+that contradict the manifest, and looking exactly like a current page.
 
 ---
 
@@ -287,7 +292,7 @@ moment a ranking exists somebody will paste it into a promotion committee.
 python -m unittest discover -s tests -v
 ```
 
-151 tests covering the deterministic layers and the gate — the classifier's
+154 tests covering the deterministic layers and the gate — the classifier's
 priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
 the audience/embargo policy, Layer 1's guarantee that fanning the per-PR
 fetch across threads returns exactly what the serial path returned, and the

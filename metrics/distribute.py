@@ -339,11 +339,13 @@ def cohort_note(computed: dict) -> list[str]:
     if not cohort.get("capped"):
         return []
     return [
-        f"> **This report covers {cohort['engineers_reported']} of "
-        f"{cohort['contributors_total']} contributors.** Individual profiles "
-        f"were limited to a sample (selection rule: `{cohort['rule']}`). The "
-        f"sample is not a ranking, carries no order, and says nothing about "
-        f"who is absent from it. Team-level metrics still cover everyone.",
+        f"> **Individual profiles cover {cohort['engineers_reported']} of the "
+        f"{cohort['contributors_total']} people who authored or reviewed this "
+        f"month**, limited by configuration (selection rule: "
+        f"`{cohort['rule']}`). The sample is not a ranking, carries no order, "
+        f"and says nothing about who is absent from it. Team-level metrics "
+        f"below still cover everyone — note they count PR authors only, which "
+        f"is why the contributor total there is a different number.",
         "",
     ]
 
@@ -558,6 +560,39 @@ def _write(path: str, content: str) -> str:
     return path
 
 
+def _prune_stale_engineer_pages(root: str, written: list[str]) -> list[str]:
+    """
+    Removes engineer pages this run did not write.
+
+    A page left behind by an earlier run is not harmless: it states a release
+    date and a set of numbers that no longer match the manifest, and it is
+    indistinguishable from a current page to whoever opens it. This matters
+    most under a cohort limit, where a previous uncapped run leaves a page for
+    every engineer the current run deliberately excluded.
+
+    Scoped to `<root>/engineers/*.md` — a directory whose entire contents this
+    function is responsible for generating on every run.
+    """
+    directory = os.path.join(root, "engineers")
+    if not os.path.isdir(directory):
+        return []
+
+    current = {os.path.abspath(path) for path in written}
+    removed = []
+    for name in sorted(os.listdir(directory)):
+        if not name.endswith(".md"):
+            continue
+        path = os.path.abspath(os.path.join(directory, name))
+        if path not in current:
+            os.remove(path)
+            removed.append(name)
+
+    if removed:
+        print(f"  removed {len(removed)} engineer page(s) from an earlier run "
+              f"that this run did not regenerate")
+    return removed
+
+
 def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult],
                          mapping: dict[str, str], repo: str, month: str,
                          non_substantive: tuple[str, ...],
@@ -573,6 +608,8 @@ def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult]
         page = render_engineer_page(profile, result, repo, month,
                                     non_substantive, layer3_error)
         written.append(_write(os.path.join(root, "engineers", f"{login}.md"), page))
+
+    _prune_stale_engineer_pages(root, written)
 
     manifest = read_manifest(root)
     manifest.update({

@@ -3,6 +3,7 @@ The cohort limit narrows the report to N engineers. It must stay a *filter*
 and never become a ranking, and it must not break the engineer-FIRST
 guarantee: no audience may discuss an engineer who got no page of their own.
 """
+import pathlib
 import unittest
 
 from metrics.compute import select_engineer_cohort, assert_no_scores
@@ -130,8 +131,67 @@ class EngineerFirstUnderCapTest(unittest.TestCase):
         for absent in ("alice", "dave"):
             self.assertNotIn(absent, page,
                              f"{absent} has no engineer page but appears to a manager")
-        self.assertIn("3 of 5 contributors", page)
+        self.assertIn("cover 3 of the 5 people", page)
         self.assertIn("not a ranking", page)
+
+
+class StalePagePruningTest(unittest.TestCase):
+    """
+    A capped run must not leave the previous uncapped run's pages behind: they
+    carry a stale release date and numbers that contradict the manifest, and
+    nothing on the page marks them as superseded.
+    """
+
+    def _run_distribute(self, tmp, profiles):
+        from metrics import distribute
+        computed = {
+            "team": {"dora": [], "flow": [], "totals": {
+                "prs_created": 64, "prs_merged": 64, "contributors": 5,
+                "merged_by_type": {}, "reverts": 0}},
+            "individuals": profiles,
+            "cohort": {"contributors_total": 5,
+                       "engineers_reported": len(profiles),
+                       "capped": len(profiles) < 5, "rule": "activity",
+                       "note": "sample"},
+        }
+        return distribute.distribute_engineers(
+            tmp, computed, {}, {p["engineer"]: p["engineer"] for p in profiles},
+            "o/r", "2026-07", ("dependency", "config", "docs"))
+
+    def test_capped_run_removes_the_previous_runs_extra_pages(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            self._run_distribute(tmp, POPULATION)
+            engineers = pathlib.Path(tmp) / "engineers"
+            self.assertEqual(len(list(engineers.glob("*.md"))), 5)
+
+            cohort = select_engineer_cohort(POPULATION, 3, "activity")
+            self._run_distribute(tmp, cohort)
+
+            remaining = sorted(f.stem for f in engineers.glob("*.md"))
+            self.assertEqual(remaining, ["bob", "carol", "erin"])
+
+    def test_page_count_on_disk_matches_the_manifest(self):
+        import json as _json
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            self._run_distribute(tmp, POPULATION)
+            self._run_distribute(tmp, select_engineer_cohort(POPULATION, 3))
+
+            manifest = _json.loads(
+                (pathlib.Path(tmp) / "release-manifest.json").read_text())
+            on_disk = len(list((pathlib.Path(tmp) / "engineers").glob("*.md")))
+            self.assertEqual(manifest["engineer_pages"], on_disk)
+
+    def test_non_markdown_files_are_left_alone(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            engineers = pathlib.Path(tmp) / "engineers"
+            engineers.mkdir(parents=True)
+            keep = engineers / "NOTES.txt"
+            keep.write_text("hand-written, not generated")
+            self._run_distribute(tmp, select_engineer_cohort(POPULATION, 2))
+            self.assertTrue(keep.exists())
 
 
 if __name__ == "__main__":
