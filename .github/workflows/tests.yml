@@ -1,0 +1,40 @@
+name: Tests
+
+# The metrics workflow deliberately does not run the suite: it is a scheduled
+# job that produces reports, and a demo run should not spend time on tests.
+# That left nothing checking this repository on a pull request, which is the
+# moment the check is actually worth having.
+#
+# Layers 1, 2 and the guardrail gate are code, and the gate is the thing
+# standing between a model's output and a page a person reads — so it is
+# tested before it is trusted.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # No pip install step: the deterministic layers, the gate and the tests
+      # run on the standard library alone. requirements.txt is Layer 3 only,
+      # and Layer 3's contract is tested without a network call.
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
