@@ -2,7 +2,8 @@
 
 This document maps the codebase to the four-layer pipeline described in the
 [README](README.md), including how the GitHub Actions workflows drive it.
-Diagrams are Mermaid and render natively on GitHub.
+Diagrams are Mermaid and render natively on GitHub. A print-friendly PDF of
+the same three diagrams is at [`docs/architecture-diagrams.pdf`](docs/architecture-diagrams.pdf).
 
 ---
 
