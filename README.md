@@ -248,14 +248,16 @@ moment a ranking exists somebody will paste it into a promotion committee.
 python -m unittest discover -s tests -v
 ```
 
-134 tests covering the deterministic layers and the gate — the classifier's
+138 tests covering the deterministic layers and the gate — the classifier's
 priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
-and the audience/embargo policy. Layer 3's contract is tested without a network
-call (schema shape, prompt constraints, payload anonymization).
+the audience/embargo policy, and Layer 1's guarantee that fanning the per-PR
+fetch across threads returns exactly what the serial path returned. Layer 3's
+contract is tested without a network call (schema shape, prompt constraints,
+payload anonymization).
 
-CI runs the suite before the pipeline on every run: layers 1, 2 and the gate are
-code, so they are tested before they are trusted to produce anything a person
-reads.
+The suite is **not** run by the workflow — the step was removed to keep demo
+runs to the pipeline alone. Layers 1, 2 and the gate are code, so run it
+yourself before trusting a change to produce anything a person reads.
 
 ### Layout
 

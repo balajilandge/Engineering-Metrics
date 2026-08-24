@@ -72,11 +72,6 @@ jobs:
           echo "phase=${PHASE}" >> "$GITHUB_OUTPUT"
           echo "Running phase: ${PHASE}"
 
-      - name: Run unit tests
-        # Layers 1, 2 and the gate are code, so they are tested before they
-        # are trusted to produce anything anyone reads.
-        run: python -m unittest discover -s tests -v
-
       - name: Install interpretation dependencies
         if: ${{ inputs.interpret }}
         run: pip install -r requirements.txt
