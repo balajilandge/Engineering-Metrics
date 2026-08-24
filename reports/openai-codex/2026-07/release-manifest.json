@@ -1,9 +1,16 @@
 {
   "repo": "openai/codex",
   "month": "2026-07",
-  "engineer_pages_released_at": "2026-08-24T03:47:10.101175Z",
-  "engineer_pages": 104,
+  "engineer_pages_released_at": "2026-08-24T04:27:23.761778Z",
+  "engineer_pages": 10,
   "audiences_released": [
     "engineer"
-  ]
+  ],
+  "cohort": {
+    "contributors_total": 104,
+    "engineers_reported": 10,
+    "capped": true,
+    "rule": "activity",
+    "note": "Individual profiles cover a sample of contributors, not the whole team. The sample is not a ranking and carries no order: team-level metrics below still cover everyone."
+  }
 }
