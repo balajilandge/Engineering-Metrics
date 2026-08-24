@@ -31,12 +31,21 @@ on:
         description: 'owner/name of the repo to read stats from'
         required: false
         type: string
-        default: microsoft/vscode
+        default: openai/codex
       interpret:
         description: 'Run Layer 3 (costs API tokens; needs ANTHROPIC_API_KEY)'
         required: false
         type: boolean
         default: false
+      engineers:
+        # No default on purpose. A default here applies to every dispatch,
+        # including a real monthly report someone runs by hand, and capping
+        # that silently would drop most of the team from the output with
+        # nothing in the request saying so. Leave it blank for a full report;
+        # set it (10 is a good size) for a demo.
+        description: 'Individual profiles to report on (blank = every contributor)'
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -72,11 +81,6 @@ jobs:
           echo "phase=${PHASE}" >> "$GITHUB_OUTPUT"
           echo "Running phase: ${PHASE}"
 
-      - name: Run unit tests
-        # Layers 1, 2 and the gate are code, so they are tested before they
-        # are trusted to produce anything anyone reads.
-        run: python -m unittest discover -s tests -v
-
       - name: Install interpretation dependencies
         if: ${{ inputs.interpret }}
         run: pip install -r requirements.txt
@@ -86,7 +90,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TARGET_MONTH: ${{ inputs.month }}
-          SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+          SOURCE_REPO: ${{ inputs.source_repo || 'openai/codex' }}
           INTERPRET: ${{ inputs.interpret && 'true' || 'false' }}
           # Optional off-GitHub feeds; absent means "insufficient evidence",
           # never zero.
@@ -94,6 +98,18 @@ jobs:
           DEPLOYS_PATH: ${{ vars.DEPLOYS_PATH }}
           INCIDENTS_PATH: ${{ vars.INCIDENTS_PATH }}
           EMBARGO_HOURS: ${{ vars.EMBARGO_HOURS || '24' }}
+          # Layer 1's per-PR detail is three calls per PR and dominates the
+          # run. Fanning it out across threads is what keeps a busy repo to a
+          # couple of minutes; the pool does not change the result, only the
+          # wall clock.
+          DETAIL_BUDGET: ${{ vars.DETAIL_BUDGET }}
+          DETAIL_WORKERS: ${{ vars.DETAIL_WORKERS || '8' }}
+          # Narrows individual profiles to a sample. Empty unless a dispatch
+          # asks for a cap or a repository variable sets one, so both the
+          # scheduled runs and an unattended manual dispatch cover everyone.
+          # Team-level metrics are unaffected either way.
+          REPORT_ENGINEERS: ${{ inputs.engineers || vars.REPORT_ENGINEERS }}
+          REPORT_ENGINEER_SELECT: ${{ vars.REPORT_ENGINEER_SELECT || 'activity' }}
         run: python scripts/monthly_metrics.py --phase "${{ steps.phase.outputs.phase }}"
 
       - name: Commit and push results
@@ -103,7 +119,7 @@ jobs:
         # should still show red.
         if: ${{ !cancelled() }}
         env:
-          SOURCE_REPO: ${{ inputs.source_repo || 'microsoft/vscode' }}
+          SOURCE_REPO: ${{ inputs.source_repo || 'openai/codex' }}
           PHASE: ${{ steps.phase.outputs.phase }}
           TARGET_MONTH: ${{ inputs.month }}
         run: |

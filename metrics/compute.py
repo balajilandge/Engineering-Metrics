@@ -348,6 +348,61 @@ def assert_no_scores(profiles: list[dict]) -> None:
     walk(profiles)
 
 
+SELECT_RULES = ("activity", "alphabetical")
+
+
+def _evidence_volume(profile: dict) -> int:
+    """
+    How much evidence a profile carries — merged PRs plus reviews given.
+
+    This is a sampling measure, not a measure of the person. It is computed
+    here, used to choose a subset, and thrown away: it is never attached to a
+    profile, never written to disk and never rendered. Reviews count equally
+    with merges on purpose, since the engineer who reviews most authors least.
+    """
+    return (profile["throughput"]["prs_merged"]
+            + profile["reviews"]["given"])
+
+
+def select_engineer_cohort(profiles: list[dict], limit: int,
+                           rule: str = "activity") -> list[dict]:
+    """
+    Narrows the report to `limit` engineers — for a demo, or any run that
+    wants fewer pages than the repo has contributors.
+
+    This is a **cohort filter, not a ranking**. The returned list is always in
+    the same alphabetical order Layer 2 produced, carries no position, score or
+    ordinal, and the profiles themselves are returned untouched. Whoever reads
+    the output cannot recover the selection order from it.
+
+    The cohort must be applied before the anonymization mapping is built, so
+    that every audience — engineer, EM, squad, founder — covers exactly these
+    engineers. Trimming only the engineer pages would leave the EM page
+    discussing people who never received a page of their own, which is the one
+    thing the embargo exists to prevent.
+    """
+    if rule not in SELECT_RULES:
+        raise ValueError(f"engineer selection rule must be one of "
+                         f"{', '.join(SELECT_RULES)}, got {rule!r}")
+    if limit <= 0 or limit >= len(profiles):
+        return profiles
+
+    if rule == "alphabetical":
+        chosen = profiles[:limit]
+    else:
+        # Sort a copy to pick the subset; `-volume` then login keeps ties
+        # deterministic. The ordering is discarded on the next line.
+        chosen = sorted(profiles,
+                        key=lambda p: (-_evidence_volume(p), p["engineer"]),
+                        )[:limit]
+
+    # Discard the selection order. Output order is alphabetical, exactly as it
+    # would be for an uncapped run.
+    cohort = sorted(chosen, key=lambda p: p["engineer"])
+    assert_no_scores(cohort)
+    return cohort
+
+
 def compute(collection: Collection, non_substantive: tuple[str, ...]) -> dict:
     return {
         "team": compute_team(collection),

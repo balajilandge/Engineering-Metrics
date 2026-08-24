@@ -329,6 +329,27 @@ def render_engineer_page(profile: dict, gated: GateResult | None, repo: str,
 # EM page — a 1:1 agenda, not a verdict
 # --------------------------------------------------------------------------
 
+def cohort_note(computed: dict) -> list[str]:
+    """
+    A capped run must say so on the page. A manager reading 10 profiles from a
+    91-contributor month has to know the other 81 are absent by configuration
+    rather than because they did nothing.
+    """
+    cohort = computed.get("cohort") or {}
+    if not cohort.get("capped"):
+        return []
+    return [
+        f"> **Individual profiles cover {cohort['engineers_reported']} of the "
+        f"{cohort['contributors_total']} people who authored or reviewed this "
+        f"month**, limited by configuration (selection rule: "
+        f"`{cohort['rule']}`). The sample is not a ranking, carries no order, "
+        f"and says nothing about who is absent from it. Team-level metrics "
+        f"below still cover everyone — note they count PR authors only, which "
+        f"is why the contributor total there is a different number.",
+        "",
+    ]
+
+
 def render_em_page(computed: dict, gated: dict[str, GateResult],
                    mapping: dict[str, str], repo: str, month: str,
                    sources: list[dict], non_substantive: tuple[str, ...]) -> str:
@@ -342,6 +363,7 @@ def render_em_page(computed: dict, gated: dict[str, GateResult],
         "their own page. Nothing here ranks anyone; there is no ordering in "
         "this document that means anything.",
         "",
+        *cohort_note(computed),
         "## Team",
         "",
         "### DORA",
@@ -436,6 +458,7 @@ def render_squad_page(squad: str, members: list[str], computed: dict,
         f"Repository: `{repo}`. This page covers **{squad}** plus the team "
         "aggregate. Other squads' individuals are not included.",
         "",
+        *cohort_note(computed),
         "## Team aggregate",
         "",
     ]
@@ -537,6 +560,39 @@ def _write(path: str, content: str) -> str:
     return path
 
 
+def _prune_stale_engineer_pages(root: str, written: list[str]) -> list[str]:
+    """
+    Removes engineer pages this run did not write.
+
+    A page left behind by an earlier run is not harmless: it states a release
+    date and a set of numbers that no longer match the manifest, and it is
+    indistinguishable from a current page to whoever opens it. This matters
+    most under a cohort limit, where a previous uncapped run leaves a page for
+    every engineer the current run deliberately excluded.
+
+    Scoped to `<root>/engineers/*.md` — a directory whose entire contents this
+    function is responsible for generating on every run.
+    """
+    directory = os.path.join(root, "engineers")
+    if not os.path.isdir(directory):
+        return []
+
+    current = {os.path.abspath(path) for path in written}
+    removed = []
+    for name in sorted(os.listdir(directory)):
+        if not name.endswith(".md"):
+            continue
+        path = os.path.abspath(os.path.join(directory, name))
+        if path not in current:
+            os.remove(path)
+            removed.append(name)
+
+    if removed:
+        print(f"  removed {len(removed)} engineer page(s) from an earlier run "
+              f"that this run did not regenerate")
+    return removed
+
+
 def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult],
                          mapping: dict[str, str], repo: str, month: str,
                          non_substantive: tuple[str, ...],
@@ -553,6 +609,8 @@ def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult]
                                     non_substantive, layer3_error)
         written.append(_write(os.path.join(root, "engineers", f"{login}.md"), page))
 
+    _prune_stale_engineer_pages(root, written)
+
     manifest = read_manifest(root)
     manifest.update({
         "repo": repo,
@@ -560,6 +618,10 @@ def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult]
         "engineer_pages_released_at": _now().isoformat().replace("+00:00", "Z"),
         "engineer_pages": len(written),
         "audiences_released": ["engineer"],
+        # Recorded so a later `rest` run, and anyone auditing the release,
+        # can see the engineer release was a sample rather than the whole
+        # team — and that no page is missing by accident.
+        "cohort": computed.get("cohort") or {},
     })
     write_manifest(root, manifest)
     print(f"Layer 4 distribute [engineers]: {len(written)} pages released")

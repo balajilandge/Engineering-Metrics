@@ -51,7 +51,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
              "engineer pages. rest: manager-facing pages (embargoed). "
              "all: everything.",
     )
-    parser.add_argument("--repo", default=env("SOURCE_REPO", "microsoft/vscode"))
+    parser.add_argument("--repo", default=env("SOURCE_REPO", "openai/codex"))
     parser.add_argument("--month", default=env("TARGET_MONTH"),
                         help="YYYY-MM (default: previous calendar month, UTC)")
     return parser.parse_args(argv)

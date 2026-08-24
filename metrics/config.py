@@ -47,6 +47,7 @@ class Config:
     # Layer 1
     max_pages: int = 300
     detail_budget: int = 400          # per-PR API calls allowed per run
+    detail_workers: int = 8           # threads fanning out that detail fetch
     board_path: str = ""
     deploys_path: str = ""
     incidents_path: str = ""
@@ -54,6 +55,8 @@ class Config:
 
     # Layer 2
     non_substantive: tuple[str, ...] = ("dependency", "config", "docs")
+    report_engineers: int = 0         # 0 = every contributor; N = cohort of N
+    report_engineer_select: str = "activity"   # activity | alphabetical
 
     # Layer 3
     interpret: bool = False
@@ -74,6 +77,7 @@ class Config:
             token=env("GH_TOKEN") or env("GITHUB_TOKEN"),
             max_pages=env_int("MAX_PAGES", 300),
             detail_budget=env_int("DETAIL_BUDGET", 400),
+            detail_workers=env_int("DETAIL_WORKERS", 8),
             board_path=env("BOARD_PATH"),
             deploys_path=env("DEPLOYS_PATH"),
             incidents_path=env("INCIDENTS_PATH"),
@@ -81,6 +85,8 @@ class Config:
             non_substantive=env_list(
                 "NON_SUBSTANTIVE_TYPES", ("dependency", "config", "docs")
             ),
+            report_engineers=env_int("REPORT_ENGINEERS", 0),
+            report_engineer_select=env("REPORT_ENGINEER_SELECT", "activity"),
             interpret=env_bool("INTERPRET", False),
             model=env("INTERPRET_MODEL", "claude-opus-5"),
             effort=env("INTERPRET_EFFORT", "high"),

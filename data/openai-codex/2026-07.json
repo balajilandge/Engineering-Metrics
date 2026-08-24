@@ -1,0 +1,1242 @@
+{
+  "schema_version": 2,
+  "repo": "openai/codex",
+  "month": "2026-07",
+  "period": {
+    "start": "2026-07-01T00:00:00Z",
+    "end": "2026-07-31T23:59:59Z"
+  },
+  "generated_at": "2026-08-24T04:49:18.638567Z",
+  "sources": [
+    {
+      "name": "pull_requests",
+      "availability": "ok",
+      "detail": "2022 pull requests in window"
+    },
+    {
+      "name": "reviews",
+      "availability": "ok",
+      "detail": "reviews read for 400 of 441 PRs"
+    },
+    {
+      "name": "board",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    },
+    {
+      "name": "deploys",
+      "availability": "empty",
+      "detail": "repo publishes no GitHub Deployments in window"
+    },
+    {
+      "name": "incidents",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    }
+  ],
+  "non_substantive_types": [
+    "dependency",
+    "config",
+    "docs"
+  ],
+  "team": {
+    "dora": [
+      {
+        "name": "deployment_frequency",
+        "value": null,
+        "unit": "per day",
+        "basis": "insufficient evidence — needs a deploy feed (DEPLOYS_PATH) or GitHub Deployments; merges are not deploys",
+        "available": false
+      },
+      {
+        "name": "lead_time_for_changes",
+        "value": 14.9,
+        "unit": "hours",
+        "basis": "median PR open -> merge, n=167 (no deploy feed: this is merge time, not deploy time)",
+        "available": true
+      },
+      {
+        "name": "change_failure_rate",
+        "value": null,
+        "unit": "%",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH); revert rate is a weak proxy",
+        "available": false
+      },
+      {
+        "name": "time_to_restore",
+        "value": null,
+        "unit": "hours",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH) with resolved_at",
+        "available": false
+      }
+    ],
+    "flow": [
+      {
+        "name": "review_latency",
+        "value": 12.28,
+        "unit": "hours",
+        "basis": "median PR open -> first review, n=187",
+        "available": true
+      },
+      {
+        "name": "work_in_progress",
+        "value": 136.0,
+        "unit": "PRs",
+        "basis": "median concurrently-open PRs (proxy: no board feed configured)",
+        "available": true
+      },
+      {
+        "name": "carryover",
+        "value": 14.37,
+        "unit": "%",
+        "basis": "24 of 167 merged PRs were opened in an earlier month",
+        "available": true
+      }
+    ],
+    "totals": {
+      "prs_created": 417,
+      "prs_merged": 167,
+      "contributors": 91,
+      "merged_by_type": {
+        "dependency": 1,
+        "config": 11,
+        "docs": 1,
+        "test": 13,
+        "fix": 17,
+        "feature": 124
+      },
+      "reverts": 2
+    }
+  },
+  "cohort": {
+    "contributors_total": 104,
+    "engineers_reported": 10,
+    "capped": true,
+    "rule": "activity",
+    "note": "Individual profiles cover a sample of the people who authored or reviewed this month, not all of them. The sample is not a ranking and carries no order; team-level metrics still cover everyone."
+  },
+  "individuals": [
+    {
+      "engineer": "anp-oai",
+      "profile_url": "https://github.com/anp-oai",
+      "throughput": {
+        "prs_created": 57,
+        "prs_merged": 21,
+        "prs_merged_substantive": 14,
+        "by_type": {
+          "dependency": 0,
+          "config": 7,
+          "docs": 0,
+          "test": 6,
+          "fix": 0,
+          "feature": 8
+        },
+        "median_churn": 98.0,
+        "median_time_to_merge_h": 19.13
+      },
+      "reviews": {
+        "given": 39,
+        "authors_reviewed": 12,
+        "median_latency_h": 14.76,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 21,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31451,
+          "title": "test: migrate TestAppServer callers to builder",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31451",
+          "churn": 3815,
+          "detailed": true
+        },
+        {
+          "number": 31427,
+          "title": "test: add delayed exec-server transport",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31427",
+          "churn": 596,
+          "detailed": true
+        },
+        {
+          "number": 31614,
+          "title": "test: migrate app-server v2 starts to auto env",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31614",
+          "churn": 564,
+          "detailed": true
+        },
+        {
+          "number": 29992,
+          "title": "app-server: cover selected environments in integration tests",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/29992",
+          "churn": 480,
+          "detailed": true
+        },
+        {
+          "number": 31425,
+          "title": "test: add TestAppServer builder",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31425",
+          "churn": 317,
+          "detailed": true
+        },
+        {
+          "number": 31369,
+          "title": "test(skills): cover plugin namespace loading",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31369",
+          "churn": 275,
+          "detailed": true
+        },
+        {
+          "number": 31357,
+          "title": "ci: route build IO through Dev Drives",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31357",
+          "churn": 271,
+          "detailed": true
+        },
+        {
+          "number": 31348,
+          "title": "perf(skills): resolve plugin namespaces per root",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31348",
+          "churn": 250,
+          "detailed": true
+        },
+        {
+          "number": 31318,
+          "title": "ci: share common workflow setup",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31318",
+          "churn": 185,
+          "detailed": true
+        },
+        {
+          "number": 31452,
+          "title": "test: remove TestAppServer constructors",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31452",
+          "churn": 142,
+          "detailed": true
+        },
+        {
+          "number": 31295,
+          "title": "bench: add codex help e2e macrobenchmark",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31295",
+          "churn": 98,
+          "detailed": true
+        },
+        {
+          "number": 31332,
+          "title": "ci: parameterize Cargo target paths",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31332",
+          "churn": 93,
+          "detailed": true
+        },
+        {
+          "number": 31271,
+          "title": "chore: use .worktreeinclude for user Bazel config",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31271",
+          "churn": 69,
+          "detailed": true
+        },
+        {
+          "number": 31358,
+          "title": "refactor(skills): share plugin namespace resolver",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31358",
+          "churn": 65,
+          "detailed": true
+        },
+        {
+          "number": 30318,
+          "title": "core: trace executor skill discovery",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30318",
+          "churn": 48,
+          "detailed": true
+        },
+        {
+          "number": 31422,
+          "title": "test: generalize exec-server fixture",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31422",
+          "churn": 46,
+          "detailed": true
+        },
+        {
+          "number": 31461,
+          "title": "chore: remove inert cargo audit workflow",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31461",
+          "churn": 26,
+          "detailed": true
+        },
+        {
+          "number": 31428,
+          "title": "bench: add e2e benchmark entrypoints",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31428",
+          "churn": 22,
+          "detailed": true
+        },
+        {
+          "number": 31356,
+          "title": "ci: run V8 source builds on Windows 2025",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31356",
+          "churn": 8,
+          "detailed": true
+        },
+        {
+          "number": 31337,
+          "title": "fix: restore Codex environment setup table",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31337",
+          "churn": 4,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "bolinfest",
+      "profile_url": "https://github.com/bolinfest",
+      "throughput": {
+        "prs_created": 30,
+        "prs_merged": 19,
+        "prs_merged_substantive": 15,
+        "by_type": {
+          "dependency": 1,
+          "config": 2,
+          "docs": 1,
+          "test": 0,
+          "fix": 2,
+          "feature": 13
+        },
+        "median_churn": 109.0,
+        "median_time_to_merge_h": 3.03
+      },
+      "reviews": {
+        "given": 28,
+        "authors_reviewed": 4,
+        "median_latency_h": 4.78,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 19,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31361,
+          "title": "model-provider: route model discovery through HTTP client factory",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31361",
+          "churn": 789,
+          "detailed": true
+        },
+        {
+          "number": 31622,
+          "title": "websocket-client: add proxy-aware connector",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31622",
+          "churn": 736,
+          "detailed": true
+        },
+        {
+          "number": 30334,
+          "title": "telemetry: log structured direct tool-call timing",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30334",
+          "churn": 576,
+          "detailed": true
+        },
+        {
+          "number": 30872,
+          "title": "Log multi-agent communication lifecycle",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30872",
+          "churn": 439,
+          "detailed": true
+        },
+        {
+          "number": 31323,
+          "title": "Extract shared HTTP transport into codex-http-client",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31323",
+          "churn": 315,
+          "detailed": true
+        },
+        {
+          "number": 31056,
+          "title": "fix(install): reuse GitHub release metadata",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/31056",
+          "churn": 296,
+          "detailed": true
+        },
+        {
+          "number": 31637,
+          "title": "login: route raw auth flows through HTTP client",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31637",
+          "churn": 258,
+          "detailed": true
+        },
+        {
+          "number": 31335,
+          "title": "core: route Responses API through system proxy",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31335",
+          "churn": 204,
+          "detailed": true
+        },
+        {
+          "number": 31342,
+          "title": "http-client: expose WebSocket proxy prerequisites",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31342",
+          "churn": 172,
+          "detailed": true
+        },
+        {
+          "number": 31363,
+          "title": "codex-api: route file uploads through HTTP client factory",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31363",
+          "churn": 109,
+          "detailed": true
+        },
+        {
+          "number": 31441,
+          "title": "core: preserve Responses WebSockets with system proxy",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31441",
+          "churn": 104,
+          "detailed": true
+        },
+        {
+          "number": 31331,
+          "title": "Migrate direct HTTP consumers to codex-http-client",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31331",
+          "churn": 92,
+          "detailed": true
+        },
+        {
+          "number": 31066,
+          "title": "chore: remove unused git-cliff configuration",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31066",
+          "churn": 46,
+          "detailed": true
+        },
+        {
+          "number": 30941,
+          "title": "fix: address quick-xml security advisories",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/30941",
+          "churn": 44,
+          "detailed": true
+        },
+        {
+          "number": 30867,
+          "title": "Consolidate multi-agent v2 communication sends",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30867",
+          "churn": 34,
+          "detailed": true
+        },
+        {
+          "number": 31431,
+          "title": "build: ratchet direct reqwest dependencies",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31431",
+          "churn": 33,
+          "detailed": true
+        },
+        {
+          "number": 31362,
+          "title": "core: route realtime and memories through HTTP client factory",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31362",
+          "churn": 13,
+          "detailed": true
+        },
+        {
+          "number": 31344,
+          "title": "exec-server: use virtual time in Noise relay test",
+          "type": "dependency",
+          "url": "https://github.com/openai/codex/pull/31344",
+          "churn": 7,
+          "detailed": true
+        },
+        {
+          "number": 30851,
+          "title": "docs: add tag to fenced code block",
+          "type": "docs",
+          "url": "https://github.com/openai/codex/pull/30851",
+          "churn": 2,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "cconger",
+      "profile_url": "https://github.com/cconger",
+      "throughput": {
+        "prs_created": 9,
+        "prs_merged": 8,
+        "prs_merged_substantive": 8,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 1,
+          "feature": 7
+        },
+        "median_churn": 213.5,
+        "median_time_to_merge_h": 0.9
+      },
+      "reviews": {
+        "given": 5,
+        "authors_reviewed": 2,
+        "median_latency_h": 37.03,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 8,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31650,
+          "title": "code-mode: make all approvals trigger elicitation pause",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31650",
+          "churn": 472,
+          "detailed": true
+        },
+        {
+          "number": 30627,
+          "title": "elicitations: Move to shared ElicitationService",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30627",
+          "churn": 351,
+          "detailed": true
+        },
+        {
+          "number": 31876,
+          "title": "code-mode: fix installation on darwin",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31876",
+          "churn": 266,
+          "detailed": true
+        },
+        {
+          "number": 30202,
+          "title": "[codex] bundle code mode host in release packages",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30202",
+          "churn": 223,
+          "detailed": true
+        },
+        {
+          "number": 31899,
+          "title": "code-mode: fall back to using in process v8 if we fail to resolve external process",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31899",
+          "churn": 204,
+          "detailed": true
+        },
+        {
+          "number": 31500,
+          "title": "code-mode: move to hosted mode by default ",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31500",
+          "churn": 189,
+          "detailed": true
+        },
+        {
+          "number": 31303,
+          "title": "feat(code-mode): allow disabling V8 JIT",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31303",
+          "churn": 129,
+          "detailed": true
+        },
+        {
+          "number": 31308,
+          "title": "fix: update crossbeam-epoch for RUSTSEC-2026-0204",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/31308",
+          "churn": 33,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "dylan-hurd-oai",
+      "profile_url": "https://github.com/dylan-hurd-oai",
+      "throughput": {
+        "prs_created": 14,
+        "prs_merged": 5,
+        "prs_merged_substantive": 5,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 1,
+          "feature": 4
+        },
+        "median_churn": 276.0,
+        "median_time_to_merge_h": 3.03
+      },
+      "reviews": {
+        "given": 24,
+        "authors_reviewed": 10,
+        "median_latency_h": 23.54,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 5,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 33455,
+          "title": "[release/0.144] fix(core) expand is_dangerous_command",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/33455",
+          "churn": 713,
+          "detailed": true
+        },
+        {
+          "number": 31312,
+          "title": "Use model catalog approval messages",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31312",
+          "churn": 439,
+          "detailed": true
+        },
+        {
+          "number": 31267,
+          "title": "chore(approvals) consolidate guardian calls for shell tools",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31267",
+          "churn": 276,
+          "detailed": true
+        },
+        {
+          "number": 32672,
+          "title": "[release/0.144] Revert \"Update auto review prompting\"",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/32672",
+          "churn": 134,
+          "detailed": true
+        },
+        {
+          "number": 30770,
+          "title": "fix(websockets) ignore metadata for incremental requests",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/30770",
+          "churn": 111,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "fcoury-oai",
+      "profile_url": "https://github.com/fcoury-oai",
+      "throughput": {
+        "prs_created": 6,
+        "prs_merged": 4,
+        "prs_merged_substantive": 4,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 2,
+          "fix": 2,
+          "feature": 0
+        },
+        "median_churn": 124.0,
+        "median_time_to_merge_h": 9.64
+      },
+      "reviews": {
+        "given": 11,
+        "authors_reviewed": 4,
+        "median_latency_h": 22.56,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 4,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31652,
+          "title": "fix(tui): hide empty reasoning summaries",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/31652",
+          "churn": 356,
+          "detailed": true
+        },
+        {
+          "number": 31138,
+          "title": "fix(windows-sandbox): allow deletion in writable roots",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/31138",
+          "churn": 240,
+          "detailed": true
+        },
+        {
+          "number": 31830,
+          "title": "fix(sandboxing): initialize network proxy config inline",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31830",
+          "churn": 8,
+          "detailed": true
+        },
+        {
+          "number": 31663,
+          "title": "test(app-server): use native rollout fixture paths",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31663",
+          "churn": 8,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "jif-oai",
+      "profile_url": "https://github.com/jif-oai",
+      "throughput": {
+        "prs_created": 29,
+        "prs_merged": 18,
+        "prs_merged_substantive": 18,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 4,
+          "fix": 1,
+          "feature": 13
+        },
+        "median_churn": 36.0,
+        "median_time_to_merge_h": 0.4
+      },
+      "reviews": {
+        "given": 18,
+        "authors_reviewed": 8,
+        "median_latency_h": 21.08,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 18,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31566,
+          "title": "perf(skills): reuse walk inventory for host loading",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31566",
+          "churn": 1070,
+          "detailed": true
+        },
+        {
+          "number": 31767,
+          "title": "Remove the network proxy config wrapper",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31767",
+          "churn": 1060,
+          "detailed": true
+        },
+        {
+          "number": 29697,
+          "title": "fix: attribut network requests to the exact exec on linux",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/29697",
+          "churn": 1007,
+          "detailed": true
+        },
+        {
+          "number": 31581,
+          "title": "Resolve selected capability roots without starting executors",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31581",
+          "churn": 368,
+          "detailed": true
+        },
+        {
+          "number": 31576,
+          "title": "Bound exec-server process event reordering",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31576",
+          "churn": 360,
+          "detailed": true
+        },
+        {
+          "number": 31578,
+          "title": "Bound exec-server pending RPCs",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31578",
+          "churn": 219,
+          "detailed": true
+        },
+        {
+          "number": 31805,
+          "title": "Bound remote MCP stdio lines",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31805",
+          "churn": 181,
+          "detailed": true
+        },
+        {
+          "number": 31570,
+          "title": "fs: support pruning hidden directories during walks",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31570",
+          "churn": 76,
+          "detailed": true
+        },
+        {
+          "number": 31756,
+          "title": "test(skills): assert symlinked metadata loading",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31756",
+          "churn": 42,
+          "detailed": true
+        },
+        {
+          "number": 31790,
+          "title": "Reduce MCP tool-list trace volume",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31790",
+          "churn": 30,
+          "detailed": true
+        },
+        {
+          "number": 31585,
+          "title": "Stabilize remote compaction parity against dynamic skill catalogs",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31585",
+          "churn": 26,
+          "detailed": true
+        },
+        {
+          "number": 31792,
+          "title": "Summarize streamed response item logs",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31792",
+          "churn": 21,
+          "detailed": true
+        },
+        {
+          "number": 31586,
+          "title": "Stabilize encrypted MAv2 spawn request test",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31586",
+          "churn": 20,
+          "detailed": true
+        },
+        {
+          "number": 31587,
+          "title": "Stabilize shared rollout budget test",
+          "type": "test",
+          "url": "https://github.com/openai/codex/pull/31587",
+          "churn": 16,
+          "detailed": true
+        },
+        {
+          "number": 31612,
+          "title": "Round MCP timeout durations in error messages",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31612",
+          "churn": 12,
+          "detailed": true
+        },
+        {
+          "number": 31804,
+          "title": "Stabilize the memories feature flag",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31804",
+          "churn": 6,
+          "detailed": true
+        },
+        {
+          "number": 31791,
+          "title": "Filter routine Hyper logs from SQLite",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31791",
+          "churn": 1,
+          "detailed": true
+        },
+        {
+          "number": 31789,
+          "title": "Stop persisting RMCP service traces",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31789",
+          "churn": 1,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "owenlin0",
+      "profile_url": "https://github.com/owenlin0",
+      "throughput": {
+        "prs_created": 18,
+        "prs_merged": 14,
+        "prs_merged_substantive": 14,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 14
+        },
+        "median_churn": 305.5,
+        "median_time_to_merge_h": 18.54
+      },
+      "reviews": {
+        "given": 7,
+        "authors_reviewed": 4,
+        "median_latency_h": 208.97,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 14,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31283,
+          "title": "core: support extension-owned turn items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31283",
+          "churn": 756,
+          "detailed": true
+        },
+        {
+          "number": 30188,
+          "title": "feat(rollout): persist TurnItems for paginated thread rollouts",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30188",
+          "churn": 711,
+          "detailed": true
+        },
+        {
+          "number": 31473,
+          "title": "feat(core): emit canonical review mode items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31473",
+          "churn": 611,
+          "detailed": true
+        },
+        {
+          "number": 30956,
+          "title": "refactor(protocol): isolate legacy item fanout",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30956",
+          "churn": 553,
+          "detailed": true
+        },
+        {
+          "number": 31525,
+          "title": "core: migrate standalone web search to extension-owned turn items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31525",
+          "churn": 488,
+          "detailed": true
+        },
+        {
+          "number": 31296,
+          "title": "refactor(protocol): map canonical tool items to legacy events",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31296",
+          "churn": 455,
+          "detailed": true
+        },
+        {
+          "number": 31297,
+          "title": "feat(core): emit canonical command execution items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31297",
+          "churn": 315,
+          "detailed": true
+        },
+        {
+          "number": 31300,
+          "title": "feat(core): emit canonical collab tool call items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31300",
+          "churn": 296,
+          "detailed": true
+        },
+        {
+          "number": 31301,
+          "title": "feat(core): emit canonical collab wait items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31301",
+          "churn": 240,
+          "detailed": true
+        },
+        {
+          "number": 31298,
+          "title": "feat(core): emit canonical dynamic tool call items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31298",
+          "churn": 232,
+          "detailed": true
+        },
+        {
+          "number": 31630,
+          "title": "feat(core): emit canonical hook prompt items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31630",
+          "churn": 194,
+          "detailed": true
+        },
+        {
+          "number": 31299,
+          "title": "feat(core): emit canonical sub-agent activity items",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31299",
+          "churn": 179,
+          "detailed": true
+        },
+        {
+          "number": 31629,
+          "title": "core: stop emitting legacy command events directly",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31629",
+          "churn": 48,
+          "detailed": true
+        },
+        {
+          "number": 31524,
+          "title": "chore(protocol): use UUIDv7 for generated item IDs",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31524",
+          "churn": 18,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "pakrym-oai",
+      "profile_url": "https://github.com/pakrym-oai",
+      "throughput": {
+        "prs_created": 10,
+        "prs_merged": 4,
+        "prs_merged_substantive": 3,
+        "by_type": {
+          "dependency": 0,
+          "config": 1,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 3
+        },
+        "median_churn": 123.0,
+        "median_time_to_merge_h": 2.43
+      },
+      "reviews": {
+        "given": 88,
+        "authors_reviewed": 15,
+        "median_latency_h": 10.88,
+        "changes_requested_given": 1
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 4,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 31421,
+          "title": "refactor: unify external auth resolution",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31421",
+          "churn": 742,
+          "detailed": true
+        },
+        {
+          "number": 31937,
+          "title": "exec-server: expose process helper to outer sandbox",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31937",
+          "churn": 160,
+          "detailed": true
+        },
+        {
+          "number": 31892,
+          "title": "exec-server: materialize filesystem workspace roots",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31892",
+          "churn": 86,
+          "detailed": true
+        },
+        {
+          "number": 31675,
+          "title": "Expand agent core ownership",
+          "type": "config",
+          "url": "https://github.com/openai/codex/pull/31675",
+          "churn": 3,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "sayan-oai",
+      "profile_url": "https://github.com/sayan-oai",
+      "throughput": {
+        "prs_created": 6,
+        "prs_merged": 6,
+        "prs_merged_substantive": 6,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 1,
+          "feature": 5
+        },
+        "median_churn": 109.0,
+        "median_time_to_merge_h": 27.63
+      },
+      "reviews": {
+        "given": 16,
+        "authors_reviewed": 7,
+        "median_latency_h": 16.91,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 1,
+        "measured_over": 6,
+        "rate_pct": 16.67,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 30223,
+          "title": "Make plugin guidance react to environment readiness",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30223",
+          "churn": 537,
+          "detailed": true
+        },
+        {
+          "number": 30226,
+          "title": "Make Apps guidance react to MCP availability",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30226",
+          "churn": 334,
+          "detailed": true
+        },
+        {
+          "number": 33972,
+          "title": "Backport refreshed bundled model metadata to 0.144",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/33972",
+          "churn": 118,
+          "detailed": true
+        },
+        {
+          "number": 31745,
+          "title": "code-mode: retain shared MCP types for deferred tools",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31745",
+          "churn": 100,
+          "detailed": true
+        },
+        {
+          "number": 34009,
+          "title": "Narrow 0.144 hotfix to GPT-5.6 prompts and context",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/34009",
+          "churn": 72,
+          "detailed": true
+        },
+        {
+          "number": 31292,
+          "title": "Reuse MCP tool snapshot within a sampling request",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/31292",
+          "churn": 23,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "viyatb-oai",
+      "profile_url": "https://github.com/viyatb-oai",
+      "throughput": {
+        "prs_created": 10,
+        "prs_merged": 1,
+        "prs_merged_substantive": 1,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 1
+        },
+        "median_churn": 371.0,
+        "median_time_to_merge_h": 294.35
+      },
+      "reviews": {
+        "given": 28,
+        "authors_reviewed": 7,
+        "median_latency_h": 20.49,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 1,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 30278,
+          "title": "[codex] Preserve reviewer when resuming threads",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/30278",
+          "churn": 371,
+          "detailed": true
+        }
+      ]
+    }
+  ]
+}

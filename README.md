@@ -102,8 +102,8 @@ The one loop in the system runs from the engineer back into Layer 3. An
 engineer reads their page, finds something the data could not see, and writes:
 
 ```bash
-mkdir -p corrections/microsoft-vscode/2026-07
-cat > corrections/microsoft-vscode/2026-07/octocat.json <<'JSON'
+mkdir -p corrections/openai-codex/2026-07
+cat > corrections/openai-codex/2026-07/octocat.json <<'JSON'
 {"corrections": [
   "PR #481 was deliberately scoped down after an incident review — the small
    diff was the point, not a sign the work was small."
@@ -122,7 +122,7 @@ counts, because the counts are what they are.
 ### Locally, no model, no API key
 
 ```bash
-export SOURCE_REPO=microsoft/vscode
+export SOURCE_REPO=openai/codex
 export TARGET_MONTH=2026-07      # optional; defaults to last month
 export GH_TOKEN=ghp_...          # optional, but avoids anonymous rate limits
 export EMBARGO_HOURS=0           # optional; for a single-shot local run
@@ -183,12 +183,15 @@ pages cost no API calls and no tokens.
 
 | Variable | Default | Effect |
 |---|---|---|
-| `SOURCE_REPO` | `microsoft/vscode` | Repo to read from |
+| `SOURCE_REPO` | `openai/codex` | Repo to read from |
 | `TARGET_MONTH` | previous month | `YYYY-MM` |
 | `GH_TOKEN` | — | GitHub auth |
 | `PHASE` | `all` | Same values as `--phase` |
 | `DETAIL_BUDGET` | `400` | Per-PR API calls allowed (size, files, reviews) |
+| `DETAIL_WORKERS` | `8` | Threads fanning out that per-PR fetch. `1` forces the old serial path |
 | `NON_SUBSTANTIVE_TYPES` | `dependency,config,docs` | Which types the substantive count excludes |
+| `REPORT_ENGINEERS` | `0` (all) | Report individual profiles for a sample of N engineers |
+| `REPORT_ENGINEER_SELECT` | `activity` | How that sample is chosen: `activity` or `alphabetical` |
 | `INTERPRET` | `false` | Turn Layer 3 on |
 | `INTERPRET_MODEL` | `claude-opus-5` | Model for Layer 3 |
 | `INTERPRET_EFFORT` | `high` | `low`…`max` |
@@ -199,6 +202,51 @@ pages cost no API calls and no tokens.
 | `BOARD_PATH` / `DEPLOYS_PATH` / `INCIDENTS_PATH` | — | Optional off-GitHub feeds |
 
 See [`config/README.md`](config/README.md) for the feed formats.
+
+---
+
+## Reporting on a sample of engineers
+
+`REPORT_ENGINEERS=10` narrows the individual profiles to ten people — useful
+for a demo, or any run that does not need a page per contributor. The workflow
+exposes it as the `engineers` dispatch input, which is **blank by default**: a
+scheduled run, or a dispatch that leaves the field alone, reports on everyone.
+A cap only ever applies because someone asked for one in that request.
+
+**It is a cohort filter, not a leaderboard.** The distinction is the whole
+point of this repo, so it is enforced rather than promised:
+
+- the selected profiles are returned **untouched and in alphabetical order**,
+  so the selection order does not survive into the output;
+- nothing gains a `rank`, `score` or `position` field — the cohort is passed
+  through both `assert_no_scores` and `assert_no_ranked_list`;
+- `activity` selects on merged PRs **plus reviews given**, weighted equally, so
+  the engineer who reviews constantly and authors little is not the first one
+  cut. Selecting on authored PRs alone would erase exactly the contribution
+  this pipeline exists to make visible.
+
+The cap is applied **before the anonymization mapping is built**, so every
+audience covers the same cohort. That is what keeps *engineer FIRST* true on a
+capped run: the EM and squad pages can only discuss engineers who already
+received a page of their own. Trimming just the engineer pages would have left
+managers reading about people who never got one.
+
+Two things stay uncapped on purpose:
+
+| | Why |
+|---|---|
+| Team metrics (DORA, flow, totals, contributor count) | They are an aggregate of everyone. Shrinking them to the sample would misreport the team. |
+| The founder page | It carries no individual data at all, so the cohort does not change it. |
+
+The EM and squad pages carry a banner naming the sample size and rule, so a
+manager reading ten profiles cannot mistake absence-by-configuration for
+absence-of-work. `release-manifest.json` records the same, so a partial release
+is auditable rather than silent.
+
+Each run also removes engineer pages it did not itself write, so dropping from
+an uncapped run to a capped one does not leave the excluded engineers' old
+pages sitting in `reports/` — stating a stale release date, carrying numbers
+that contradict the manifest, and looking exactly like a current page.
 
 ---
 
@@ -247,14 +295,17 @@ moment a ranking exists somebody will paste it into a promotion committee.
 python -m unittest discover -s tests -v
 ```
 
-134 tests covering the deterministic layers and the gate — the classifier's
+154 tests covering the deterministic layers and the gate — the classifier's
 priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
-and the audience/embargo policy. Layer 3's contract is tested without a network
-call (schema shape, prompt constraints, payload anonymization).
+the audience/embargo policy, Layer 1's guarantee that fanning the per-PR
+fetch across threads returns exactly what the serial path returned, and the
+cohort filter's guarantee that it never becomes a ranking. Layer 3's
+contract is tested without a network call (schema shape, prompt constraints,
+payload anonymization).
 
-CI runs the suite before the pipeline on every run: layers 1, 2 and the gate are
-code, so they are tested before they are trusted to produce anything a person
-reads.
+The suite is **not** run by the workflow — the step was removed to keep demo
+runs to the pipeline alone. Layers 1, 2 and the gate are code, so run it
+yourself before trusting a change to produce anything a person reads.
 
 ### Layout
 
@@ -282,6 +333,11 @@ pipeline against this repository — all four audience pages, generated with
 Layer 3 off. It is the quickest way to see what each audience actually
 receives, including a founder page where three of the four DORA metrics read
 *insufficient evidence* because this repo has no deploy or incident feed.
+
+`reports/openai-codex/2026-07/` holds a run against the default repo, capped to
+a ten-engineer cohort. It has engineer pages only — the manager-facing pages
+are still under embargo, which is itself the clearest demonstration that the
+hold is real rather than advisory.
 
 ### History
 
