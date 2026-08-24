@@ -14,9 +14,11 @@ argument — a re-run on the same data produces the same split.
 from __future__ import annotations
 
 import calendar
+import concurrent.futures
 import dataclasses
 import datetime
 import sys
+import time
 
 from .classify import classify_pr, is_revert
 from .sources import board as board_source
@@ -248,9 +250,30 @@ def collect(config) -> Collection:
                      key=lambda r: (r.number not in merged_numbers, -r.number))
 
     budget = min(config.detail_budget, len(ordered))
-    print(f"  enriching {budget} of {len(ordered)} PRs (detail budget)")
-    for record in ordered[:budget]:
-        _enrich(client, config.repo, record)
+    workers = max(1, config.detail_workers)
+    print(f"  enriching {budget} of {len(ordered)} PRs "
+          f"(detail budget) across {workers} workers")
+
+    # Each PR's three detail calls are independent and write only to their own
+    # record, so they fan out across a thread pool. Order is not affected:
+    # classification below runs over `unique` after every worker has finished,
+    # and the created/merged lists are rebuilt from it — so a re-run on the
+    # same data still produces the same split, workers or not.
+    started = time.monotonic()
+    if workers == 1:
+        for record in ordered[:budget]:
+            _enrich(client, config.repo, record)
+    else:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = [
+                pool.submit(_enrich, client, config.repo, record)
+                for record in ordered[:budget]
+            ]
+            for future in concurrent.futures.as_completed(futures):
+                future.result()  # _enrich swallows per-PR errors; this re-raises
+                                 # only a genuine bug in the worker itself.
+    print(f"  enriched in {time.monotonic() - started:.1f}s "
+          f"({client.calls} API calls so far)")
 
     # Classification runs over every PR, enriched or not. Without a file list
     # the rule falls back to the title split, and `detailed` records that.

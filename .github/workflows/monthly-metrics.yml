@@ -94,6 +94,12 @@ jobs:
           DEPLOYS_PATH: ${{ vars.DEPLOYS_PATH }}
           INCIDENTS_PATH: ${{ vars.INCIDENTS_PATH }}
           EMBARGO_HOURS: ${{ vars.EMBARGO_HOURS || '24' }}
+          # Layer 1's per-PR detail is three calls per PR and dominates the
+          # run. Fanning it out across threads is what keeps a busy repo to a
+          # couple of minutes; the pool does not change the result, only the
+          # wall clock.
+          DETAIL_BUDGET: ${{ vars.DETAIL_BUDGET }}
+          DETAIL_WORKERS: ${{ vars.DETAIL_WORKERS || '8' }}
         run: python scripts/monthly_metrics.py --phase "${{ steps.phase.outputs.phase }}"
 
       - name: Commit and push results

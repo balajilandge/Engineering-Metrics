@@ -188,6 +188,7 @@ pages cost no API calls and no tokens.
 | `GH_TOKEN` | — | GitHub auth |
 | `PHASE` | `all` | Same values as `--phase` |
 | `DETAIL_BUDGET` | `400` | Per-PR API calls allowed (size, files, reviews) |
+| `DETAIL_WORKERS` | `8` | Threads fanning out that per-PR fetch. `1` forces the old serial path |
 | `NON_SUBSTANTIVE_TYPES` | `dependency,config,docs` | Which types the substantive count excludes |
 | `INTERPRET` | `false` | Turn Layer 3 on |
 | `INTERPRET_MODEL` | `claude-opus-5` | Model for Layer 3 |

@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -32,6 +33,9 @@ class GitHubClient:
         self.token = token
         self.max_pages = max_pages
         self.calls = 0
+        # Per-PR detail is fetched from a thread pool, so the counter needs a
+        # lock to stay an accurate record of how much of the budget was spent.
+        self._calls_lock = threading.Lock()
 
     def get(self, path_and_query: str) -> list | dict:
         url = f"{API_ROOT}{path_and_query}"
@@ -46,7 +50,8 @@ class GitHubClient:
         request = urllib.request.Request(url, headers=headers)
         for attempt in range(1, 6):
             try:
-                self.calls += 1
+                with self._calls_lock:
+                    self.calls += 1
                 with urllib.request.urlopen(request, timeout=30) as response:
                     return json.loads(response.read().decode("utf-8"))
             except urllib.error.HTTPError as exc:
