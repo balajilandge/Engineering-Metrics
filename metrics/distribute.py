@@ -329,6 +329,25 @@ def render_engineer_page(profile: dict, gated: GateResult | None, repo: str,
 # EM page — a 1:1 agenda, not a verdict
 # --------------------------------------------------------------------------
 
+def cohort_note(computed: dict) -> list[str]:
+    """
+    A capped run must say so on the page. A manager reading 10 profiles from a
+    91-contributor month has to know the other 81 are absent by configuration
+    rather than because they did nothing.
+    """
+    cohort = computed.get("cohort") or {}
+    if not cohort.get("capped"):
+        return []
+    return [
+        f"> **This report covers {cohort['engineers_reported']} of "
+        f"{cohort['contributors_total']} contributors.** Individual profiles "
+        f"were limited to a sample (selection rule: `{cohort['rule']}`). The "
+        f"sample is not a ranking, carries no order, and says nothing about "
+        f"who is absent from it. Team-level metrics still cover everyone.",
+        "",
+    ]
+
+
 def render_em_page(computed: dict, gated: dict[str, GateResult],
                    mapping: dict[str, str], repo: str, month: str,
                    sources: list[dict], non_substantive: tuple[str, ...]) -> str:
@@ -342,6 +361,7 @@ def render_em_page(computed: dict, gated: dict[str, GateResult],
         "their own page. Nothing here ranks anyone; there is no ordering in "
         "this document that means anything.",
         "",
+        *cohort_note(computed),
         "## Team",
         "",
         "### DORA",
@@ -436,6 +456,7 @@ def render_squad_page(squad: str, members: list[str], computed: dict,
         f"Repository: `{repo}`. This page covers **{squad}** plus the team "
         "aggregate. Other squads' individuals are not included.",
         "",
+        *cohort_note(computed),
         "## Team aggregate",
         "",
     ]
@@ -560,6 +581,10 @@ def distribute_engineers(root: str, computed: dict, gated: dict[str, GateResult]
         "engineer_pages_released_at": _now().isoformat().replace("+00:00", "Z"),
         "engineer_pages": len(written),
         "audiences_released": ["engineer"],
+        # Recorded so a later `rest` run, and anyone auditing the release,
+        # can see the engineer release was a sample rather than the whole
+        # team — and that no page is missing by accident.
+        "cohort": computed.get("cohort") or {},
     })
     write_manifest(root, manifest)
     print(f"Layer 4 distribute [engineers]: {len(written)} pages released")

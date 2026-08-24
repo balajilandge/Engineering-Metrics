@@ -55,6 +55,8 @@ class Config:
 
     # Layer 2
     non_substantive: tuple[str, ...] = ("dependency", "config", "docs")
+    report_engineers: int = 0         # 0 = every contributor; N = cohort of N
+    report_engineer_select: str = "activity"   # activity | alphabetical
 
     # Layer 3
     interpret: bool = False
@@ -83,6 +85,8 @@ class Config:
             non_substantive=env_list(
                 "NON_SUBSTANTIVE_TYPES", ("dependency", "config", "docs")
             ),
+            report_engineers=env_int("REPORT_ENGINEERS", 0),
+            report_engineer_select=env("REPORT_ENGINEER_SELECT", "activity"),
             interpret=env_bool("INTERPRET", False),
             model=env("INTERPRET_MODEL", "claude-opus-5"),
             effort=env("INTERPRET_EFFORT", "high"),

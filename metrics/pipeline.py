@@ -19,7 +19,7 @@ import sys
 from . import SCHEMA_VERSION
 from .anonymize import anonymize_diff, anonymize_profile, build_mapping
 from .collect import collect
-from .compute import compute
+from .compute import compute, select_engineer_cohort
 from .corrections import load_corrections
 from .distribute import (distribute_engineers, distribute_rest, load_squads)
 from .guardrails import gate_all
@@ -123,6 +123,33 @@ def run(config, phase: str = "all") -> dict:
     print(f"  {len(computed['individuals'])} individual profiles, "
           f"no score and no rank among them")
 
+    # A cohort limit narrows every audience at once. It is applied here,
+    # before the mapping is built, so the EM, squad and founder pages can only
+    # ever discuss engineers who received a page of their own — the
+    # engineer-FIRST guarantee holds for a capped run exactly as it does for a
+    # full one. Team-level metrics below are deliberately left uncapped: they
+    # are an aggregate of everyone, and silently shrinking them would misreport
+    # the team.
+    contributor_total = len(computed["individuals"])
+    computed["individuals"] = select_engineer_cohort(
+        computed["individuals"], config.report_engineers,
+        config.report_engineer_select)
+    cohort_total = len(computed["individuals"])
+    computed["cohort"] = {
+        "contributors_total": contributor_total,
+        "engineers_reported": cohort_total,
+        "capped": cohort_total != contributor_total,
+        "rule": config.report_engineer_select if cohort_total != contributor_total else "",
+        "note": ("Individual profiles cover a sample of contributors, not the "
+                 "whole team. The sample is not a ranking and carries no order: "
+                 "team-level metrics below still cover everyone."
+                 if cohort_total != contributor_total else ""),
+    }
+    if computed["cohort"]["capped"]:
+        print(f"  cohort limit: reporting on {cohort_total} of "
+              f"{contributor_total} contributors "
+              f"(rule={config.report_engineer_select}; a sample, not a ranking)")
+
     mapping = build_mapping(
         [p["engineer"] for p in computed["individuals"]],
         salt=f"{config.repo}:{config.month}",
@@ -137,6 +164,7 @@ def run(config, phase: str = "all") -> dict:
         "sources": [s.to_dict() for s in collection.statuses],
         "non_substantive_types": list(config.non_substantive),
         "team": computed["team"],
+        "cohort": computed["cohort"],
         "individuals": computed["individuals"],
     }
 

@@ -190,6 +190,8 @@ pages cost no API calls and no tokens.
 | `DETAIL_BUDGET` | `400` | Per-PR API calls allowed (size, files, reviews) |
 | `DETAIL_WORKERS` | `8` | Threads fanning out that per-PR fetch. `1` forces the old serial path |
 | `NON_SUBSTANTIVE_TYPES` | `dependency,config,docs` | Which types the substantive count excludes |
+| `REPORT_ENGINEERS` | `0` (all) | Report individual profiles for a sample of N engineers |
+| `REPORT_ENGINEER_SELECT` | `activity` | How that sample is chosen: `activity` or `alphabetical` |
 | `INTERPRET` | `false` | Turn Layer 3 on |
 | `INTERPRET_MODEL` | `claude-opus-5` | Model for Layer 3 |
 | `INTERPRET_EFFORT` | `high` | `low`…`max` |
@@ -200,6 +202,43 @@ pages cost no API calls and no tokens.
 | `BOARD_PATH` / `DEPLOYS_PATH` / `INCIDENTS_PATH` | — | Optional off-GitHub feeds |
 
 See [`config/README.md`](config/README.md) for the feed formats.
+
+---
+
+## Reporting on a sample of engineers
+
+`REPORT_ENGINEERS=10` narrows the individual profiles to ten people — useful
+for a demo, or any run that does not need a page per contributor.
+
+**It is a cohort filter, not a leaderboard.** The distinction is the whole
+point of this repo, so it is enforced rather than promised:
+
+- the selected profiles are returned **untouched and in alphabetical order**,
+  so the selection order does not survive into the output;
+- nothing gains a `rank`, `score` or `position` field — the cohort is passed
+  through both `assert_no_scores` and `assert_no_ranked_list`;
+- `activity` selects on merged PRs **plus reviews given**, weighted equally, so
+  the engineer who reviews constantly and authors little is not the first one
+  cut. Selecting on authored PRs alone would erase exactly the contribution
+  this pipeline exists to make visible.
+
+The cap is applied **before the anonymization mapping is built**, so every
+audience covers the same cohort. That is what keeps *engineer FIRST* true on a
+capped run: the EM and squad pages can only discuss engineers who already
+received a page of their own. Trimming just the engineer pages would have left
+managers reading about people who never got one.
+
+Two things stay uncapped on purpose:
+
+| | Why |
+|---|---|
+| Team metrics (DORA, flow, totals, contributor count) | They are an aggregate of everyone. Shrinking them to the sample would misreport the team. |
+| The founder page | It carries no individual data at all, so the cohort does not change it. |
+
+The EM and squad pages carry a banner naming the sample size and rule, so a
+manager reading ten profiles from a ninety-one contributor month cannot mistake
+absence-by-configuration for absence-of-work. `release-manifest.json` records
+the same, so a partial release is auditable rather than silent.
 
 ---
 
@@ -248,10 +287,11 @@ moment a ranking exists somebody will paste it into a promotion committee.
 python -m unittest discover -s tests -v
 ```
 
-138 tests covering the deterministic layers and the gate — the classifier's
+151 tests covering the deterministic layers and the gate — the classifier's
 priority rules, the DORA fallbacks, the anonymization boundary, every gate rule,
-the audience/embargo policy, and Layer 1's guarantee that fanning the per-PR
-fetch across threads returns exactly what the serial path returned. Layer 3's
+the audience/embargo policy, Layer 1's guarantee that fanning the per-PR
+fetch across threads returns exactly what the serial path returned, and the
+cohort filter's guarantee that it never becomes a ranking. Layer 3's
 contract is tested without a network call (schema shape, prompt constraints,
 payload anonymization).
 
