@@ -38,10 +38,14 @@ on:
         type: boolean
         default: false
       engineers:
-        description: 'Individual profiles to report on (0 = every contributor)'
+        # No default on purpose. A default here applies to every dispatch,
+        # including a real monthly report someone runs by hand, and capping
+        # that silently would drop most of the team from the output with
+        # nothing in the request saying so. Leave it blank for a full report;
+        # set it (10 is a good size) for a demo.
+        description: 'Individual profiles to report on (blank = every contributor)'
         required: false
         type: string
-        default: '10'
 
 permissions:
   contents: write
@@ -100,10 +104,10 @@ jobs:
           # wall clock.
           DETAIL_BUDGET: ${{ vars.DETAIL_BUDGET }}
           DETAIL_WORKERS: ${{ vars.DETAIL_WORKERS || '8' }}
-          # Narrows individual profiles to a sample. Empty on the scheduled
-          # runs, so production reports stay uncapped and cover everyone; the
-          # dispatch input defaults to 10 for demos. Team-level metrics are
-          # unaffected either way.
+          # Narrows individual profiles to a sample. Empty unless a dispatch
+          # asks for a cap or a repository variable sets one, so both the
+          # scheduled runs and an unattended manual dispatch cover everyone.
+          # Team-level metrics are unaffected either way.
           REPORT_ENGINEERS: ${{ inputs.engineers || vars.REPORT_ENGINEERS }}
           REPORT_ENGINEER_SELECT: ${{ vars.REPORT_ENGINEER_SELECT || 'activity' }}
         run: python scripts/monthly_metrics.py --phase "${{ steps.phase.outputs.phase }}"
