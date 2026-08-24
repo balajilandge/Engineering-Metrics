@@ -208,7 +208,10 @@ See [`config/README.md`](config/README.md) for the feed formats.
 ## Reporting on a sample of engineers
 
 `REPORT_ENGINEERS=10` narrows the individual profiles to ten people — useful
-for a demo, or any run that does not need a page per contributor.
+for a demo, or any run that does not need a page per contributor. The workflow
+exposes it as the `engineers` dispatch input, which is **blank by default**: a
+scheduled run, or a dispatch that leaves the field alone, reports on everyone.
+A cap only ever applies because someone asked for one in that request.
 
 **It is a cohort filter, not a leaderboard.** The distinction is the whole
 point of this repo, so it is enforced rather than promised:
