@@ -1,0 +1,298 @@
+{
+  "schema_version": 2,
+  "repo": "openai/codex",
+  "month": "2026-08",
+  "period": {
+    "start": "2026-08-01T00:00:00Z",
+    "end": "2026-08-31T23:59:59Z"
+  },
+  "generated_at": "2026-09-01T08:30:05.583134Z",
+  "sources": [
+    {
+      "name": "pull_requests",
+      "availability": "ok",
+      "detail": "2539 pull requests in window"
+    },
+    {
+      "name": "reviews",
+      "availability": "ok",
+      "detail": "reviews read for 13 of 13 PRs"
+    },
+    {
+      "name": "board",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    },
+    {
+      "name": "deploys",
+      "availability": "empty",
+      "detail": "repo publishes no GitHub Deployments in window"
+    },
+    {
+      "name": "incidents",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    }
+  ],
+  "non_substantive_types": [
+    "dependency",
+    "config",
+    "docs"
+  ],
+  "team": {
+    "dora": [
+      {
+        "name": "deployment_frequency",
+        "value": null,
+        "unit": "per day",
+        "basis": "insufficient evidence — needs a deploy feed (DEPLOYS_PATH) or GitHub Deployments; merges are not deploys",
+        "available": false
+      },
+      {
+        "name": "lead_time_for_changes",
+        "value": 0.48,
+        "unit": "hours",
+        "basis": "median PR open -> merge, n=2 (no deploy feed: this is merge time, not deploy time)",
+        "available": true
+      },
+      {
+        "name": "change_failure_rate",
+        "value": null,
+        "unit": "%",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH); revert rate is a weak proxy",
+        "available": false
+      },
+      {
+        "name": "time_to_restore",
+        "value": null,
+        "unit": "hours",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH) with resolved_at",
+        "available": false
+      }
+    ],
+    "flow": [
+      {
+        "name": "review_latency",
+        "value": 0.1,
+        "unit": "hours",
+        "basis": "median PR open -> first review, n=1",
+        "available": true
+      },
+      {
+        "name": "work_in_progress",
+        "value": 1.5,
+        "unit": "PRs",
+        "basis": "median concurrently-open PRs (proxy: no board feed configured)",
+        "available": true
+      },
+      {
+        "name": "carryover",
+        "value": 0.0,
+        "unit": "%",
+        "basis": "0 of 2 merged PRs were opened in an earlier month",
+        "available": true
+      }
+    ],
+    "totals": {
+      "prs_created": 13,
+      "prs_merged": 2,
+      "contributors": 5,
+      "merged_by_type": {
+        "dependency": 0,
+        "config": 0,
+        "docs": 0,
+        "test": 0,
+        "fix": 0,
+        "feature": 2
+      },
+      "reverts": 0
+    }
+  },
+  "cohort": {
+    "contributors_total": 5,
+    "engineers_reported": 5,
+    "capped": false,
+    "rule": "",
+    "note": ""
+  },
+  "individuals": [
+    {
+      "engineer": "aibrahim-oai",
+      "profile_url": "https://github.com/aibrahim-oai",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "anp-oai",
+      "profile_url": "https://github.com/anp-oai",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": 1,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 1
+        },
+        "median_churn": 576.0,
+        "median_time_to_merge_h": 0.28
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 1,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 37057,
+          "title": "[0.146] Backport safer cyber-model auto-review defaults",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/37057",
+          "churn": 576,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "celia-oai",
+      "profile_url": "https://github.com/celia-oai",
+      "throughput": {
+        "prs_created": 8,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "pakrym-oai",
+      "profile_url": "https://github.com/pakrym-oai",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 3,
+        "authors_reviewed": 1,
+        "median_latency_h": 0.11,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "rhan-oai",
+      "profile_url": "https://github.com/rhan-oai",
+      "throughput": {
+        "prs_created": 1,
+        "prs_merged": 1,
+        "prs_merged_substantive": 1,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 1
+        },
+        "median_churn": 50.0,
+        "median_time_to_merge_h": 0.68
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 1,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 41003,
+          "title": "Backport retained-image compaction budgeting to 0.150",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/41003",
+          "churn": 50,
+          "detailed": true
+        }
+      ]
+    }
+  ]
+}
