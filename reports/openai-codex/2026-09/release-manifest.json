@@ -1,0 +1,16 @@
+{
+  "repo": "openai/codex",
+  "month": "2026-09",
+  "engineer_pages_released_at": "2026-10-01T09:58:22.086397Z",
+  "engineer_pages": 6,
+  "audiences_released": [
+    "engineer"
+  ],
+  "cohort": {
+    "contributors_total": 6,
+    "engineers_reported": 6,
+    "capped": false,
+    "rule": "",
+    "note": ""
+  }
+}

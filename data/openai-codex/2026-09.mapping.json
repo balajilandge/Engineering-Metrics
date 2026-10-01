@@ -1,0 +1,12 @@
+{
+  "note": "engineer -> anonymized label, for re-attaching names after Layer 3. Never sent to the model.",
+  "month": "2026-09",
+  "mapping": {
+    "imac-oai": "Engineer A",
+    "sayan-oai": "Engineer B",
+    "andrewgu-oai": "Engineer C",
+    "celia-oai": "Engineer D",
+    "anp-oai": "Engineer E",
+    "rhan-oai": "Engineer F"
+  }
+}

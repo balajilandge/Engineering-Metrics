@@ -1,0 +1,420 @@
+{
+  "schema_version": 2,
+  "repo": "openai/codex",
+  "month": "2026-09",
+  "period": {
+    "start": "2026-09-01T00:00:00Z",
+    "end": "2026-09-30T23:59:59Z"
+  },
+  "generated_at": "2026-10-01T09:58:22.084851Z",
+  "sources": [
+    {
+      "name": "pull_requests",
+      "availability": "ok",
+      "detail": "3222 pull requests in window"
+    },
+    {
+      "name": "reviews",
+      "availability": "ok",
+      "detail": "reviews read for 17 of 17 PRs"
+    },
+    {
+      "name": "board",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    },
+    {
+      "name": "deploys",
+      "availability": "empty",
+      "detail": "repo publishes no GitHub Deployments in window"
+    },
+    {
+      "name": "incidents",
+      "availability": "unconfigured",
+      "detail": "no path configured"
+    }
+  ],
+  "non_substantive_types": [
+    "dependency",
+    "config",
+    "docs"
+  ],
+  "team": {
+    "dora": [
+      {
+        "name": "deployment_frequency",
+        "value": null,
+        "unit": "per day",
+        "basis": "insufficient evidence — needs a deploy feed (DEPLOYS_PATH) or GitHub Deployments; merges are not deploys",
+        "available": false
+      },
+      {
+        "name": "lead_time_for_changes",
+        "value": 0.22,
+        "unit": "hours",
+        "basis": "median PR open -> merge, n=13 (no deploy feed: this is merge time, not deploy time)",
+        "available": true
+      },
+      {
+        "name": "change_failure_rate",
+        "value": null,
+        "unit": "%",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH); revert rate is a weak proxy",
+        "available": false
+      },
+      {
+        "name": "time_to_restore",
+        "value": null,
+        "unit": "hours",
+        "basis": "insufficient evidence — needs an incident feed (INCIDENTS_PATH) with resolved_at",
+        "available": false
+      }
+    ],
+    "flow": [
+      {
+        "name": "review_latency",
+        "value": 0.14,
+        "unit": "hours",
+        "basis": "median PR open -> first review, n=5",
+        "available": true
+      },
+      {
+        "name": "work_in_progress",
+        "value": 1.0,
+        "unit": "PRs",
+        "basis": "median concurrently-open PRs (proxy: no board feed configured)",
+        "available": true
+      },
+      {
+        "name": "carryover",
+        "value": 0.0,
+        "unit": "%",
+        "basis": "0 of 13 merged PRs were opened in an earlier month",
+        "available": true
+      }
+    ],
+    "totals": {
+      "prs_created": 17,
+      "prs_merged": 13,
+      "contributors": 5,
+      "merged_by_type": {
+        "dependency": 0,
+        "config": 0,
+        "docs": 0,
+        "test": 0,
+        "fix": 6,
+        "feature": 7
+      },
+      "reverts": 0
+    }
+  },
+  "cohort": {
+    "contributors_total": 6,
+    "engineers_reported": 6,
+    "capped": false,
+    "rule": "",
+    "note": ""
+  },
+  "individuals": [
+    {
+      "engineer": "andrewgu-oai",
+      "profile_url": "https://github.com/andrewgu-oai",
+      "throughput": {
+        "prs_created": 5,
+        "prs_merged": 5,
+        "prs_merged_substantive": 5,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 5
+        },
+        "median_churn": 461.0,
+        "median_time_to_merge_h": 0.27
+      },
+      "reviews": {
+        "given": 1,
+        "authors_reviewed": 1,
+        "median_latency_h": 0.14,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 5,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 49763,
+          "title": "[0.160] Backport maintenance-line catalog and security reminder updates",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/49763",
+          "churn": 1284,
+          "detailed": true
+        },
+        {
+          "number": 49744,
+          "title": "[0.159] Backport account security setup reminders for 0.159.3",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/49744",
+          "churn": 836,
+          "detailed": true
+        },
+        {
+          "number": 49385,
+          "title": "[0.159] Backport Windows console suppression for 0.159.2",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/49385",
+          "churn": 461,
+          "detailed": true
+        },
+        {
+          "number": 49323,
+          "title": "[0.159] Prepare 0.159.1 release backports",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/49323",
+          "churn": 302,
+          "detailed": true
+        },
+        {
+          "number": 49386,
+          "title": "[0.160] Backport remaining Windows console fix to frozen alpha.6",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/49386",
+          "churn": 10,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "anp-oai",
+      "profile_url": "https://github.com/anp-oai",
+      "throughput": {
+        "prs_created": 2,
+        "prs_merged": 2,
+        "prs_merged_substantive": 2,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 1,
+          "feature": 1
+        },
+        "median_churn": 103.0,
+        "median_time_to_merge_h": 0.12
+      },
+      "reviews": {
+        "given": 2,
+        "authors_reviewed": 2,
+        "median_latency_h": 0.18,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 2,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 42605,
+          "title": "Backport GPT-6-Astra model catalog to 0.153",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/42605",
+          "churn": 204,
+          "detailed": true
+        },
+        {
+          "number": 42632,
+          "title": "Fix GPT-6-Astra Fast tier description for 0.153.2",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/42632",
+          "churn": 2,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "celia-oai",
+      "profile_url": "https://github.com/celia-oai",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 3,
+        "prs_merged_substantive": 3,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 2,
+          "feature": 1
+        },
+        "median_churn": 152.0,
+        "median_time_to_merge_h": 0.43
+      },
+      "reviews": {
+        "given": 1,
+        "authors_reviewed": 1,
+        "median_latency_h": 0.69,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 3,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 42805,
+          "title": "[0.153 hotfix] Add GPT-6-Astra to Amazon Bedrock catalogs",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/42805",
+          "churn": 234,
+          "detailed": true
+        },
+        {
+          "number": 49342,
+          "title": "[0.159] Backport GPT-6.1 Sol Bedrock catalogs",
+          "type": "feature",
+          "url": "https://github.com/openai/codex/pull/49342",
+          "churn": 152,
+          "detailed": true
+        },
+        {
+          "number": 46467,
+          "title": "[0.155 hotfix] Restore none as the TUI reasoning summary default",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/46467",
+          "churn": 27,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "imac-oai",
+      "profile_url": "https://github.com/imac-oai",
+      "throughput": {
+        "prs_created": 4,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 0,
+        "authors_reviewed": 0,
+        "median_latency_h": null,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    },
+    {
+      "engineer": "rhan-oai",
+      "profile_url": "https://github.com/rhan-oai",
+      "throughput": {
+        "prs_created": 3,
+        "prs_merged": 3,
+        "prs_merged_substantive": 3,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 3,
+          "feature": 0
+        },
+        "median_churn": 2.0,
+        "median_time_to_merge_h": 0.06
+      },
+      "reviews": {
+        "given": 1,
+        "authors_reviewed": 1,
+        "median_latency_h": 0.14,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 3,
+        "rate_pct": 0.0,
+        "reverts_authored": 0
+      },
+      "evidence_prs": [
+        {
+          "number": 42874,
+          "title": "[0.153 hotfix] Show Astra in bundled model picker",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/42874",
+          "churn": 14,
+          "detailed": true
+        },
+        {
+          "number": 42878,
+          "title": "[0.153 hotfix] Qualify Astra async-question guidance by tool availability",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/42878",
+          "churn": 2,
+          "detailed": true
+        },
+        {
+          "number": 42809,
+          "title": "[0.153 hotfix] Update Astra async-question guidance",
+          "type": "fix",
+          "url": "https://github.com/openai/codex/pull/42809",
+          "churn": 2,
+          "detailed": true
+        }
+      ]
+    },
+    {
+      "engineer": "sayan-oai",
+      "profile_url": "",
+      "throughput": {
+        "prs_created": 0,
+        "prs_merged": 0,
+        "prs_merged_substantive": 0,
+        "by_type": {
+          "dependency": 0,
+          "config": 0,
+          "docs": 0,
+          "test": 0,
+          "fix": 0,
+          "feature": 0
+        },
+        "median_churn": null,
+        "median_time_to_merge_h": null
+      },
+      "reviews": {
+        "given": 1,
+        "authors_reviewed": 1,
+        "median_latency_h": 0.06,
+        "changes_requested_given": 0
+      },
+      "rework": {
+        "prs_with_changes_requested": 0,
+        "measured_over": 0,
+        "rate_pct": null,
+        "reverts_authored": 0
+      },
+      "evidence_prs": []
+    }
+  ]
+}
